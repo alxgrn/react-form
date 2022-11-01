@@ -1,0 +1,282 @@
+/**
+ * Основной блок формы
+ */
+ .Form {
+    --border-radius: .2rem;
+    --color-submit: #fff;
+    --color-success: #090;
+    --color-error: #c00;
+    --color-placeholder: #999;
+    --color-disabled: #666;
+    --color-label: #37b;
+    --color-hint: #666;
+    --background-submit: #37b;
+    --background-success: #efe;
+    --background-error: #fee;
+    --background-focus: #fec;
+    --background-disabled: #eee;
+    --border-color-disabled: #ccc;
+
+    color: inherit;
+    display: block;
+    margin: 1rem 0;
+    max-width: 400px;
+	font-size: 1rem;
+    line-height: 120%;
+    font-family: inherit;
+    font-weight: normal;
+    text-align: left;
+}
+/**
+ * Широкий вариант основного блока формы
+ */
+.Form.Form-wide {
+    max-width: 1024px;
+}
+/**
+ * Блок с информацией о форме
+ */
+.Form .Form-info {
+    margin: 1rem 0;
+    color: inherit;
+}
+/**
+ * Блок уведомления об успехе
+ */
+.Form .Form-success {
+    margin: 1rem 0;
+    padding: .5rem;
+    display: block;
+    color: var(--color-success);
+    background-color: var(--background-success);
+    border: 0 solid var(--color-success);
+    border-radius: var(--border-radius);
+}
+/**
+ * Блок уведомления об ошибке
+ */
+.Form .Form-error {
+    margin: 1rem 0;
+    padding: .5rem;
+    display: block;
+    color: var(--color-error);
+    background-color: var(--background-error);
+    border: 0 solid var(--color-error);
+    border-radius: var(--border-radius);
+}
+/**
+ * Блок элемента формы
+ */
+.Form .Form-item {
+    display: block;
+    margin: 1rem 0;
+}
+/**
+ * Блок подсказки в элементе форме
+ */
+ .Form .Form-item .Form-item-hint {
+    color: var(--color-hint);
+    font-size: .8rem;
+    line-height: 120%;
+    margin-top: .2rem;
+}
+/**
+ * Блок ошибки в элементе форме
+ */
+ .Form .Form-item .Form-item-error {
+    color: var(--color-error);
+    font-size: .8rem;
+    line-height: 120%;
+    margin-top: .2rem;
+}
+/**
+ * Отметка обязательности поля у лейбла поля ввода
+ */
+.Form .Form-required-mark {
+    color: var(--color-error);
+    margin-right: .2rem;
+}
+/**
+ * Элементы ввода
+ */
+.Form input[type='text'],
+.Form input[type='password'],
+.Form input[type='submit'],
+.Form input[type='file'],
+.Form select,
+.Form textarea {
+	color: inherit;
+    padding: .5rem;
+    margin: 0;
+	font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--background-submit);
+    width: 100%;
+    display: block;
+/*  Убираем браузерное оформление элементов ввода */
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+/*	Устанавливаем рассчет ширины с учетом полей */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+/**
+ * У текстовой области разрешаем изменение размера только по вертикали
+ */
+.Form textarea {
+    resize: vertical;
+}
+/**
+ * Отключаем браузерную подсветку фокуса и назначаем свое оформление
+ */
+.Form input:focus,
+.Form select:focus,
+.Form textarea:focus {
+	outline: none;
+	background-color: var(--background-focus);
+}
+/**
+ * Устанавливаем свое оформление у плейсхолдера
+ */
+.Form input::placeholder,
+.Form textarea::placeholder {
+    color: var(--color-placeholder);
+    font-size: 1rem;
+  }
+/**
+ * Устанавливаем свое оформление у запрещенных элементов
+ */
+.Form input[type="text"]:disabled,
+.Form input[type="password"]:disabled,
+.Form select:disabled,
+.Form textarea:disabled {
+    color: var(--color-disabled);
+    border-color: var(--border-color-disabled);
+    background-color: var(--background-disabled);
+}
+/**
+ * Корректируем оформление кнопки отправки данных...
+ */
+.Form input[type="submit"] {
+	cursor: pointer;
+    color: var(--color-submit)!important;
+    background-color: var(--background-submit);
+    border-color: var(--background-submit);
+    display: inline-block;
+    text-decoration: none!important;
+    margin-top: 1em;
+    margin-bottom: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+    width: auto;
+}
+/**
+ * ...и её запрещенного варианта
+ */
+.Form input[type="submit"]:disabled {
+    cursor: auto;
+    opacity: .5;
+}
+/**
+ * Лейбл поля ввода
+ */
+.Form label {
+	color: var(--color-label);
+	display: block;
+    font-weight: bold;
+    margin-bottom: .2rem;
+}
+/**
+ * Группа элементов ввода
+ */
+.Form fieldset {
+    margin: 0 0 .5rem 0;
+    border: none;
+    padding: 0;
+}
+
+.Form fieldset legend {
+    color: var(--main-color);
+    display: block;
+	font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    margin: 0 0 .5rem 0;
+    padding: 0;
+}
+
+.Form fieldset label {
+	color: inherit;
+	display: inline-block;
+	font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    padding: 0;
+    margin: 0 1rem 0 .5rem;
+    cursor: pointer;
+}
+
+.Form fieldset label.disabled {
+    color: #999;
+    cursor: default;
+}
+
+.Form input[type="radio"],
+.Form input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Используем для вывода хинтов */
+.Form strong {
+    display: block;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: .8rem;
+    line-height: 130%;
+    color: #666;
+    margin: -.5rem 0 0.5rem 0;
+}
+
+.Form fieldset strong {
+    margin-top: .5rem;
+}
+
+/* Для вывода чекбоксов и радиобатонов иногда нужен флекс */
+.Form .Form-row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.Form .Form-row input {
+    flex: 0 0 auto;
+    display: block;
+    height: 1.3rem;
+}
+
+.Form .Form-row label {
+    flex: 1 1 auto;
+}
+
+/* Для вывода кнопки справа от строки поиска */
+.Form .Form-row input[type="text"] {
+    flex: 1 1 auto;
+    margin: 0 .5rem .5rem 0;
+    height: auto;
+}
+
+.Form .Form-row input[type="submit"],
+.Form .Form-row .submit {
+    flex: 1 1 auto;
+    height: auto;
+    margin: 0;
+    padding: .5rem 1rem;
+}

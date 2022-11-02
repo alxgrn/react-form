@@ -5,6 +5,7 @@ import './App.css';
 function App() {
     const [ text, setText ] = useState('Hello');
     const [ password, setPassword ] = useState('1234567');
+    const [ textarea, setTextarea ] = useState('Lorem ipsum dolor sit amet...');
 
     const onSubmit = () => {
         window.alert('text="'+text+'"\npassword="'+password+'"');
@@ -16,6 +17,7 @@ function App() {
                 React Form Test
             </header>
             <Form
+                wide={true}
                 info='Info text'
                 success='Success text'
                 error='Error text'
@@ -42,6 +44,16 @@ function App() {
                     placeholder='Password placeholder'
                     hint='Password hint'
                     error='Password error'
+                />
+                <Input
+                    id='textarea'
+                    type='textarea'
+                    value={textarea}
+                    onChange={setTextarea}
+                    label='Textarea label'
+                    placeholder='Textarea placeholder'
+                    hint='Textarea hint'
+                    error='Textarea error'
                 />
             </Form>
         </div>

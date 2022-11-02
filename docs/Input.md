@@ -21,7 +21,7 @@ return(
 |id|string||Идентификатор элемента ввода|
 |value|string||Значение элемента ввода|
 |onChange|(value: string) => void||Обработчик ввода|
-|type?|"text" \| "password"|"text"|Тип элемента ввода|
+|type?|"text" \| "password" \| "textarea"|"text"|Тип элемента ввода|
 |label?|string||Название элемента ввода|
 |placeholder?|string||Подсказка внутри поля ввода|
 |hint?|string||Подсказка под элементом ввода|
@@ -30,3 +30,4 @@ return(
 |required?|boolean||Флаг обязательности для заполнения|
 |disabled?|boolean||Флаг запрещения ввода данных|
 |limit?|number||Ограничитель на число вводимых символов|
+|rows?|number|5|Для textarea число строк|

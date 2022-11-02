@@ -1,8 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import RequiredMark from './RequiredMark';
 
-const Label = ({ id, label, required }) => {
+export interface LabelProps {
+    id: string;
+    label?: string;
+    required?: boolean;
+}
+
+const Label = ({ id, label, required = false }: LabelProps) => {
     return (
         <React.Fragment>
             {label &&
@@ -12,12 +17,6 @@ const Label = ({ id, label, required }) => {
             </label>}
         </React.Fragment>
     );
-};
-
-Label.propTypes = {
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    required: PropTypes.bool,
-};
+}
 
 export default Label;

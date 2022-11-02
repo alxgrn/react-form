@@ -113,4 +113,24 @@ test('has correct handling of type equal to \"password\"', () => {
     expect(input).toHaveValue(value);
 });
 
+test('has correct handling of type equal to \"textarea\"', () => {
+    const onChange = jest.fn();
+    const type = 'textarea';
+    const rows = 7;
+    const value = 'Lorem ipsum dolor sit amet...';
+    render(
+        <Input
+            id='ID'
+            rows={rows}
+            type={type}
+            value={value}
+            onChange={onChange}
+        />
+    );
+    const input = screen.getByRole('textbox');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveValue(value);
+    expect(input).toHaveAttribute('rows', rows+"");
+});
+
 }); // describe

@@ -1,16 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const RequiredMark = ({ required }) => {
+export interface RequiredMarkProps {
+    required?: boolean;
+}
+
+const RequiredMark = ({ required = false }: RequiredMarkProps) => {
     return (
         <React.Fragment>
             {required && <span className='Form-required-mark'>✱</span>}
         </React.Fragment>
     );
-};
-
-RequiredMark.propTypes = {
-    required: PropTypes.bool,
-};
+}
 
 export default RequiredMark;

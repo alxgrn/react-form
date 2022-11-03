@@ -1,15 +1,20 @@
-# Input
-Компонент ввода текста.
+# Checkbox
+Компонент для установки/сбрасывания флажка.
 
 ```jsx
-const [ value, setValue ] = useState('');
+const [ checkbox, setCheckbox ] = useState(true);
+
+const onCheckboxChange = (b: boolean) => {
+    setCheckbox(b);
+};
 
 return(
     <Form>
-        <Input
-            id='id'
-            value={value}
-            onChange={setValue}
+        <Checkbox
+            id='checkbox'
+            checked={checkbox}
+            onChange={(b) => onCheckboxChange(b)}
+            label='Checkbox label'
         />
     </Form>
 );
@@ -19,15 +24,11 @@ return(
 |Prop name|Type|Default|Description|
 |---------|----|-------|-----------|
 |id|string||Идентификатор элемента ввода|
-|value|string||Значение элемента ввода|
-|onChange|(value: string) => void||Обработчик ввода|
-|type?|"text" \| "password" \| "textarea"|"text"|Тип элемента ввода|
+|onChange|(value: boolean) => void||Обработчик ввода|
 |label?|string||Название элемента ввода|
-|placeholder?|string||Подсказка внутри поля ввода|
 |hint?|string||Подсказка под элементом ввода|
 |error?|string||Текст ошибки под элементом ввода|
 |className?|string||Имя css-класса для установки элементу ввода|
 |required?|boolean|false|Флаг обязательности для заполнения|
 |disabled?|boolean|false|Флаг запрещения ввода данных|
-|limit?|number||Ограничитель на число вводимых символов|
-|rows?|number|5|Для textarea число строк|
+|checked?|boolean|false|Флаг установленности флажка|

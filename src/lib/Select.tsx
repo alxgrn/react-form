@@ -1,30 +1,35 @@
 import { FC } from 'react';
 import Label from './Label';
 
-export interface InputProps {
-    id: string;
-    type?: 'text' | 'password' | 'textarea';
+export interface SelectOption {
+    option: string;
     value: string;
-    onChange: (s: string) => void;
+    disabled?: boolean;
+}
+
+export interface SelectProps {
+    id: string;
+    value: string;
+    options: SelectOption[];
+    onChange: (b: string) => void;
     label?: string;
-    placeholder?: string;
     hint?: string;
     error?: string;
     className?: string;
+    placeholder?: string;
     required?: boolean;
     disabled?: boolean;
-    limit?: number;
-    rows?: number;
+    checked?: boolean;
     __TYPE?: string;
 }
 
-const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label, 
-                                placeholder, rows = 5, hint, error, className,
-                                required = false, disabled = false, limit }) => {
+export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholder = '-',
+                            hint, className, required, disabled, error, options }) => {
 
     const getStyle = () => {
-        if(required && !value.trim().length) {
-            return {
+        if(required) {
+            const index = options.findIndex(a => a.value === value);
+            if(index < 0) return {
                 borderColor:'var(--color-error)',
                 backgroundColor:'var(--background-error)',
             };
@@ -32,16 +37,12 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
     };
 
     const getLabelStyle = () => {
-        if(required && !value.trim().length) {
-            return {
+        if(required) {
+            const index = options.findIndex(a => a.value === value);
+            if(index < 0) return {
                 color:'var(--color-error)',
             };
         }
-    };
-
-    const doChange = (value: string) => {
-        if(limit) value = value.substring(0, limit);
-        onChange(value);
     };
 
     return (
@@ -54,32 +55,25 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 style={getLabelStyle()}
                 className={className}
             />
-
-            {/* TEXT or PASSWORD */}
-            {(type === 'text' || type === 'password') &&
-            <input
+            <select
                 id={id}
-                type={type}
                 value={value}
-                onChange={e => doChange(e.target.value)}
-                placeholder={placeholder}
-                className={className}
+                onChange={e => onChange(e.target.value)}
                 style={getStyle()}
                 disabled={disabled}
-            />}
-
-            {/* TEXTAREA */}
-            {type === 'textarea' &&
-            <textarea
-                id={id}
-                rows={rows}
-                value={value}
-                onChange={(e) => doChange(e.target.value)}
-                placeholder={placeholder}
                 className={className}
-                style={getStyle()}
-                disabled={disabled}
-            />}
+            >
+                <option>{placeholder}</option>
+                {options.map((item, index) => (
+                    <option
+                        key={index}
+                        value={item.value}
+                        disabled={item.disabled}
+                    >
+                        {item.option}
+                    </option>
+                ))}
+            </select>
 
             {error &&
             <div className='Form-item-error'>
@@ -92,11 +86,11 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
             </div>}
         </div>
     );
-}
+};
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-Input.defaultProps = {
-    __TYPE: 'Input',
-}
+Select.defaultProps = {
+    __TYPE: 'Select',
+};
 
-export default Input;
+export default Select;

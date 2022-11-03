@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Form, Input } from './index';
+import { Form, Input, Select, Checkbox } from './index';
 
 describe('Form', () => {
 
@@ -30,18 +30,16 @@ test('has submit button', () => {
 
 test('calls onSubmit callback', async () => {
     const submit = 'Submit button';
-    const callback = jest.fn();
+    const onSubmit = jest.fn();
     const user = userEvent.setup();
-    render(<Form submit={submit} onSubmit={callback}/>);
+    render(<Form submit={submit} onSubmit={onSubmit}/>);
     const button = screen.getByRole('button', { name: submit });
     expect(button).toBeInTheDocument();
     await user.click(button);
-    expect(callback).toBeCalledTimes(1);
+    expect(onSubmit).toBeCalledTimes(1);
 });
 
-test('submit button disabled when required field is empty', () => {
-    const id = 'ID';
-    const value = '';
+test('submit button disabled when required Input field is empty', () => {
     const onChange = jest.fn();
     const submit = 'Submit button';
     render(
@@ -49,10 +47,51 @@ test('submit button disabled when required field is empty', () => {
             submit={submit}
         >
             <Input
-                id={id}
-                value={value}
+                id='id'
+                value=''
                 required={true}
                 onChange={onChange}
+            />
+        </Form>
+    );
+    const button = screen.getByRole('button', { name: submit });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute('disabled');
+});
+
+test('submit button disabled when required Checkbox field is unchecked', () => {
+    const onChange = jest.fn();
+    const submit = 'Submit button';
+    render(
+        <Form
+            submit={submit}
+        >
+            <Checkbox
+                id='id'
+                label='label'
+                required={true}
+                onChange={onChange}
+            />
+        </Form>
+    );
+    const button = screen.getByRole('button', { name: submit });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute('disabled');
+});
+
+test('submit button disabled when required Select field is unselected', () => {
+    const onChange = jest.fn();
+    const submit = 'Submit button';
+    render(
+        <Form
+            submit={submit}
+        >
+            <Select
+                id='id'
+                required={true}
+                onChange={onChange}
+                value=''
+                options={[{ value: 'one', option: 'one'}]}
             />
         </Form>
     );

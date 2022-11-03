@@ -71,6 +71,12 @@
     display: block;
     margin: 1rem 0;
 }
+.Form fieldset .Form-item {
+    margin: 0 0 .5rem 0;
+}
+.Form fieldset .Form-item:last-child {
+    margin: 0;
+}
 /**
  * Блок подсказки в элементе форме
  */
@@ -128,7 +134,7 @@
  * У текстовой области разрешаем изменение размера только по вертикали
  */
 .Form textarea {
-    resize: vertical;
+    resize: none;
 }
 /**
  * Отключаем браузерную подсветку фокуса и назначаем свое оформление
@@ -185,98 +191,55 @@
 /**
  * Лейбл поля ввода
  */
-.Form label {
+.Form label,
+.Form legend {
 	color: var(--color-label);
 	display: block;
     font-weight: bold;
     margin-bottom: .2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+}
+.Form legend {
+    margin-bottom: .5rem;
 }
 /**
  * Группа элементов ввода
  */
 .Form fieldset {
-    margin: 0 0 .5rem 0;
+    margin: 1rem 0;
     border: none;
     padding: 0;
-}
-
-.Form fieldset legend {
-    color: var(--main-color);
     display: block;
-	font-size: inherit;
-    line-height: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    margin: 0 0 .5rem 0;
-    padding: 0;
 }
-
-.Form fieldset label {
-	color: inherit;
-	display: inline-block;
-	font-size: inherit;
-    line-height: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    padding: 0;
-    margin: 0 1rem 0 .5rem;
-    cursor: pointer;
-}
-
-.Form fieldset label.disabled {
-    color: #999;
-    cursor: default;
-}
-
-.Form input[type="radio"],
-.Form input[type="checkbox"] {
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-/* Используем для вывода хинтов */
-.Form strong {
-    display: block;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: .8rem;
-    line-height: 130%;
-    color: #666;
-    margin: -.5rem 0 0.5rem 0;
-}
-
-.Form fieldset strong {
-    margin-top: .5rem;
-}
-
-/* Для вывода чекбоксов и радиобатонов иногда нужен флекс */
-.Form .Form-row {
+/**
+ * Чекбоксы и радиобатоны
+ */
+.Form .Form-radio,
+.Form .Form-checkbox {
     display: flex;
+    width: fit-content;
     align-items: flex-start;
 }
 
-.Form .Form-row input {
+.Form .Form-radio input,
+.Form .Form-checkbox input {
     flex: 0 0 auto;
     display: block;
-    height: 1.3rem;
+    height: 1.2rem; /* высота как у высоты строки 120% от 1rem */
+    margin: 0 .5rem 0 0;
 }
 
-.Form .Form-row label {
+.Form .Form-radio label,
+.Form .Form-checkbox label {
     flex: 1 1 auto;
-}
-
-/* Для вывода кнопки справа от строки поиска */
-.Form .Form-row input[type="text"] {
-    flex: 1 1 auto;
-    margin: 0 .5rem .5rem 0;
-    height: auto;
-}
-
-.Form .Form-row input[type="submit"],
-.Form .Form-row .submit {
-    flex: 1 1 auto;
-    height: auto;
+    font-weight: normal;
+    color: inherit;
+    cursor: pointer;
+    white-space: initial;
+    overflow: initial;
+    text-overflow: initial;
     margin: 0;
-    padding: .5rem 1rem;
 }

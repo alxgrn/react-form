@@ -1,5 +1,7 @@
-import { useEffect, useState, ReactNode, ReactElement } from 'react';
+import { useEffect, useState, ReactNode, ReactElement, FC, PropsWithChildren } from 'react';
 import { deepForEach } from 'react-children-utilities';
+import { RadioOption } from './Radio';
+import { SelectOption } from './Select';
 
 export interface FormProps {
     info?: string;
@@ -8,10 +10,10 @@ export interface FormProps {
     submit?: string;
     wide?: boolean;
     onSubmit?: () => void;
-    children?: ReactNode;
 }
 
-export const Form = ({ info, error, success, submit, wide, onSubmit, children }: FormProps) => {
+export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, submit,
+                                                         wide, onSubmit, children }) => {
     const [ disabled, setDisabled ] = useState(false);
     // Если выводим кнопку сабмита, то проверяем все ли данные введены для required полей.
     // Подробности про props.__TYPE описаны тут:
@@ -20,11 +22,32 @@ export const Form = ({ info, error, success, submit, wide, onSubmit, children }:
         if(!submit) return;
         setDisabled(false);
         deepForEach(children, (child: ReactNode) => {
-            if ( child &&
-                (child as ReactElement).props.__TYPE === 'FormItem' && 
-                (child as ReactElement).props.required) {
-                const value = (child as ReactElement).props.value.trim();
-                if(!value) setDisabled(true);
+            if(child && (child as ReactElement).props.required) {
+                const props = (child as ReactElement).props;
+                switch(props.__TYPE) {
+                    case 'Input':
+                        // Значение должно быть непустой строкой
+                        if(!props.value.trim()) setDisabled(true);
+                        break;
+                    case 'Checkbox':
+                        // Чекбокс должен быть отмечен
+                        if(!props.checked) setDisabled(true);
+                        break;
+                    case 'Select': {
+                        // Среди списка опций должна быть опция с указанным значением
+                        const value = props.value as string;
+                        const options = props.options as SelectOption[];
+                        if(options.findIndex(a => a.value === value) < 0) setDisabled(true); }
+                        break;
+                    case 'Radio': {
+                        // Среди списка опций должна быть опция с указанным значением
+                        const value = props.value as string;
+                        const options = props.options as RadioOption[];
+                        if(options.findIndex(a => a.value === value) < 0) setDisabled(true); }
+                        break;
+                    default:
+                        break;
+                }
             }
         });
     }, [ children, submit ]);

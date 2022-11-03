@@ -1,14 +1,14 @@
-import React from 'react';
+import { Fragment, FC } from 'react';
 
 export interface RequiredMarkProps {
     required?: boolean;
 }
 
-const RequiredMark = ({ required = false }: RequiredMarkProps) => {
+const RequiredMark: FC<RequiredMarkProps> = ({ required = false }) => {
     return (
-        <React.Fragment>
+        <Fragment>
             {required && <span className='Form-required-mark'>✱</span>}
-        </React.Fragment>
+        </Fragment>
     );
 }
 

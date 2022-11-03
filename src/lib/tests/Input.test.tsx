@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Input } from './index';
+import { Input } from '../index';
 
 describe('Input', () => {
 
@@ -53,7 +53,7 @@ test('has required mark and disabled option', () => {
     expect(screen.getByRole('textbox')).toHaveAttribute('disabled');
 });
 
-test('has correct handling of input callback', async () => {
+test('has correct handling of onChange callback', async () => {
     let output = '';
     const id = 'ID';
     const value = 'Test value';

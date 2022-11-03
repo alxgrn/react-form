@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Form, Input, Select, Checkbox } from './index';
+import { Form, Input, Radio, Select, Checkbox } from '../index';
 
 describe('Form', () => {
 
@@ -92,6 +92,27 @@ test('submit button disabled when required Select field is unselected', () => {
                 onChange={onChange}
                 value=''
                 options={[{ value: 'one', option: 'one'}]}
+            />
+        </Form>
+    );
+    const button = screen.getByRole('button', { name: submit });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveAttribute('disabled');
+});
+
+test('submit button disabled when required Radio field is unselected', () => {
+    const onChange = jest.fn();
+    const submit = 'Submit button';
+    render(
+        <Form
+            submit={submit}
+        >
+            <Radio
+                id='id'
+                required={true}
+                onChange={onChange}
+                value=''
+                options={[{ value: 'one', label: 'one'}]}
             />
         </Form>
     );

@@ -12,7 +12,7 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     const error = 'Error text';
     const placeholder = 'Placeholder text';
     const onChange = jest.fn();
-    render(
+    const { container } = render(
         <Input
             id={id}
             value={value}
@@ -32,6 +32,7 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     expect(screen.getByLabelText(label)).toBeInTheDocument();
     expect(screen.getByText(hint)).toBeInTheDocument();
     expect(screen.getByText(error)).toBeInTheDocument();
+    expect(container.querySelector('.Form-required-mark')).toBeFalsy();
 });
 
 test('has required mark and disabled option', () => {
@@ -53,7 +54,7 @@ test('has required mark and disabled option', () => {
     expect(screen.getByRole('textbox')).toHaveAttribute('disabled');
 });
 
-test('has correct handling of onChange callback', async () => {
+test('has correct handling of onChange callback for text and password', async () => {
     let output = '';
     const id = 'ID';
     const value = 'Test value';
@@ -62,6 +63,27 @@ test('has correct handling of onChange callback', async () => {
     render(
         <Input
             id={id}
+            value=''
+            onChange={onChange}
+        />
+    );
+    const input = screen.getByRole('textbox');
+    expect(input).toBeInTheDocument();
+    await user.type(input, value);
+    expect(onChange).toBeCalledTimes(value.length);
+    expect(output).toBe(value);
+});
+
+test('has correct handling of onChange callback for textarea', async () => {
+    let output = '';
+    const id = 'ID';
+    const value = 'Test value';
+    const onChange = jest.fn(v => output += v);
+    const user = userEvent.setup();
+    render(
+        <Input
+            id={id}
+            type='textarea'
             value=''
             onChange={onChange}
         />

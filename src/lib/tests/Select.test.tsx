@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Select, SelectOption } from '../Select';
+import { Select, SelectOption } from '../components/Select';
 
 const options: SelectOption[] = [
     { value: 'one', option: 'one' },

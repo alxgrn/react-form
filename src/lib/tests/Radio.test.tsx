@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Radio, RadioOption } from '../Radio';
+import { Radio, RadioOption } from '../components/Radio';
 
 const options: RadioOption[] = [
     { value: 'one', label: 'One', hint: 'hint' },

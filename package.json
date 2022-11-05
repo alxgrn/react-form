@@ -29,6 +29,7 @@
     "start": "PUBLIC_URL=/ react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!react-children-utilities)/\"",
+    "coverage": "npm test -- --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "build:dist": "npm run build:types && npm run build:js && rm -rf dist/tests",
     "build:types": "./node_modules/.bin/tsc --project ./tsconfig.types.json",

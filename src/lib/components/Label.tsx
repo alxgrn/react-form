@@ -1,4 +1,4 @@
-import { FC, Fragment } from 'react';
+import React, { FC, Fragment } from 'react';
 import RequiredMark from './RequiredMark';
 
 export interface LabelProps {

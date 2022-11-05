@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import Legend, { LegendProps } from './Legend';
 
 const Fieldset: FC<PropsWithChildren<LegendProps>> = (props) => {

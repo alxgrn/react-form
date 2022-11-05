@@ -1,4 +1,4 @@
-import { Fragment, FC } from 'react';
+import React, { Fragment, FC } from 'react';
 
 export interface RequiredMarkProps {
     required?: boolean;

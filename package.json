@@ -1,7 +1,7 @@
 {
   "name": "@alxgrn/react-form",
   "description": "Simple form library for react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "author": "Alexander Fedorov <alex@molner.ru>",
   "license": "Apache-2.0",
@@ -24,8 +24,7 @@
   "bugs": {
     "url": "https://github.com/alxgrn/react-form/issues"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "scripts": {
     "start": "PUBLIC_URL=/ react-scripts start",
     "build": "react-scripts build",

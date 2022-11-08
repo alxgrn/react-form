@@ -15,7 +15,6 @@ export interface SelectProps {
     label?: string;
     hint?: string;
     error?: string;
-    className?: string;
     placeholder?: string;
     required?: boolean;
     disabled?: boolean;
@@ -24,7 +23,7 @@ export interface SelectProps {
 }
 
 export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholder = '-',
-                            hint, className, required, disabled, error, options }) => {
+                                          hint, required, disabled, error, options }) => {
 
     const getStyle = () => {
         if(required) {
@@ -53,7 +52,6 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
                 required={required}
                 disabled={disabled}
                 style={getLabelStyle()}
-                className={className}
             />
             <select
                 id={id}
@@ -61,7 +59,6 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
                 onChange={e => onChange(e.target.value)}
                 style={getStyle()}
                 disabled={disabled}
-                className={className}
             >
                 <option>{placeholder}</option>
                 {options.map((item, index) => (

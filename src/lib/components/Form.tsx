@@ -45,6 +45,11 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
                         const options = props.options as RadioOption[];
                         if(options.findIndex(a => a.value === value) < 0) setDisabled(true); }
                         break;
+                    case 'Files':
+                        // Должен быть выбран хотя бы один файл
+                        const files = props.files as File[];
+                        if(files.length < 1) setDisabled(true);
+                        break;
                     default:
                         break;
                 }

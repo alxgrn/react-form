@@ -17,13 +17,12 @@ export interface RadioProps {
     onChange: (b: string) => void;
     hint?: string;
     error?: string;
-    className?: string;
     disabled?: boolean;
     required?: boolean;
     __TYPE?: string;
 }
 
-export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error, className,
+export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error,
                                         required = false, disabled = false, options }) => {
 
     const [ style, setStyle ] = useState(undefined);
@@ -48,7 +47,6 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error, classN
                         value={item.value}
                         checked={item.value === value}
                         onChange={(e) => onChange(e.target.value)}
-                        className={className}
                         disabled={item.disabled || disabled}
                         required={item.required}
                     />
@@ -59,7 +57,6 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error, classN
                         error={item.error}
                         disabled={item.disabled || disabled}
                         required={item.required}
-                        className={className}
                         style={style}
                     />
                 </div>

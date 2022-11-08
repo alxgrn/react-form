@@ -30,7 +30,7 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     const input = screen.getByRole('combobox');
     expect(input).toBeInTheDocument();
     expect(input).toHaveValue(options[0].value);
-    expect(input).not.toHaveAttribute('disabled');
+    expect(input).not.toBeDisabled();
     expect(screen.getByLabelText(label)).toBeInTheDocument();
     expect(screen.getByText(hint)).toBeInTheDocument();
     expect(screen.getByText(error)).toBeInTheDocument();
@@ -40,7 +40,7 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     expect(option[1]).toHaveTextContent(options[0].option);
     expect(option[1]).toHaveAttribute('value', options[0].value);
     expect((option[1] as HTMLOptionElement).selected).toBe(true);
-    expect(option[2]).toHaveAttribute('disabled');
+    expect(option[2]).toBeDisabled();
 });
 
 test('has required mark and disabled option', () => {
@@ -58,7 +58,7 @@ test('has required mark and disabled option', () => {
         />
     );
     expect(container.querySelector('.Form-required-mark')).toBeTruthy();
-    expect(screen.getByRole('combobox')).toHaveAttribute('disabled');
+    expect(screen.getByRole('combobox')).toBeDisabled();
 });
 
 test('has correct handling of onChange callback', async () => {

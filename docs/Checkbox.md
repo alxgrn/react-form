@@ -28,7 +28,6 @@ return(
 |label|string||Название элемента ввода|
 |hint?|string||Подсказка под элементом ввода|
 |error?|string||Текст ошибки под элементом ввода|
-|className?|string||Имя css-класса для установки элементу ввода|
 |required?|boolean|false|Флаг обязательности для заполнения|
 |disabled?|boolean|false|Флаг запрещения ввода данных|
 |checked?|boolean|false|Флаг установленности флажка|

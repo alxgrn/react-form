@@ -28,6 +28,13 @@
     text-align: left;
 }
 /**
+ * Мелкий элемент
+ */
+.Form small {
+    font-size: .8rem;
+    line-height: 120%;
+}
+/**
  * Широкий вариант основного блока формы
  */
 .Form.Form-wide {
@@ -108,7 +115,6 @@
 .Form input[type='text'],
 .Form input[type='password'],
 .Form input[type='submit'],
-.Form input[type='file'],
 .Form select,
 .Form textarea {
 	color: inherit;
@@ -165,15 +171,16 @@
     background-color: var(--background-disabled);
 }
 /**
- * Корректируем оформление кнопки отправки данных...
+ * Корректируем оформление кнопок...
  */
-.Form input[type="submit"] {
+.Form input[type="submit"],
+.Form .Form-files label {
 	cursor: pointer;
-    color: var(--color-submit)!important;
+    color: var(--color-submit);
     background-color: var(--background-submit);
     border-color: var(--background-submit);
     display: inline-block;
-    text-decoration: none!important;
+    text-decoration: none;
     margin-top: 1em;
     margin-bottom: 0;
     padding-left: 2rem;
@@ -182,10 +189,11 @@
     width: auto;
 }
 /**
- * ...и её запрещенного варианта
+ * ...и их запрещенного варианта
  */
-.Form input[type="submit"]:disabled {
-    cursor: auto;
+.Form input[type="submit"]:disabled,
+.Form .Form-files label.disabled {
+    cursor: default;
     opacity: .5;
 }
 /**
@@ -203,16 +211,20 @@
     padding: 0;
 }
 .Form legend {
-    margin-bottom: .5rem;
+    position: absolute;
+    top: -1.4rem;
+    left: -1px;
+    cursor: default;
 }
 /**
  * Группа элементов ввода
  */
 .Form fieldset {
-    margin: 1rem 0;
-    border: none;
-    padding: 0;
-    display: block;
+    margin: 2.4rem 0 1rem 0;
+    border: 1px solid var(--background-submit);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    position: relative;
 }
 /**
  * Чекбоксы и радиобатоны
@@ -243,3 +255,65 @@
     text-overflow: initial;
     margin: 0;
 }
+/**
+ * Выбор файлов
+ */
+.Form input[type='file'] {
+    display: block;
+    width: 0;
+    height: 0;
+}
+.Form .Form-files label {
+    padding: .5rem 1rem;
+    border-radius: var(--border-radius);
+    margin: 0;
+    font-weight: normal;
+}
+.Form .Form-files ul {
+    margin: 0 0 .5rem 0;
+    padding: 0 0 0 1rem;
+    list-style: none;
+}
+.Form .Form-files ul li {
+    cursor: pointer;
+    width: fit-content;
+}
+.Form .Form-files ul.disabled li {
+    cursor: default;
+    color: var(--color-disabled);
+}
+.Form .Form-files ul li::before {
+    content: "▪︎";
+    color: var(--background-submit);
+    display: inline-block;
+    width: 1.2em;
+    margin-left: -1.2em;
+    text-align: center;
+}
+.Form .Form-files ul.disabled li::before {
+    color: var(--color-disabled);
+}
+.Form .Form-files ul li:hover:before {
+    content: "✖︎";
+    color: var(--color-error);
+    display: inline-block;
+    width: 1.2em;
+    margin-left: -1.2em;
+    text-align: center;
+}
+.Form .Form-files ul.disabled li:hover:before {
+    content: "▪︎";
+    color: var(--color-disabled);
+}
+.Form .Form-files-label {
+    display: flex;
+    align-items: center;
+}
+.Form .Form-files-label label {
+    flex: 0 0 auto;
+}
+.Form .Form-files-label div {
+    flex: 1 1 auto;
+    margin-left: 1rem;
+}
+

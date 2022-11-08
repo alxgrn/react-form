@@ -9,18 +9,16 @@ export interface LabelProps {
     error?: string;
     hint?: string;
     disabled?: boolean;
-    className?: string;
 }
 
 const Label: FC<LabelProps> = ({ id, label, required = false, style,
-                                 error, hint, disabled = false, className }) => {
+                                 error, hint, disabled = false }) => {
     return (
         <Fragment>
             {label &&
             <label
                 htmlFor={id}
                 style={disabled ? { color: 'var(--color-disabled)'} : undefined}
-                className={className}
             >
                 <div>
                     <RequiredMark required={required}/>

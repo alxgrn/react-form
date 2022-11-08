@@ -21,7 +21,7 @@ test('has correct label, hint, error, checked, disabled', () => {
     const input = screen.getByRole('checkbox');
     expect(input).toBeInTheDocument();
     expect(input).not.toHaveAttribute('checked');
-    expect(input).not.toHaveAttribute('disabled');
+    expect(input).not.toBeDisabled();
     expect(screen.getByText(label)).toBeInTheDocument();
     expect(screen.getByText(hint)).toBeInTheDocument();
     expect(screen.getByText(error)).toBeInTheDocument();
@@ -39,7 +39,7 @@ test('has required mark and disabled option', () => {
         />
     );
     expect(container.querySelector('.Form-required-mark')).toBeTruthy();
-    expect(screen.getByRole('checkbox')).toHaveAttribute('disabled');
+    expect(screen.getByRole('checkbox')).toBeDisabled();
 });
 
 test('has correct handling of onChange callback', async () => {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Input, Radio, Select, Checkbox, Fieldset } from './lib';
+import { Form, Files, Input, Radio, Select, Checkbox, Fieldset } from './lib';
 import './App.css';
 
 const options = [
@@ -14,6 +14,8 @@ const radios = [
     { value: 'three', label: 'Three', error: 'Radio error', required: true },
 ];
 
+const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8' });
+
 function App() {
     const [ text, setText ] = useState('Hello');
     const [ radio, setRadio ] = useState('');
@@ -22,6 +24,7 @@ function App() {
     const [ textarea, setTextarea ] = useState('Lorem ipsum dolor sit amet...');
     const [ checkbox1, setCheckbox1 ] = useState(true);
     const [ checkbox2, setCheckbox2 ] = useState(true);
+    const [ files, setFiles ] = useState<File[]>([file]);
 
     const onSubmit = () => {
         window.alert(`text="${text}"\npassword="${password}"`);
@@ -38,6 +41,10 @@ function App() {
         }
     };
 
+    const onFilesChange = (files: File[]) => {
+        setFiles(files);
+    };
+
     return (
         <div className="App">
             <header>
@@ -50,6 +57,7 @@ function App() {
                 submit='Submit button'
                 onSubmit={onSubmit}
             >
+            <div className='override'>
                 <Input
                     id='text'
                     required={true}
@@ -116,6 +124,24 @@ function App() {
                         hint='Checkbox2 hint'
                     />
                 </Fieldset>
+                <Fieldset
+                    legend='File legend'
+                    required={true}
+                >
+                    <Files
+                        id='file'
+                        label='File choice'
+                        files={files}
+                        onChange={onFilesChange}
+                        hint='File hint'
+                        error='File error'
+                        multiple={true}
+                        accept='text/*'
+                        disabled={false}
+                        required={true}
+                    />
+                </Fieldset>
+            </div>
             </Form>
         </div>
     );

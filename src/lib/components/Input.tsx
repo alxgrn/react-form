@@ -10,7 +10,6 @@ export interface InputProps {
     placeholder?: string;
     hint?: string;
     error?: string;
-    className?: string;
     required?: boolean;
     disabled?: boolean;
     limit?: number;
@@ -19,7 +18,7 @@ export interface InputProps {
 }
 
 const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label, 
-                                placeholder, rows = 5, hint, error, className,
+                                placeholder, rows = 5, hint, error,
                                 required = false, disabled = false, limit }) => {
 
     const getStyle = () => {
@@ -52,7 +51,6 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 required={required}
                 disabled={disabled}
                 style={getLabelStyle()}
-                className={className}
             />
 
             {/* TEXT or PASSWORD */}
@@ -63,7 +61,6 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 value={value}
                 onChange={e => doChange(e.target.value)}
                 placeholder={placeholder}
-                className={className}
                 style={getStyle()}
                 disabled={disabled}
             />}
@@ -76,7 +73,6 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 value={value}
                 onChange={(e) => doChange(e.target.value)}
                 placeholder={placeholder}
-                className={className}
                 style={getStyle()}
                 disabled={disabled}
             />}

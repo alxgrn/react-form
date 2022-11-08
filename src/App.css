@@ -6,3 +6,8 @@
     font-size: large;
     font-weight: bold;
 }
+
+.App .override {
+    display: initial;
+    /*--background-submit: green;*/
+}

@@ -27,8 +27,8 @@ test('has correct label, value, hint, error, disabled, required', () => {
     const radio = screen.getAllByRole('radio');
     expect(radio).toHaveLength(options.length);
     expect(radio[0]).toHaveAttribute('value', options[0].value);
-    expect(radio[0]).not.toHaveAttribute('disabled');
-    expect(radio[1]).toHaveAttribute('disabled');
+    expect(radio[0]).not.toBeDisabled();
+    expect(radio[1]).toBeDisabled();
 
     const label = container.querySelectorAll('label');
     expect(label).toHaveLength(options.length);

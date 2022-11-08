@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Form, Input, Radio, Select, Checkbox } from '../index';
+import { Form, Input, Radio, Select, Checkbox, Files } from '../index';
 
 describe('Form', () => {
 
@@ -56,7 +56,7 @@ test('submit button disabled when required Input field is empty', () => {
     );
     const button = screen.getByRole('button', { name: submit });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('disabled');
+    expect(button).toBeDisabled();
 });
 
 test('submit button disabled when required Checkbox field is unchecked', () => {
@@ -76,7 +76,7 @@ test('submit button disabled when required Checkbox field is unchecked', () => {
     );
     const button = screen.getByRole('button', { name: submit });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('disabled');
+    expect(button).toBeDisabled();
 });
 
 test('submit button disabled when required Select field is unselected', () => {
@@ -97,7 +97,7 @@ test('submit button disabled when required Select field is unselected', () => {
     );
     const button = screen.getByRole('button', { name: submit });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('disabled');
+    expect(button).toBeDisabled();
 });
 
 test('submit button disabled when required Radio field is unselected', () => {
@@ -118,7 +118,28 @@ test('submit button disabled when required Radio field is unselected', () => {
     );
     const button = screen.getByRole('button', { name: submit });
     expect(button).toBeInTheDocument();
-    expect(button).toHaveAttribute('disabled');
+    expect(button).toBeDisabled();
+});
+
+test('submit button disabled when required Files field is empty', () => {
+    const onChange = jest.fn();
+    const submit = 'Submit button';
+    render(
+        <Form
+            submit={submit}
+        >
+            <Files
+                id='id'
+                required={true}
+                onChange={onChange}
+                files={[]}
+                label='add'
+            />
+        </Form>
+    );
+    const button = screen.getByRole('button', { name: submit });
+    expect(button).toBeInTheDocument();
+    expect(button).toBeDisabled();
 });
 
 }); // describe

@@ -28,7 +28,7 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     expect(input).toHaveValue(value);
     expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('placeholder', placeholder);
-    expect(input).not.toHaveAttribute('disabled');
+    expect(input).not.toBeDisabled();
     expect(screen.getByLabelText(label)).toBeInTheDocument();
     expect(screen.getByText(hint)).toBeInTheDocument();
     expect(screen.getByText(error)).toBeInTheDocument();
@@ -51,7 +51,7 @@ test('has required mark and disabled option', () => {
         />
     );
     expect(container.querySelector('.Form-required-mark')).toBeTruthy();
-    expect(screen.getByRole('textbox')).toHaveAttribute('disabled');
+    expect(screen.getByRole('textbox')).toBeDisabled();
 });
 
 test('has correct handling of onChange callback for text and password', async () => {

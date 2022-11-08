@@ -7,14 +7,13 @@ export interface CheckboxProps {
     label: string;
     hint?: string;
     error?: string;
-    className?: string;
     required?: boolean;
     disabled?: boolean;
     checked?: boolean;
     __TYPE?: string;
 }
 
-const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error, className,
+const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error,
                                        required = false, disabled = false, checked = false }) => {
 
     const getStyle = () => {
@@ -31,7 +30,6 @@ const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error, classNa
                     type='checkbox'
                     checked={checked}
                     onChange={(e) => onChange(e.target.checked)}
-                    className={className}
                     disabled={disabled}
                 />
                 <Label
@@ -42,7 +40,6 @@ const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error, classNa
                     error={error}
                     style={getStyle()}
                     disabled={disabled}
-                    className={className}
                 />
             </div>
         </div>

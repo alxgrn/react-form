@@ -5,9 +5,11 @@
 Компоненты для создания форм.
 
 ## Установка
+
 ```
 npm install @alxgrn/react-form
 ```
+
 ## Документация
 * [Form](./docs/Form.md)
 * [Input](./docs/Input.md)

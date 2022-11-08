@@ -216,6 +216,9 @@
     left: -1px;
     cursor: default;
 }
+.Form legend.disabled {
+    color: var(--color-disabled);
+}
 /**
  * Группа элементов ввода
  */

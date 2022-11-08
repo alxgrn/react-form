@@ -1,4 +1,7 @@
 # react-form
+![npm](https://img.shields.io/npm/v/@alxgrn/react-form)
+![NPM](https://img.shields.io/npm/l/@alxgrn/react-form)
+
 Компоненты для создания форм.
 
 ## Установка

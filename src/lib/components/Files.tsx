@@ -15,7 +15,7 @@ export interface FilesProps {
     __TYPE?: string;
 }
 
-const bytes2string = (bytes: number): string => {
+export const bytes2string = (bytes: number): string => {
     if(bytes > 1024 * 1024) {
         return Math.round(bytes/(1024*1024)) + ' Mb';
     } else if(bytes > 1024) {

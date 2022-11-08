@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { notDeepEqual } from 'assert';
-import { Files } from '../index';
+import { Files, bytes2string } from '../components/Files';
 
 describe('Files', () => {
 
@@ -131,6 +130,12 @@ test('has correct handling of multiple file selection', async () => {
     expect(input.files!.item(0)).toStrictEqual(file);
     expect(input.files![1]).toStrictEqual(file);
     expect(input.files!.item(1)).toStrictEqual(file);
+});
+
+test('has correct output of bytes2string function', () => {
+    expect(bytes2string(512)).toBe('512 bytes');
+    expect(bytes2string(2048 + 100)).toBe('2 Kb');
+    expect(bytes2string(1024 * 1024 + 100)).toBe('1 Mb');
 });
 
 }); // describe

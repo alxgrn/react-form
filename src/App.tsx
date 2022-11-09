@@ -57,7 +57,6 @@ function App() {
                 submit='Submit button'
                 onSubmit={onSubmit}
             >
-            <div className='override'>
                 <Input
                     id='text'
                     required={true}
@@ -141,7 +140,6 @@ function App() {
                         required={true}
                     />
                 </Fieldset>
-            </div>
             </Form>
         </div>
     );

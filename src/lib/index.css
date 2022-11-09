@@ -16,11 +16,13 @@
     --background-focus: #fec;
     --background-disabled: #eee;
     --border-color-disabled: #ccc;
+    --width: 400px;
+    --width-wide: 1024px;
 
     color: inherit;
     display: block;
     margin: 1rem 0;
-    max-width: 400px;
+    max-width: var(--width);
 	font-size: 1rem;
     line-height: 120%;
     font-family: inherit;
@@ -38,7 +40,7 @@
  * Широкий вариант основного блока формы
  */
 .Form.Form-wide {
-    max-width: 1024px;
+    max-width: var(--width-wide);
 }
 /**
  * Блок с информацией о форме

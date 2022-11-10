@@ -28,17 +28,6 @@ test('has submit button', () => {
     expect(screen.getByRole('button', { name: submit })).toBeInTheDocument();
 });
 
-test('calls onSubmit callback', async () => {
-    const submit = 'Submit button';
-    const onSubmit = jest.fn();
-    const user = userEvent.setup();
-    render(<Form submit={submit} onSubmit={onSubmit}/>);
-    const button = screen.getByRole('button', { name: submit });
-    expect(button).toBeInTheDocument();
-    await user.click(button);
-    expect(onSubmit).toBeCalledTimes(1);
-});
-
 test('submit button disabled when required Input field is empty', () => {
     const onChange = jest.fn();
     const submit = 'Submit button';
@@ -140,6 +129,56 @@ test('submit button disabled when required Files field is empty', () => {
     const button = screen.getByRole('button', { name: submit });
     expect(button).toBeInTheDocument();
     expect(button).toBeDisabled();
+});
+
+test('onSubmit callback gets correct data', async () => {
+    const submit = 'Submit button';
+    const onSubmit = jest.fn();
+    const user = userEvent.setup();
+    render(
+        <Form submit={submit} onSubmit={onSubmit}>
+            <Input
+                id='input'
+                onChange={jest.fn}
+                value='test'
+            />
+            <Checkbox
+                id='checkbox'
+                onChange={jest.fn}
+                label='label'
+                checked={true}
+            />
+            <Select
+                id='select'
+                onChange={jest.fn}
+                value='one'
+                options={[{ value: 'one', option: 'one'}]}
+            />
+            <Radio
+                id='radio'
+                onChange={jest.fn}
+                value='two'
+                options={[{ value: 'two', label: 'two'}]}
+            />
+            <Files
+                id='files'
+                onChange={jest.fn}
+                files={[]}
+                label='add'
+            />
+        </Form>
+    );
+    const button = screen.getByRole('button', { name: submit });
+    expect(button).toBeInTheDocument();
+    await user.click(button);
+    expect(onSubmit).toBeCalledTimes(1);
+    expect(onSubmit).toBeCalledWith({
+        checkbox: true,
+        files: [],
+        input: 'test',
+        radio: 'two',
+        select: 'one',
+    });
 });
 
 }); // describe

@@ -9,8 +9,12 @@ export interface FormProps {
     success?: string;
     submit?: string;
     wide?: boolean;
-    onSubmit?: () => void;
+    onSubmit?: (d: FormData) => void;
 }
+
+export interface FormData {
+    [i: string]: string | boolean | File[];
+};
 
 export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, submit,
                                                          wide, onSubmit, children }) => {
@@ -27,11 +31,11 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
                 switch(props.__TYPE) {
                     case 'Input':
                         // Значение должно быть непустой строкой
-                        if(!props.value.trim()) setDisabled(true);
+                        if(!(props.value as string).trim()) setDisabled(true);
                         break;
                     case 'Checkbox':
                         // Чекбокс должен быть отмечен
-                        if(!props.checked) setDisabled(true);
+                        if(!(props.checked as boolean)) setDisabled(true);
                         break;
                     case 'Select': {
                         // Среди списка опций должна быть опция с указанным значением
@@ -58,7 +62,31 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
     }, [ children, submit ]);
 
     const onClick = () => {
-        if(onSubmit) onSubmit();
+        if(!onSubmit) return;
+        const data: FormData = {};
+        deepForEach(children, (child: ReactNode) => {
+            if(child) {
+                const props = (child as ReactElement).props;
+                switch(props.__TYPE) {
+                    case 'Input':
+                        data[props.id] = (props.value as string).trim();
+                        break;
+                    case 'Checkbox':
+                        data[props.id] = props.checked as boolean ? true : false;
+                        break;
+                    case 'Select': 
+                    case 'Radio':
+                        data[props.id] = props.value as string;
+                        break;
+                    case 'Files':
+                        data[props.id] = props.files as File[];
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        onSubmit(data);
     };
 
     return(

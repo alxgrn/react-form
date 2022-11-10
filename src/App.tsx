@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Form, Files, Input, Radio, Select, Checkbox, Fieldset } from './lib';
+import { FormData } from './lib/components/Form';
 import './App.css';
 
 const options = [
@@ -26,8 +27,9 @@ function App() {
     const [ checkbox2, setCheckbox2 ] = useState(true);
     const [ files, setFiles ] = useState<File[]>([file]);
 
-    const onSubmit = () => {
-        window.alert(`text="${text}"\npassword="${password}"`);
+    const onSubmit = (data: FormData) => {
+        window.alert(data);
+        console.dir(data);
     };
 
     const onCheckboxChange = (b: boolean, w: number) => {
@@ -136,8 +138,6 @@ function App() {
                         error='File error'
                         multiple={true}
                         accept='text/*'
-                        disabled={false}
-                        required={true}
                     />
                 </Fieldset>
             </Form>

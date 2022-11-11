@@ -22,7 +22,7 @@ export interface SelectProps {
     __TYPE?: string;
 }
 
-export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholder = '-',
+export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholder,
                                           hint, required, disabled, error, options }) => {
 
     const getStyle = () => {
@@ -60,7 +60,7 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
                 style={getStyle()}
                 disabled={disabled}
             >
-                <option>{placeholder}</option>
+                {placeholder && <option>{placeholder}</option>}
                 {options.map((item, index) => (
                     <option
                         key={index}

@@ -19,8 +19,8 @@ const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8
 
 function App() {
     const [ text, setText ] = useState('Hello');
-    const [ radio, setRadio ] = useState('');
-    const [ select, setSelect ] = useState('two');
+    const [ radio, setRadio ] = useState('two');
+    const [ select, setSelect ] = useState('');
     const [ password, setPassword ] = useState('1234567');
     const [ textarea, setTextarea ] = useState('Lorem ipsum dolor sit amet...');
     const [ checkbox1, setCheckbox1 ] = useState(true);
@@ -105,6 +105,7 @@ function App() {
                     options={options}
                     onChange={setSelect}
                     required={true}
+                    placeholder='Select something'
                 />
                 <Fieldset
                     legend='Checkbox Legend'
@@ -123,6 +124,7 @@ function App() {
                         onChange={(b) => onCheckboxChange(b, 2)}
                         label='Checkbox2 label'
                         hint='Checkbox2 hint'
+                        disabled={true}
                     />
                 </Fieldset>
                 <Fieldset

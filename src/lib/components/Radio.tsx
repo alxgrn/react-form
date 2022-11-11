@@ -39,27 +39,25 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error,
         <div className='Form-item'>
             {options.map((item, index) => (
             <div className='Form-item' key={index}>
-                <div className='Form-radio'>
-                    <input
-                        id={id + '-' + index}
-                        name={id}
-                        type='radio'
-                        value={item.value}
-                        checked={item.value === value}
-                        onChange={(e) => onChange(e.target.value)}
-                        disabled={item.disabled || disabled}
-                        required={item.required}
-                    />
-                    <Label
-                        id={id + '-' + index}
-                        label={item.label}
-                        hint={item.hint}
-                        error={item.error}
-                        disabled={item.disabled || disabled}
-                        required={item.required}
-                        style={style}
-                    />
-                </div>
+                <input
+                    id={id + '-' + index}
+                    name={id}
+                    type='radio'
+                    value={item.value}
+                    checked={item.value === value}
+                    onChange={(e) => onChange(e.target.value)}
+                    disabled={item.disabled || disabled}
+                    required={item.required}
+                />
+                <Label
+                    id={id + '-' + index}
+                    label={item.label}
+                    hint={item.hint}
+                    error={item.error}
+                    disabled={item.disabled || disabled}
+                    required={item.required}
+                    style={style}
+                />
             </div>))}
 
             {error &&

@@ -24,24 +24,22 @@ const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error,
 
     return (
         <div className='Form-item'>
-            <div className='Form-checkbox'>
-                <input
-                    id={id}
-                    type='checkbox'
-                    checked={checked}
-                    onChange={(e) => onChange(e.target.checked)}
-                    disabled={disabled}
-                />
-                <Label
-                    id={id}
-                    label={label}
-                    required={required}
-                    hint={hint}
-                    error={error}
-                    style={getStyle()}
-                    disabled={disabled}
-                />
-            </div>
+            <input
+                id={id}
+                type='checkbox'
+                checked={checked}
+                onChange={(e) => onChange(e.target.checked)}
+                disabled={disabled}
+            />
+            <Label
+                id={id}
+                label={label}
+                required={required}
+                hint={hint}
+                error={error}
+                style={getStyle()}
+                disabled={disabled}
+            />
         </div>
     );
 }

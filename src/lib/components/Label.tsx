@@ -18,21 +18,24 @@ const Label: FC<LabelProps> = ({ id, label, required = false, style,
             {label &&
             <label
                 htmlFor={id}
-                style={disabled ? { color: 'var(--color-disabled)'} : undefined}
+                className={disabled ? 'disabled' : undefined}
             >
+                <s/>
                 <div>
-                    <RequiredMark required={required}/>
-                    <span style={style}>{label}</span>
-                </div>
-                {error &&
-                <div className='Form-item-error'>
-                    {error}
-                </div>}
+                    <div>
+                        <RequiredMark required={required}/>
+                        <span style={style}>{label}</span>
+                    </div>
+                    {error &&
+                    <div className='Form-item-error'>
+                        {error}
+                    </div>}
 
-                {hint &&
-                <div className='Form-item-hint'>
-                    {hint}
-                </div>}
+                    {hint &&
+                    <div className='Form-item-hint'>
+                        {hint}
+                    </div>}
+                </div>
             </label>}
         </Fragment>
     );

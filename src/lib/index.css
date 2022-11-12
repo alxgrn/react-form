@@ -105,13 +105,6 @@
     margin-top: .2rem;
 }
 /**
- * Отметка обязательности поля у лейбла поля ввода
- */
-.Form .Form-required-mark {
-    color: var(--color-error);
-    margin-right: .2rem;
-}
-/**
  * Элементы ввода
  */
 .Form input[type='text'],
@@ -362,4 +355,30 @@
 .Form input[type='radio']:checked + label s,
 .Form input[type='checkbox']:checked + label s {
     background-color: var(--color-label);
+}
+/**
+ * Отметка обязательности поля у лейбла поля ввода.
+ * Используем три черточки с поворотом.
+ */
+.Form span.Form-required-mark {
+    position: relative;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+}
+.Form span.Form-required-mark span {
+    position: absolute;
+    background-color: var(--color-error);
+    display: inline-block;
+    border-radius: 0.2rem;
+    width: 0.2rem;
+    height: 0.8rem;
+    top: 0.2rem;
+    left: 0.3rem;
+}
+.Form span.Form-required-mark span:nth-child(2) {
+    transform: rotate(60deg);
+}
+.Form span.Form-required-mark span:nth-child(3) {
+    transform: rotate(120deg);
 }

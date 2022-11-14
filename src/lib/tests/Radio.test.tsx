@@ -11,16 +11,12 @@ const options: RadioOption[] = [
 describe('Radio', () => {
 
 test('has correct label, value, hint, error, disabled, required', () => {
-    const hint = 'Radio hint text';
-    const error = 'Radio error text';
     const onChange = jest.fn();
     const { container } = render(
         <Radio
             id='id'
             value={options[0].value}
             options={options}
-            hint={hint}
-            error={error}
             onChange={onChange}
         />
     );
@@ -37,9 +33,6 @@ test('has correct label, value, hint, error, disabled, required', () => {
     expect(label[1].querySelector('.Form-required-mark')).toBeFalsy();
     expect(label[2]).toHaveTextContent(options[2].error as string);
     expect(label[2].querySelector('.Form-required-mark')).toBeTruthy();
-
-    expect(screen.getByText(hint)).toBeInTheDocument();
-    expect(screen.getByText(error)).toBeInTheDocument();
 });
 
 test('has correct handling of onChange callback', async () => {

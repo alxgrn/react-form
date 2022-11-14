@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import Label from './Label';
+import LabelRadio from './LabelRadio';
 
 export interface RadioOption {
     label: string;
@@ -15,15 +15,12 @@ export interface RadioProps {
     value: string;
     options: RadioOption[];
     onChange: (b: string) => void;
-    hint?: string;
-    error?: string;
     disabled?: boolean;
     required?: boolean;
     __TYPE?: string;
 }
 
-export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error,
-                                        required = false, disabled = false, options }) => {
+export const Radio: FC<RadioProps> = ({ id, value, onChange, required = false, disabled = false, options }) => {
 
     const [ failed, setFailed ] = useState(false);
     
@@ -39,36 +36,27 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error,
         <div className='Form-item'>
             {options.map((item, index) => (
             <div className='Form-item' key={index}>
-                <input
-                    id={id + '-' + index}
-                    name={id}
-                    type='radio'
-                    value={item.value}
-                    checked={item.value === value}
-                    onChange={(e) => onChange(e.target.value)}
-                    disabled={item.disabled || disabled}
-                    required={item.required}
-                />
-                <Label
-                    id={id + '-' + index}
+                <LabelRadio
                     label={item.label}
                     hint={item.hint}
                     error={item.error}
                     disabled={item.disabled || disabled}
                     required={item.required}
                     failed={failed}
-                />
+                    checked={item.value === value}
+                >
+                    <input
+                        id={id + '-' + index}
+                        name={id}
+                        type='radio'
+                        value={item.value}
+                        checked={item.value === value}
+                        onChange={(e) => onChange(e.target.value)}
+                        disabled={item.disabled || disabled}
+                        required={item.required}
+                    />
+                </LabelRadio>
             </div>))}
-
-            {error &&
-            <div className='Form-item-error'>
-                {error}
-            </div>}
-
-            {hint &&
-            <div className='Form-item-hint'>
-                {hint}
-            </div>}
         </div>
     );
 };

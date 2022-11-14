@@ -1,4 +1,5 @@
 import React, { Fragment, FC } from 'react';
+import './RequiredMark.css';
 
 export interface RequiredMarkProps {
     required?: boolean;

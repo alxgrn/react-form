@@ -31,7 +31,7 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     expect(input).toBeInTheDocument();
     expect(input).toHaveValue(options[0].value);
     expect(input).not.toBeDisabled();
-    expect(screen.getByLabelText(label)).toBeInTheDocument();
+    expect(screen.getByText(label)).toBeInTheDocument();
     expect(screen.getByText(hint)).toBeInTheDocument();
     expect(screen.getByText(error)).toBeInTheDocument();
     const option = screen.getAllByRole('option');

@@ -2,6 +2,7 @@ import React, { useEffect, useState, ReactNode, ReactElement, FC, PropsWithChild
 import { deepForEach } from 'react-children-utilities';
 import { RadioOption } from './Radio';
 import { SelectOption } from './Select';
+import './Form.css';
 
 export interface FormProps {
     info?: string;

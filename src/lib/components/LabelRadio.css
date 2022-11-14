@@ -1,0 +1,94 @@
+/**
+ * Лейбл поля ввода для radio/checkbox
+ */
+ .Form label.radio {
+    width: auto;
+	display: block;
+    font-size: 1rem;
+    line-height: 120%;
+    font-weight: normal;
+    user-select: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.Form label.radio.disabled {
+    color: var(--color-disabled);
+    cursor: default;
+}
+
+.Form label.radio.failed {
+    color: var(--color-error);
+}
+
+.Form label.radio .hint,
+.Form label.radio .error {
+    font-weight: normal;
+    font-size: .8rem;
+    line-height: 120%;
+    color: var(--color-hint);
+    cursor: default;
+}
+
+.Form label.radio .error {
+    color: var(--color-error);
+}
+/**
+ * Для стилизации checkbox/radio используем тег <s> внутри <label>.
+ */
+.Form label.radio {
+    display: flex;
+    width: fit-content;
+    align-items: flex-start;
+}
+.Form label.radio s,
+.Form label.radio input {
+    flex: 0 0 auto;
+}
+.Form label.radio div {
+    flex: 1 1 auto;
+}
+/**
+ * Стилизация checkbox и radio
+ * Будем скрывать браузерные элементы и использовать
+ * вместо них стилизованный тег <s> внутри <label>
+ */
+.Form label.radio input {
+    display: none;
+}
+/* Размеры и общий вид для псевдо checkbox/radio */
+.Form label.radio s {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid var(--color-label);
+    padding: 2px;
+    background-clip: content-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+    margin: .1rem .5rem 0 0;
+    text-decoration: none;
+}
+/* Radio круглый */
+.Form label.radio input[type='radio'] + s {
+    border-radius: 50%;
+}
+/* Checkbox квадратный */
+.Form label.radio input[type='checkbox'] + s {
+    border-radius: var(--border-radius);
+}
+/* Disabled */
+.Form label.radio.disabled s {
+    opacity: .5;
+}
+/* Checked */
+.Form label.radio.checked s {
+    background-color: var(--color-label);
+}
+/* Failed */
+.Form label.radio.failed s {
+    border: 1px solid var(--color-error);
+}
+.Form label.radio.failed.checked s {
+    background-color: var(--color-error);
+}

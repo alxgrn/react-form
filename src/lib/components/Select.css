@@ -1,0 +1,25 @@
+/**
+ * Треугольник у селекта
+ */
+.Form select {
+    padding-right: 2rem;
+}
+.Form .select-wrap {
+    position: relative;
+}
+.Form .select-wrap::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: .3rem solid transparent;
+    border-top-color: var(--color-label);
+    top: 1rem;
+    right: 0.75rem;
+}
+.Form .select-wrap.disabled::before {
+    border-top-color: var(--color-disabled);
+}
+.Form .select-wrap.failed::before {
+    border-top-color: var(--color-error);
+}

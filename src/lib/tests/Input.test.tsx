@@ -29,7 +29,7 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     expect(input).toHaveAttribute('type', 'text');
     expect(input).toHaveAttribute('placeholder', placeholder);
     expect(input).not.toBeDisabled();
-    expect(screen.getByLabelText(label)).toBeInTheDocument();
+    expect(screen.getByText(label)).toBeInTheDocument();
     expect(screen.getByText(hint)).toBeInTheDocument();
     expect(screen.getByText(error)).toBeInTheDocument();
     expect(container.querySelector('.Form-required-mark')).toBeFalsy();

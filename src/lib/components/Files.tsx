@@ -1,5 +1,6 @@
 import React, { FC, ChangeEvent } from 'react';
 import RequiredMark from './RequiredMark';
+import './Files.css';
 
 export interface FilesProps {
     id: string;
@@ -35,8 +36,9 @@ export const Files: FC<FilesProps> = ({ id, files, onChange, label, hint, error,
 
     const removeFile = (index: number) => {
         if(disabled) return;
-        files.splice(index, 1);
-        onChange(files.concat());
+        const f = [...files];
+        f.splice(index, 1);
+        onChange(f);
     };
 
     const doFileChange = (event: ChangeEvent) => {
@@ -48,51 +50,36 @@ export const Files: FC<FilesProps> = ({ id, files, onChange, label, hint, error,
     return (
         <div className='Form-item Form-files'>
             {files.length > 0 &&
-            <ul
-                className={disabled ? 'disabled' : undefined}
-            >
-            {files.map((file, index) => 
-            <li
-                key={index}
-                onClick={() => removeFile(index)}
-            >
-                {file.name}&nbsp;
-                <small style={{color:'var(--color-hint)'}}>
-                    ({bytes2string(file.size)})
-                </small>
-            </li>)}
+            <ul className={disabled ? 'disabled' : undefined}>
+                {files.map((file, index) => 
+                <li key={index} onClick={() => removeFile(index)}>
+                    <span>{file.name}</span>
+                    <span>({bytes2string(file.size)})</span>
+                </li>)}
             </ul>}
 
             <div className='Form-files-label'>
-                <label
-                    htmlFor={id}
-                    className={disabled ? 'disabled' : undefined}
-                >
+                <label className={disabled ? 'disabled' : undefined}>
                     {label}
+                    <input
+                        id={id}
+                        type='file'
+                        accept={accept}
+                        onChange={e => doFileChange(e)}
+                        multiple={multiple}
+                        disabled={disabled}
+                    />
                 </label>
-                <div>
+                <span>
                     <RequiredMark required={required}/>
                     {getLabelText()}
-                </div>
+                </span>
             </div>
-
-            <input
-                id={id}
-                type='file'
-                accept={accept}
-                onChange={e => doFileChange(e)}
-                multiple={multiple}
-                disabled={disabled}
-            />
-
-            {error &&
-            <div className='Form-item-error'>
-                {error}
-            </div>}
-
-            {hint &&
-            <div className='Form-item-hint'>
-                {hint}
+            
+            {(error || hint) &&
+            <div className='error-hint'>
+                {error && <div className='error'>{error}</div>}
+                {hint && <div className='hint'>{hint}</div>}
             </div>}
         </div>
     );

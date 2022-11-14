@@ -1,0 +1,99 @@
+/**
+ * Выбор файлов
+ * Дефолтный инпут скрываем
+ */
+ .Form input[type='file'] {
+    display: none;
+}
+/* Список файлов */
+.Form .Form-files ul {
+    margin: 0 0 .5rem 0;
+    padding: 0 0 0 1rem;
+    list-style: none;
+}
+.Form .Form-files ul li {
+    cursor: pointer;
+    width: fit-content;
+}
+.Form .Form-files ul.disabled li {
+    cursor: default;
+    color: var(--color-disabled);
+}
+.Form .Form-files ul li::before {
+    content: "▪︎";
+    color: var(--background-submit);
+    display: inline-block;
+    width: 1.2em;
+    margin-left: -1.2em;
+    text-align: center;
+}
+.Form .Form-files ul.disabled li::before {
+    color: var(--color-disabled);
+}
+.Form .Form-files ul li:hover:before {
+    content: "✖︎";
+    color: var(--color-error);
+    display: inline-block;
+    width: 1.2em;
+    margin-left: -1.2em;
+    text-align: center;
+}
+.Form .Form-files ul.disabled li:hover:before {
+    content: "▪︎";
+    color: var(--color-disabled);
+}
+.Form .Form-files ul li span:last-child {
+    font-size: .8rem;
+    line-height: 120%;
+    color: var(--color-hint);
+    white-space: nowrap;
+}
+.Form .Form-files ul li span:last-child::before {
+    content: ' ';
+}
+/* Лейбл состоит из "кнопки" и подписи рядом с ней */
+.Form .Form-files-label {
+    display: flex;
+    align-items: center;
+}
+.Form .Form-files-label label {
+    flex: 0 0 auto;
+    padding: .5rem 1rem;
+    border-radius: var(--border-radius);
+    margin: 0;
+    font-weight: normal;
+}
+.Form .Form-files-label span {
+    flex: 1 1 auto;
+    margin-left: 1rem;
+}
+/* Оформление кнопки...*/
+.Form .Form-files label {
+	cursor: pointer;
+    color: var(--color-submit);
+    background-color: var(--background-submit);
+    display: inline-block;
+    text-decoration: none;
+    margin: 0;
+    padding: .5rem 1rem;
+}
+/* ...и её запрещенного варианта */
+.Form .Form-files label.disabled {
+    cursor: default;
+    opacity: .5;
+}
+/* Ошибка и хинт */
+.Form .Form-files .hint,
+.Form .Form-files .error {
+    font-weight: normal;
+    font-size: .8rem;
+    line-height: 120%;
+    color: var(--color-hint);
+    cursor: default;
+}
+.Form .Form-files .error {
+    color: var(--color-error);
+}
+.Form .Form-files .error-hint {
+    margin-top: .2rem;
+}

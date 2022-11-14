@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Label from './Label';
+import LabelInput from './LabelInput';
 
 export interface InputProps {
     id: string;
@@ -39,13 +39,14 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
 
     return (
         <div className='Form-item'>
-            <Label
-                id={id}
-                label={label}
-                required={required}
-                disabled={disabled}
-                failed={isError()}
-            />
+        <LabelInput
+            hint={hint}
+            error={error}
+            label={label}
+            required={required}
+            disabled={disabled}
+            failed={isError()}
+        >
 
             {/* TEXT or PASSWORD */}
             {(type === 'text' || type === 'password') &&
@@ -71,15 +72,7 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 disabled={disabled}
             />}
 
-            {error &&
-            <div className='Form-item-error'>
-                {error}
-            </div>}
-
-            {hint &&
-            <div className='Form-item-hint'>
-                {hint}
-            </div>}
+        </LabelInput>
         </div>
     );
 }

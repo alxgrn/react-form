@@ -1,0 +1,38 @@
+/**
+ * Группа элементов ввода
+ */
+.Form fieldset {
+    margin: 2.4rem 0 1rem 0;
+    border: 1px solid var(--color-label);
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    position: relative;
+}
+.Form fieldset .Form-item {
+    margin: 0 0 .5rem 0;
+}
+.Form fieldset .Form-item:last-child {
+    margin: 0;
+}
+/**
+ * Легенда
+ */
+.Form legend {
+	color: var(--color-label);
+	display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 120%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+    user-select: none;
+    position: absolute;
+    top: -1.4rem;
+    left: -1px;
+    cursor: default;
+}
+.Form legend.disabled {
+    color: var(--color-disabled);
+}

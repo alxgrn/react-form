@@ -6,8 +6,6 @@ import Select from './components/Select';
 import Checkbox from './components/Checkbox';
 import Fieldset from './components/Fieldset';
 
-import './index.css';
-
 export {
     Form,
     Files,

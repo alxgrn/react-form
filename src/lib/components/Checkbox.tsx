@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Label from './Label';
+import LabelRadio from './LabelRadio';
 
 export interface CheckboxProps {
     id: string;
@@ -18,22 +18,23 @@ const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error,
 
     return (
         <div className='Form-item'>
-            <input
-                id={id}
-                type='checkbox'
-                checked={checked}
-                onChange={(e) => onChange(e.target.checked)}
-                disabled={disabled}
-            />
-            <Label
-                id={id}
+            <LabelRadio
                 label={label}
                 required={required}
                 hint={hint}
                 error={error}
                 failed={required && !checked}
                 disabled={disabled}
-            />
+                checked={checked}
+            >
+                <input
+                    id={id}
+                    type='checkbox'
+                    checked={checked}
+                    onChange={(e) => onChange(e.target.checked)}
+                    disabled={disabled}
+                />
+            </LabelRadio>
         </div>
     );
 }

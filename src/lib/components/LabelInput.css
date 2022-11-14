@@ -1,0 +1,41 @@
+/**
+ * Лейбл поля ввода text/password/textarea/select
+ */
+.Form label.input {
+	color: var(--color-label);
+    width: auto;
+	display: block;
+    font-size: 1rem;
+    line-height: 120%;
+    font-weight: bold;
+    user-select: none;
+    padding: 0;
+}
+
+.Form label.input.disabled {
+    color: var(--color-disabled);
+}
+
+.Form label.input.failed {
+    color: var(--color-error);
+}
+
+.Form label.input .hint,
+.Form label.input .error {
+    font-weight: normal;
+    font-size: .8rem;
+    line-height: 120%;
+    color: var(--color-hint);
+}
+
+.Form label.input .error {
+    color: var(--color-error);
+}
+
+.Form label.input .error-hint {
+    margin-top: .2rem;
+}
+
+.Form label.input .label {
+    margin-bottom: .2rem;
+}

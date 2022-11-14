@@ -140,6 +140,7 @@ function App() {
                         error='File error'
                         multiple={true}
                         accept='text/*'
+                        disabled={false}
                     />
                 </Fieldset>
             </Form>

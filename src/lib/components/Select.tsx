@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import Label from './Label';
+import LabelInput from './LabelInput';
+import './Select.css';
 
 export interface SelectOption {
     option: string;
@@ -49,43 +50,35 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
 
     return (
         <div className='Form-item'>
-            <Label
-                id={id}
+            <LabelInput
+                hint={hint}
+                error={error}
                 label={label}
                 required={required}
                 disabled={disabled}
                 failed={isError()}
-            />
-            <div className={getWrapStyle()}>
-                <select
-                    id={id}
-                    value={value}
-                    onChange={e => onChange(e.target.value)}
-                    style={getStyle()}
-                    disabled={disabled}
-                >
-                    {placeholder && <option>{placeholder}</option>}
-                    {options.map((item, index) => (
-                        <option
-                            key={index}
-                            value={item.value}
-                            disabled={item.disabled}
-                        >
-                            {item.option}
-                        </option>
-                    ))}
-                </select>
-            </div>
-
-            {error &&
-            <div className='Form-item-error'>
-                {error}
-            </div>}
-
-            {hint &&
-            <div className='Form-item-hint'>
-                {hint}
-            </div>}
+            >
+                <div className={getWrapStyle()}>
+                    <select
+                        id={id}
+                        value={value}
+                        onChange={e => onChange(e.target.value)}
+                        style={getStyle()}
+                        disabled={disabled}
+                    >
+                        {placeholder && <option>{placeholder}</option>}
+                        {options.map((item, index) => (
+                            <option
+                                key={index}
+                                value={item.value}
+                                disabled={item.disabled}
+                            >
+                                {item.option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </LabelInput>
         </div>
     );
 };

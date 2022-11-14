@@ -25,13 +25,13 @@ export interface RadioProps {
 export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error,
                                         required = false, disabled = false, options }) => {
 
-    const [ style, setStyle ] = useState(undefined);
+    const [ failed, setFailed ] = useState(false);
     
     useEffect(() => {
-        setStyle(undefined);
+        setFailed(false);
         if(required) {
             const index = options.findIndex(a => a.value === value);
-            if(index < 0) setStyle({ color:'var(--color-error)'} as any);
+            if(index < 0) setFailed(true);
         }
     }, [ value, required, options ]);
 
@@ -56,7 +56,7 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, hint, error,
                     error={item.error}
                     disabled={item.disabled || disabled}
                     required={item.required}
-                    style={style}
+                    failed={failed}
                 />
             </div>))}
 

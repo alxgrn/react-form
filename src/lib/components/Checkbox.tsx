@@ -16,12 +16,6 @@ export interface CheckboxProps {
 const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error,
                                        required = false, disabled = false, checked = false }) => {
 
-    const getStyle = () => {
-        if(required && !checked) {
-            return { color:'var(--color-error)' };
-        }
-    };
-
     return (
         <div className='Form-item'>
             <input
@@ -37,7 +31,7 @@ const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error,
                 required={required}
                 hint={hint}
                 error={error}
-                style={getStyle()}
+                failed={required && !checked}
                 disabled={disabled}
             />
         </div>

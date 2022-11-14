@@ -25,23 +25,26 @@ export interface SelectProps {
 export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholder,
                                           hint, required, disabled, error, options }) => {
 
-    const getStyle = () => {
+    const isError = () => {
         if(required) {
             const index = options.findIndex(a => a.value === value);
-            if(index < 0) return {
-                borderColor:'var(--color-error)',
-                backgroundColor:'var(--background-error)',
-            };
+            if(index < 0) return true;
         }
+        return false;
     };
 
-    const getLabelStyle = () => {
-        if(required) {
-            const index = options.findIndex(a => a.value === value);
-            if(index < 0) return {
-                color:'var(--color-error)',
-            };
-        }
+    const getStyle = () => {
+        if(isError()) return {
+            borderColor:'var(--color-error)',
+            backgroundColor:'var(--background-error)',
+        };
+    };
+
+    const getWrapStyle = () => {
+        let style = 'select-wrap';
+        if(disabled) style += ' disabled';
+        if(isError()) style += ' failed';
+        return style;
     };
 
     return (
@@ -51,26 +54,28 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
                 label={label}
                 required={required}
                 disabled={disabled}
-                style={getLabelStyle()}
+                failed={isError()}
             />
-            <select
-                id={id}
-                value={value}
-                onChange={e => onChange(e.target.value)}
-                style={getStyle()}
-                disabled={disabled}
-            >
-                {placeholder && <option>{placeholder}</option>}
-                {options.map((item, index) => (
-                    <option
-                        key={index}
-                        value={item.value}
-                        disabled={item.disabled}
-                    >
-                        {item.option}
-                    </option>
-                ))}
-            </select>
+            <div className={getWrapStyle()}>
+                <select
+                    id={id}
+                    value={value}
+                    onChange={e => onChange(e.target.value)}
+                    style={getStyle()}
+                    disabled={disabled}
+                >
+                    {placeholder && <option>{placeholder}</option>}
+                    {options.map((item, index) => (
+                        <option
+                            key={index}
+                            value={item.value}
+                            disabled={item.disabled}
+                        >
+                            {item.option}
+                        </option>
+                    ))}
+                </select>
+            </div>
 
             {error &&
             <div className='Form-item-error'>

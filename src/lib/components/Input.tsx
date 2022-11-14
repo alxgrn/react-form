@@ -21,21 +21,15 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                                 placeholder, rows = 5, hint, error,
                                 required = false, disabled = false, limit }) => {
 
-    const getStyle = () => {
-        if(required && !value.trim().length) {
-            return {
-                borderColor:'var(--color-error)',
-                backgroundColor:'var(--background-error)',
-            };
-        }
+    const isError = () => {
+        if(required && !value.trim().length) return true; else return false;
     };
 
-    const getLabelStyle = () => {
-        if(required && !value.trim().length) {
-            return {
-                color:'var(--color-error)',
-            };
-        }
+    const getStyle = () => {
+        if(isError()) return {
+            borderColor:'var(--color-error)',
+            backgroundColor:'var(--background-error)',
+        };
     };
 
     const doChange = (value: string) => {
@@ -50,7 +44,7 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 label={label}
                 required={required}
                 disabled={disabled}
-                style={getLabelStyle()}
+                failed={isError()}
             />
 
             {/* TEXT or PASSWORD */}

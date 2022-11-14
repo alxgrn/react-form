@@ -89,7 +89,7 @@
 /**
  * Блок подсказки в элементе форме
  */
- .Form .Form-item .Form-item-hint {
+.Form .Form-item .Form-item-hint {
     color: var(--color-hint);
     font-size: .8rem;
     line-height: 120%;
@@ -190,6 +190,31 @@
 .Form .Form-files label.disabled {
     cursor: default;
     opacity: .5;
+}
+/**
+ * Треугольник у селекта
+ */
+.Form select {
+    padding-right: 2rem;
+}
+.Form .select-wrap {
+    position: relative;
+}
+.Form .select-wrap::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: .3rem solid transparent;
+    border-top-color: var(--color-label);
+    top: 1rem;
+    right: 0.75rem;
+}
+.Form .select-wrap.disabled::before {
+    border-top-color: var(--color-disabled);
+}
+.Form .select-wrap.failed::before {
+    border-top-color: var(--color-error);
 }
 /**
  * Лейбл поля ввода
@@ -355,6 +380,15 @@
 .Form input[type='radio']:checked + label s,
 .Form input[type='checkbox']:checked + label s {
     background-color: var(--color-label);
+}
+/* Failed */
+.Form input[type='radio'] + label.failed s,
+.Form input[type='checkbox'] + label.failed s {
+    border: 1px solid var(--color-error);
+}
+.Form input[type='radio']:checked + label.failed s,
+.Form input[type='checkbox']:checked + label.failed s {
+    background-color: var(--color-error);
 }
 /**
  * Отметка обязательности поля у лейбла поля ввода.

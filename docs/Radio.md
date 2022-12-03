@@ -31,8 +31,6 @@ return(
 |value|string||Выбранное значение|
 |options|RadioOption[]||Список опций|
 |onChange|(value: string) => void||Обработчик выбора|
-|hint?|string||Подсказка под элементом ввода|
-|error?|string||Текст ошибки под элементом ввода|
 |required?|boolean|false|Флаг обязательности для заполнения|
 |disabled?|boolean|false|Флаг запрещения ввода данных|
 

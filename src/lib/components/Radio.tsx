@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { Fragment, FC, useEffect, useState } from 'react';
 import LabelRadio from './LabelRadio';
 
 export interface RadioOption {
@@ -14,7 +14,7 @@ export interface RadioProps {
     id: string;
     value: string;
     options: RadioOption[];
-    onChange: (b: string) => void;
+    onChange: (s: string) => void;
     disabled?: boolean;
     required?: boolean;
     __TYPE?: string;
@@ -33,7 +33,7 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, required = false, d
     }, [ value, required, options ]);
 
     return (
-        <div className='Form-item'>
+        <Fragment>
             {options.map((item, index) => (
             <div className='Form-item' key={index}>
                 <LabelRadio
@@ -57,7 +57,7 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, required = false, d
                     />
                 </LabelRadio>
             </div>))}
-        </div>
+        </Fragment>
     );
 };
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form

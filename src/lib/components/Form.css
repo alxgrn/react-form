@@ -3,23 +3,25 @@
  */
  .Form {
     --border-radius: .2rem;
-    --color-submit: #fff;
-    --color-success: #090;
-    --color-error: #c00;
-    --color-placeholder: #999;
-    --color-disabled: #666;
-    --color-label: #37b;
-    --color-hint: #666;
-    --background-submit: #37b;
+    --color-text: #333;
+    --color-submit: white;
+    --color-success: forestgreen;
+    --color-error: firebrick;
+    --color-placeholder: lightslategrey;
+    --color-disabled: slategrey;
+    --color-label: steelblue;
+    --color-hint: slategrey;
+    --background-input: aliceblue;
+    --background-submit: steelblue;
     --background-success: #efe;
     --background-error: #fee;
-    --background-focus: #fec;
-    --background-disabled: #eee;
-    --border-color-disabled: #ccc;
+    --background-focus: moccasin;
+    --background-disabled: whitesmoke;
+    --border-color-disabled: lightgrey;
     --width: 400px;
     --width-wide: 1024px;
 
-    color: inherit;
+    color: var(--color-text);
     display: block;
     margin: 1rem 0;
     max-width: var(--width);
@@ -40,7 +42,7 @@
  */
 .Form .Form-info {
     margin: 1rem 0;
-    color: inherit;
+    color: var(--color-text);
 }
 /**
  * Блок уведомления об успехе
@@ -81,6 +83,7 @@
 .Form input[type='submit'],
 .Form select,
 .Form textarea {
+    color: var(--color-text);
     padding: .5rem;
     margin: 0;
 	font-size: inherit;
@@ -90,6 +93,7 @@
     border: 1px solid var(--background-submit);
     width: 100%;
     display: block;
+    background-color: var(--background-input);
 /*  Убираем браузерное оформление элементов ввода */
     appearance: none;
     -moz-appearance: none;
@@ -103,7 +107,7 @@
  * У текстовой области разрешаем изменение размера только по вертикали
  */
 .Form textarea {
-    resize: none;
+    resize: vertical;
 }
 /**
  * Отключаем браузерную подсветку фокуса и назначаем свое оформление
@@ -129,7 +133,7 @@
 .Form input[type="password"]:disabled,
 .Form select:disabled,
 .Form textarea:disabled {
-    color: var(--color-disabled);
+    color: var(--color-text);
     border-color: var(--border-color-disabled);
     background-color: var(--background-disabled);
 }

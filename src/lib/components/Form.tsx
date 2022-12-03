@@ -27,7 +27,7 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
         if(!submit) return;
         setDisabled(false);
         deepForEach(children, (child: ReactNode) => {
-            if(child && (child as ReactElement).props.required) {
+            if(child && (child as ReactElement).props?.required && (child as ReactElement).props?.__TYPE) {
                 const props = (child as ReactElement).props;
                 switch(props.__TYPE) {
                     case 'Input':
@@ -66,7 +66,7 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
         if(!onSubmit) return;
         const data: FormData = {};
         deepForEach(children, (child: ReactNode) => {
-            if(child) {
+            if(child && (child as ReactElement).props?.__TYPE) {
                 const props = (child as ReactElement).props;
                 switch(props.__TYPE) {
                     case 'Input':

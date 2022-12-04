@@ -12,8 +12,8 @@
     position: absolute;
     background-color: var(--color-error);
     display: inline-block;
-    border-radius: 0.2rem;
-    width: 0.2rem;
+    border-radius: 2px;
+    width: 2px;
     height: 0.8rem;
     top: 0.2rem;
     left: 0.3rem;

@@ -136,6 +136,7 @@
     color: var(--color-text);
     border-color: var(--border-color-disabled);
     background-color: var(--background-disabled);
+    cursor: default;
 }
 /**
  * Корректируем оформление кнопок...

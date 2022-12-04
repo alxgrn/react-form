@@ -3,6 +3,7 @@
  */
 .Form select {
     padding-right: 2rem;
+    cursor: pointer;
 }
 .Form .select-wrap {
     position: relative;
@@ -16,9 +17,11 @@
     border-top-color: var(--color-label);
     top: 1rem;
     right: 0.75rem;
+    cursor: pointer;
 }
 .Form .select-wrap.disabled::before {
     border-top-color: var(--color-disabled);
+    cursor: default;
 }
 .Form .select-wrap.failed::before {
     border-top-color: var(--color-error);

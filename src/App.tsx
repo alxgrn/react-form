@@ -139,7 +139,7 @@ function App() {
                         hint='File hint'
                         error='File error'
                         multiple={true}
-                        accept='text/*'
+                        accept='image/*'
                         disabled={false}
                     />
                 </Fieldset>

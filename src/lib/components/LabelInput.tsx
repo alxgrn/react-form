@@ -3,15 +3,15 @@ import RequiredMark from './RequiredMark';
 import './LabelInput.css';
 
 export interface LabelInputProps {
-    hint?: string;
-    error?: string;
+    top?: string;
+    bottom?: string;
     label?: string;
     failed?: boolean;
     disabled?: boolean;
     required?: boolean;
 }
 
-const LabelInput: FC<PropsWithChildren<LabelInputProps>> = ({ label, hint, error,
+const LabelInput: FC<PropsWithChildren<LabelInputProps>> = ({ label, top, bottom,
                     required = false, failed = false, disabled = false, children }) => {
 
     const className = () => {
@@ -26,16 +26,11 @@ const LabelInput: FC<PropsWithChildren<LabelInputProps>> = ({ label, hint, error
             {label &&
             <div className='label'>
                 <RequiredMark required={required}/>
-                <span style={failed ? {color:'var(--color-error)'} : undefined}>
-                    {label}
-                </span>
+                <span>{label}</span>
             </div>}
+            {top && <div className='top'>{top}</div>}
             {children}
-            {(error || hint) &&
-            <div className='error-hint'>
-                {error && <div className='error'>{error}</div>}
-                {hint && <div className='hint'>{hint}</div>}
-            </div>}
+            {bottom && <div className='bottom'>{bottom}</div>}
         </label>
     );
 }

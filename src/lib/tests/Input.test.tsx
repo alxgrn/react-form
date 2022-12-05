@@ -4,12 +4,12 @@ import { Input } from '../index';
 
 describe('Input', () => {
 
-test('has correct label, value, hint, error, placeholder, disabled', () => {
+test('has correct label, value, top, bottom, placeholder, disabled', () => {
     const id = 'ID';
     const value = 'Value text';
     const label = 'Label text';
-    const hint = 'Hint text';
-    const error = 'Error text';
+    const top = 'Top text';
+    const bottom = 'Bottom text';
     const placeholder = 'Placeholder text';
     const onChange = jest.fn();
     const { container } = render(
@@ -17,8 +17,8 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
             id={id}
             value={value}
             label={label}
-            hint={hint}
-            error={error}
+            top={top}
+            bottom={bottom}
             placeholder={placeholder}
             onChange={onChange}
         />
@@ -30,8 +30,8 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     expect(input).toHaveAttribute('placeholder', placeholder);
     expect(input).not.toBeDisabled();
     expect(screen.getByText(label)).toBeInTheDocument();
-    expect(screen.getByText(hint)).toBeInTheDocument();
-    expect(screen.getByText(error)).toBeInTheDocument();
+    expect(screen.getByText(top)).toBeInTheDocument();
+    expect(screen.getByText(bottom)).toBeInTheDocument();
     expect(container.querySelector('.Form-required-mark')).toBeFalsy();
 });
 

@@ -14,8 +14,8 @@ export interface SelectProps {
     options: SelectOption[];
     onChange: (b: string) => void;
     label?: string;
-    hint?: string;
-    error?: string;
+    top?: string;
+    bottom?: string;
     placeholder?: string;
     required?: boolean;
     disabled?: boolean;
@@ -24,7 +24,7 @@ export interface SelectProps {
 }
 
 export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholder,
-                                          hint, required, disabled, error, options }) => {
+                                          top, required, disabled, bottom, options }) => {
 
     const isError = () => {
         if(required) {
@@ -51,8 +51,8 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
     return (
         <div className='Form-item'>
             <LabelInput
-                hint={hint}
-                error={error}
+                top={top}
+                bottom={bottom}
                 label={label}
                 required={required}
                 disabled={disabled}

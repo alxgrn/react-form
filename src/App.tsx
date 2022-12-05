@@ -66,6 +66,8 @@ function App() {
                     onChange={setText}
                     label='Text label'
                     disabled={true}
+                    top='Top text'
+                    bottom='Bottom text'
                 />
                 <Input
                     id='password'
@@ -75,7 +77,8 @@ function App() {
                     onChange={setPassword}
                     label='Password label'
                     placeholder='Password placeholder'
-                    error='Password error'
+                    top='Password top'
+                    bottom='Password bottom'
                 />
                 <Input
                     id='textarea'
@@ -84,7 +87,7 @@ function App() {
                     onChange={setTextarea}
                     label='Textarea label'
                     placeholder='Textarea placeholder'
-                    hint='Textarea hint'
+                    bottom='Textarea bottom'
                 />
                 <Fieldset
                     legend='Radio legend'
@@ -107,6 +110,8 @@ function App() {
                     required={true}
                     placeholder='Select something'
                     disabled={false}
+                    top='Top select'
+                    bottom='Bottom select'
                 />
                 <Fieldset
                     legend='Checkbox Legend'

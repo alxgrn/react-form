@@ -11,6 +11,8 @@
     --color-disabled: slategrey;
     --color-label: steelblue;
     --color-hint: slategrey;
+    --color-top: slategrey;
+    --color-bottom: slategrey;
     --background-input: aliceblue;
     --background-submit: steelblue;
     --background-success: #efe;

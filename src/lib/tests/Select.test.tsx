@@ -9,10 +9,10 @@ const options: SelectOption[] = [
 
 describe('Select', () => {
 
-test('has correct label, value, hint, error, placeholder, disabled', () => {
+test('has correct label, value, top, bottom, placeholder, disabled', () => {
     const label = 'Label text';
-    const hint = 'Hint text';
-    const error = 'Error text';
+    const top = 'Top text';
+    const bottom = 'Bottom text';
     const placeholder = 'Placeholder text';
     const onChange = jest.fn();
     render(
@@ -21,8 +21,8 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
             value={options[0].value}
             options={options}
             label={label}
-            hint={hint}
-            error={error}
+            top={top}
+            bottom={bottom}
             placeholder={placeholder}
             onChange={onChange}
         />
@@ -32,8 +32,8 @@ test('has correct label, value, hint, error, placeholder, disabled', () => {
     expect(input).toHaveValue(options[0].value);
     expect(input).not.toBeDisabled();
     expect(screen.getByText(label)).toBeInTheDocument();
-    expect(screen.getByText(hint)).toBeInTheDocument();
-    expect(screen.getByText(error)).toBeInTheDocument();
+    expect(screen.getByText(top)).toBeInTheDocument();
+    expect(screen.getByText(bottom)).toBeInTheDocument();
     const option = screen.getAllByRole('option');
     expect(option).toHaveLength(options.length + 1);
     expect(option[0]).toHaveTextContent(placeholder);

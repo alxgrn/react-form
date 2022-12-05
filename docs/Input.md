@@ -24,8 +24,8 @@ return(
 |type?|"text" \| "password" \| "textarea"|"text"|Тип элемента ввода|
 |label?|string||Название элемента ввода|
 |placeholder?|string||Подсказка внутри поля ввода|
-|hint?|string||Подсказка под элементом ввода|
-|error?|string||Текст ошибки под элементом ввода|
+|top?|string||Текст перед элементом ввода|
+|bottom?|string||Текст под элементом ввода|
 |required?|boolean|false|Флаг обязательности для заполнения|
 |disabled?|boolean|false|Флаг запрещения ввода данных|
 |limit?|number||Ограничитель на число вводимых символов|

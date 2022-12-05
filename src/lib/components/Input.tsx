@@ -8,8 +8,8 @@ export interface InputProps {
     onChange: (s: string) => void;
     label?: string;
     placeholder?: string;
-    hint?: string;
-    error?: string;
+    top?: string;
+    bottom?: string;
     required?: boolean;
     disabled?: boolean;
     limit?: number;
@@ -18,7 +18,7 @@ export interface InputProps {
 }
 
 const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label, 
-                                placeholder, rows = 5, hint, error,
+                                placeholder, rows = 5, top, bottom,
                                 required = false, disabled = false, limit }) => {
 
     const isError = () => {
@@ -40,8 +40,8 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
     return (
         <div className='Form-item'>
         <LabelInput
-            hint={hint}
-            error={error}
+            top={top}
+            bottom={bottom}
             label={label}
             required={required}
             disabled={disabled}

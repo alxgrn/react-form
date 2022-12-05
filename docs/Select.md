@@ -30,8 +30,8 @@ return(
 |options|{value: string, option: string, disabled?: boolean}[]||Список опций|
 |onChange|(value: string) => void||Обработчик выбора|
 |label?|string||Название элемента ввода|
-|hint?|string||Подсказка под элементом ввода|
-|error?|string||Текст ошибки под элементом ввода|
+|top?|string||Текст перед элементом ввода|
+|bottom?|string||Текст под элементом ввода|
 |placeholder?|string||Текст отображаемый в начале списка при отсуствии выбора|
 |required?|boolean|false|Флаг обязательности для заполнения|
 |disabled?|boolean|false|Флаг запрещения ввода данных|

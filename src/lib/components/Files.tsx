@@ -7,8 +7,8 @@ export interface FilesProps {
     files: File[];
     onChange: (files: File[]) => void;
     label: string;
-    hint?: string;
-    error?: string;
+    top?: string;
+    bottom?: string;
     accept?: string;
     multiple?: boolean;
     required?: boolean;
@@ -26,7 +26,7 @@ export const bytes2string = (bytes: number): string => {
     }
 };
 
-export const Files: FC<FilesProps> = ({ id, files, onChange, label, hint, error, accept,
+export const Files: FC<FilesProps> = ({ id, files, onChange, label, top, bottom, accept,
                                       multiple = false, required = false, disabled = false }) => {
 
     const getLabelText = (): string => {
@@ -49,6 +49,8 @@ export const Files: FC<FilesProps> = ({ id, files, onChange, label, hint, error,
 
     return (
         <div className='Form-item Form-files'>
+            {top && <div className='top'>{top}</div>}
+
             {files.length > 0 &&
             <ul className={disabled ? 'disabled' : undefined}>
                 {files.map((file, index) => 
@@ -76,11 +78,7 @@ export const Files: FC<FilesProps> = ({ id, files, onChange, label, hint, error,
                 </span>
             </div>
             
-            {(error || hint) &&
-            <div className='error-hint'>
-                {error && <div className='error'>{error}</div>}
-                {hint && <div className='hint'>{hint}</div>}
-            </div>}
+            {bottom && <div className='bottom'>{bottom}</div>}
         </div>
     );
 }

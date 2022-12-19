@@ -6,18 +6,18 @@ describe('Files', () => {
 
 const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8' });
 
-test('has correct label, hint, error, disabled', () => {
+test('has correct label, top, bottom, disabled', () => {
     const label = 'Label text';
-    const hint = 'Hint text';
-    const error = 'Error text';
+    const top = 'Top text';
+    const bottom = 'Bottom text';
     const onChange = jest.fn();
     render(
         <Files
             id='id'
             files={[]}
             label={label}
-            hint={hint}
-            error={error}
+            top={top}
+            bottom={bottom}
             onChange={onChange}
         />
     );
@@ -25,8 +25,8 @@ test('has correct label, hint, error, disabled', () => {
     expect(input).toBeInTheDocument();
     expect(input).not.toBeDisabled();
     expect(screen.getByText(label)).toBeInTheDocument();
-    expect(screen.getByText(hint)).toBeInTheDocument();
-    expect(screen.getByText(error)).toBeInTheDocument();
+    expect(screen.getByText(top)).toBeInTheDocument();
+    expect(screen.getByText(bottom)).toBeInTheDocument();
 });
 
 test('has required mark and disabled option', () => {

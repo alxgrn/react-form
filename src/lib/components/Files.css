@@ -82,18 +82,20 @@
     cursor: default;
     opacity: .5;
 }
-/* Ошибка и хинт */
-.Form .Form-files .hint,
-.Form .Form-files .error {
+/* Top и bottom */
+.Form .Form-files .top,
+.Form .Form-files .bottom {
     font-weight: normal;
     font-size: .8rem;
     line-height: 120%;
-    color: var(--color-hint);
     cursor: default;
 }
-.Form .Form-files .error {
-    color: var(--color-error);
+.Form .Form-files .top {
+    color: var(--color-top);
+    margin-bottom: .2rem;
 }
-.Form .Form-files .error-hint {
+
+.Form .Form-files .bottom {
+    color: var(--color-bottom);
     margin-top: .2rem;
 }

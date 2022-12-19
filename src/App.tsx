@@ -141,8 +141,8 @@ function App() {
                         label='File choice'
                         files={files}
                         onChange={onFilesChange}
-                        hint='File hint'
-                        error='File error'
+                        top='File top'
+                        bottom='File bottom'
                         multiple={true}
                         accept='image/*'
                         disabled={false}

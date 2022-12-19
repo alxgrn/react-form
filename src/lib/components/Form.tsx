@@ -5,11 +5,11 @@ import { SelectOption } from './Select';
 import './Form.css';
 
 export interface FormProps {
-    info?: string;
-    error?: string;
-    success?: string;
-    submit?: string;
-    wide?: boolean;
+    info?: string | null;
+    error?: string | null;
+    success?: string | null;
+    submit?: string | null;
+    wide?: boolean | null;
     onSubmit?: (d: FormData) => void;
 }
 

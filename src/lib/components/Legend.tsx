@@ -2,10 +2,10 @@ import React, { FC, Fragment } from 'react';
 import RequiredMark from './RequiredMark';
 
 export interface LegendProps {
-    legend?: string;
-    failed?: boolean;
-    required?: boolean;
-    disabled?: boolean;
+    legend?: string | null;
+    failed?: boolean | null;
+    required?: boolean | null;
+    disabled?: boolean | null;
 }
 
 const Legend: FC<LegendProps> = ({ legend, failed = false, required = false, disabled = false }) => {

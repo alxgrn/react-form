@@ -13,18 +13,18 @@ export interface SelectProps {
     value: string;
     options: SelectOption[];
     onChange: (b: string) => void;
-    label?: string;
-    top?: string;
-    bottom?: string;
-    placeholder?: string;
-    required?: boolean;
-    disabled?: boolean;
-    checked?: boolean;
+    label?: string | null;
+    top?: string | null;
+    bottom?: string | null;
+    placeholder?: string | null;
+    required?: boolean | null;
+    disabled?: boolean | null;
+    checked?: boolean | null;
     __TYPE?: string;
 }
 
 export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholder,
-                                          top, required, disabled, bottom, options }) => {
+                                          top, required = false, disabled = false, bottom, options }) => {
 
     const isError = () => {
         if(required) {
@@ -64,7 +64,7 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
                         value={value}
                         onChange={e => onChange(e.target.value)}
                         style={getStyle()}
-                        disabled={disabled}
+                        disabled={disabled ? true : false}
                     >
                         {placeholder && <option>{placeholder}</option>}
                         {options.map((item, index) => (

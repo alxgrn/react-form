@@ -7,12 +7,12 @@ export interface FilesProps {
     files: File[];
     onChange: (files: File[]) => void;
     label: string;
-    top?: string;
-    bottom?: string;
-    accept?: string;
-    multiple?: boolean;
-    required?: boolean;
-    disabled?: boolean;
+    top?: string | null;
+    bottom?: string | null;
+    accept?: string | null;
+    multiple?: boolean | null;
+    required?: boolean | null;
+    disabled?: boolean | null;
     __TYPE?: string;
 }
 
@@ -66,10 +66,10 @@ export const Files: FC<FilesProps> = ({ id, files, onChange, label, top, bottom,
                     <input
                         id={id}
                         type='file'
-                        accept={accept}
+                        accept={accept ?? undefined}
                         onChange={e => doFileChange(e)}
-                        multiple={multiple}
-                        disabled={disabled}
+                        multiple={multiple ?? undefined}
+                        disabled={disabled ? true : false}
                     />
                 </label>
                 <span>

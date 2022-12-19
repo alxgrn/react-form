@@ -3,13 +3,13 @@ import RequiredMark from './RequiredMark';
 import './LabelRadio.css';
 
 export interface LabelRadioProps {
-    hint?: string;
-    label?: string;
-    error?: string;
-    failed?: boolean;
-    disabled?: boolean;
-    required?: boolean;
-    checked?: boolean;
+    hint?: string | null;
+    label?: string | null;
+    error?: string | null;
+    failed?: boolean | null;
+    disabled?: boolean | null;
+    required?: boolean | null;
+    checked?: boolean | null;
 }
 
 const LabelRadio: FC<PropsWithChildren<LabelRadioProps>> = ({ label, hint, error,

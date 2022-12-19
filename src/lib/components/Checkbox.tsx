@@ -5,11 +5,11 @@ export interface CheckboxProps {
     id: string;
     onChange: (b: boolean) => void;
     label: string;
-    hint?: string;
-    error?: string;
-    required?: boolean;
-    disabled?: boolean;
-    checked?: boolean;
+    hint?: string | null;
+    error?: string | null;
+    required?: boolean | null;
+    disabled?: boolean | null;
+    checked?: boolean | null;
     __TYPE?: string;
 }
 
@@ -30,9 +30,9 @@ const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error,
                 <input
                     id={id}
                     type='checkbox'
-                    checked={checked}
+                    checked={checked ? true : false}
                     onChange={(e) => onChange(e.target.checked)}
-                    disabled={disabled}
+                    disabled={disabled ? true : false}
                 />
             </LabelRadio>
         </div>

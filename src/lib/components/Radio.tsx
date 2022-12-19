@@ -4,10 +4,10 @@ import LabelRadio from './LabelRadio';
 export interface RadioOption {
     label: string;
     value: string;
-    hint?: string;
-    error?: string;
-    disabled?: boolean;
-    required?: boolean;
+    hint?: string | null;
+    error?: string | null;
+    disabled?: boolean | null;
+    required?: boolean | null;
 }
 
 export interface RadioProps {
@@ -15,8 +15,8 @@ export interface RadioProps {
     value: string;
     options: RadioOption[];
     onChange: (s: string) => void;
-    disabled?: boolean;
-    required?: boolean;
+    disabled?: boolean | null;
+    required?: boolean | null;
     __TYPE?: string;
 }
 
@@ -52,8 +52,8 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, required = false, d
                         value={item.value}
                         checked={item.value === value}
                         onChange={(e) => onChange(e.target.value)}
-                        disabled={item.disabled || disabled}
-                        required={item.required}
+                        disabled={item.disabled || disabled ? true : false}
+                        required={item.required ? true : false}
                     />
                 </LabelRadio>
             </div>))}

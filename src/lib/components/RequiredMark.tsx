@@ -2,7 +2,7 @@ import React, { Fragment, FC } from 'react';
 import './RequiredMark.css';
 
 export interface RequiredMarkProps {
-    required?: boolean;
+    required?: boolean | null;
 }
 
 const RequiredMark: FC<RequiredMarkProps> = ({ required = false }) => {

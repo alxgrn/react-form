@@ -3,17 +3,17 @@ import LabelInput from './LabelInput';
 
 export interface InputProps {
     id: string;
-    type?: 'text' | 'password' | 'textarea';
+    type?: 'text' | 'password' | 'textarea' | null;
     value: string;
     onChange: (s: string) => void;
-    label?: string;
-    placeholder?: string;
-    top?: string;
-    bottom?: string;
-    required?: boolean;
-    disabled?: boolean;
-    limit?: number;
-    rows?: number;
+    label?: string | null;
+    placeholder?: string | null;
+    top?: string | null;
+    bottom?: string | null;
+    required?: boolean | null;
+    disabled?: boolean | null;
+    limit?: number | null;
+    rows?: number | null;
     __TYPE?: string;
 }
 
@@ -55,21 +55,21 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 type={type}
                 value={value}
                 onChange={e => doChange(e.target.value)}
-                placeholder={placeholder}
+                placeholder={placeholder ?? undefined}
                 style={getStyle()}
-                disabled={disabled}
+                disabled={disabled ? true : false}
             />}
 
             {/* TEXTAREA */}
             {type === 'textarea' &&
             <textarea
                 id={id}
-                rows={rows}
+                rows={rows ? rows : 5}
                 value={value}
                 onChange={(e) => doChange(e.target.value)}
-                placeholder={placeholder}
+                placeholder={placeholder ?? undefined}
                 style={getStyle()}
-                disabled={disabled}
+                disabled={disabled ? true : false}
             />}
 
         </LabelInput>

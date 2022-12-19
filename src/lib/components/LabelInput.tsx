@@ -3,12 +3,12 @@ import RequiredMark from './RequiredMark';
 import './LabelInput.css';
 
 export interface LabelInputProps {
-    top?: string;
-    bottom?: string;
-    label?: string;
-    failed?: boolean;
-    disabled?: boolean;
-    required?: boolean;
+    top?: string | null;
+    bottom?: string | null;
+    label?: string | null;
+    failed?: boolean | null;
+    disabled?: boolean | null;
+    required?: boolean | null;
 }
 
 const LabelInput: FC<PropsWithChildren<LabelInputProps>> = ({ label, top, bottom,

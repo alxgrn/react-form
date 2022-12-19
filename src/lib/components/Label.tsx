@@ -3,12 +3,12 @@ import RequiredMark from './RequiredMark';
 
 export interface LabelProps {
     id: string;
-    label?: string;
-    error?: string;
-    hint?: string;
-    failed?: boolean;
-    disabled?: boolean;
-    required?: boolean;
+    label?: string | null;
+    error?: string | null;
+    hint?: string | null;
+    failed?: boolean | null;
+    disabled?: boolean | null;
+    required?: boolean | null;
 }
 
 const Label: FC<LabelProps> = ({ id, label, required = false, failed = false,

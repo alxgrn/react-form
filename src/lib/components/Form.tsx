@@ -4,7 +4,7 @@ import { RadioOption } from './Radio';
 import { SelectOption } from './Select';
 import './Form.css';
 
-export interface FormProps {
+export type FormProps = {
     info?: string | null;
     error?: string | null;
     success?: string | null;
@@ -13,7 +13,7 @@ export interface FormProps {
     onSubmit?: (d: FormData) => void;
 }
 
-export interface FormData {
+export type FormData = {
     [i: string]: string | boolean | File[];
 };
 

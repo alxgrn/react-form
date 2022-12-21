@@ -1,4 +1,4 @@
-import Form from './components/Form';
+import { Form, FormData } from './components/Form';
 import Files from './components/Files';
 import Input from './components/Input';
 import Radio from './components/Radio';
@@ -13,5 +13,9 @@ export {
     Radio,
     Select,
     Checkbox,
-    Fieldset
+    Fieldset,
+};
+
+export type {
+    FormData,
 };

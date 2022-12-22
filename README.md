@@ -17,5 +17,6 @@ npm install @alxgrn/react-form
 * [Files](./docs/Files.md)
 * [Radio](./docs/Radio.md)
 * [Select](./docs/Select.md)
+* [Hidden](./docs/Hidden.md)
 * [Fieldset](./docs/Fieldset.md)
 * [Checkbox](./docs/Checkbox.md)

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Form, Input, Radio, Select, Checkbox, Files } from '../index';
+import { Form, Input, Radio, Select, Checkbox, Files, Hidden } from '../index';
 
 describe('Form', () => {
 
@@ -166,6 +166,10 @@ test('onSubmit callback gets correct data', async () => {
                 files={[]}
                 label='add'
             />
+            <Hidden
+                id='hidden'
+                value='hidden'
+            />
         </Form>
     );
     const button = screen.getByRole('button', { name: submit });
@@ -178,6 +182,7 @@ test('onSubmit callback gets correct data', async () => {
         input: 'test',
         radio: 'two',
         select: 'one',
+        hidden: 'hidden',
     });
 });
 

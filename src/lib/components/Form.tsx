@@ -14,7 +14,7 @@ export type FormProps = {
 }
 
 export type FormData = {
-    [i: string]: string | boolean | File[];
+    [i: string]: string | number | boolean | File[];
 };
 
 export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, submit,
@@ -81,6 +81,9 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
                         break;
                     case 'Files':
                         data[props.id] = props.files as File[];
+                        break;
+                    case 'Hidden':
+                        data[props.id] = props.value as string | number;
                         break;
                     default:
                         break;

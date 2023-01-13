@@ -1,7 +1,8 @@
 # react-form
 ![npm](https://img.shields.io/npm/v/@alxgrn/react-form)
 ![npm](https://img.shields.io/npm/l/@alxgrn/react-form)
-![Codecov](https://img.shields.io/codecov/c/github/alxgrn/react-form)
+![codecov](https://img.shields.io/codecov/c/github/alxgrn/react-form)
+![github](https://img.shields.io/github/actions/workflow/status/alxgrn/react-form/node.js.yml?branch=main)
 
 Компоненты для создания форм.
 

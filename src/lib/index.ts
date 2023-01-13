@@ -1,4 +1,5 @@
 import { Form, FormData } from './components/Form';
+import Date from './components/Date';
 import Files from './components/Files';
 import Input from './components/Input';
 import Radio from './components/Radio';
@@ -9,6 +10,7 @@ import Fieldset from './components/Fieldset';
 
 export {
     Form,
+    Date,
     Files,
     Input,
     Radio,

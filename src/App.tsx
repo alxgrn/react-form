@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Files, Input, Radio, Select, Checkbox, Fieldset } from './lib';
+import { Form, Files, Input, Radio, Select, Checkbox, Fieldset, Date } from './lib';
 import { FormData } from './lib/components/Form';
 import './App.css';
 
@@ -18,6 +18,7 @@ const radios = [
 const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8' });
 
 function App() {
+    const [ date, setDate ] = useState('01.01.2023');
     const [ text, setText ] = useState('Hello');
     const [ radio, setRadio ] = useState('');
     const [ select, setSelect ] = useState('');
@@ -59,6 +60,12 @@ function App() {
                 submit='Submit button'
                 onSubmit={onSubmit}
             >
+                <Date
+                    id='date'
+                    value={date}
+                    onChange={setDate}
+                    label='Date label'
+                />
                 <Input
                     id='text'
                     required={true}

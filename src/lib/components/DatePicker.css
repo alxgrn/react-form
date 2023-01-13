@@ -1,0 +1,74 @@
+.Form .Form-datepicker {
+    position: absolute;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--backgroud-color);
+    top: calc(100% + .2rem);
+    left: 0;
+    z-index: 100;
+    overflow: hidden;
+    font-size: 1rem;
+    line-height: 2rem;
+    width: 15rem;
+}
+
+.Form .Form-datepicker .Form-datepicker-menu {
+    display: flex;
+    text-transform: capitalize;
+    text-align: center;
+    color: var(--color-text);
+    background-color: var(--background-input);
+}
+
+.Form .Form-datepicker .Form-datepicker-menu .Form-datepicker-text {
+    flex: 1 1 auto;
+}
+
+.Form .Form-datepicker .Form-datepicker-menu .Form-datepicker-prev,
+.Form .Form-datepicker .Form-datepicker-menu .Form-datepicker-next {
+    flex: 0 0 auto;
+    text-align: center;
+    color: var(--color-label);
+    width: 2rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.Form .Form-datepicker .Form-datepicker-days {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--color-text);
+    border: 1px solid var(--backgroud-color);
+}
+
+.Form .Form-datepicker .Form-datepicker-days span {
+    flex: 0 0 14.2857143%;
+    padding-right: .4rem;
+    display: inline-block;
+    text-align: right;
+    box-sizing: border-box;
+    background-color: var(--background-disabled);
+    border: 1px solid var(--backgroud-color);
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+}
+
+.Form .Form-datepicker .Form-datepicker-days span:hover {
+    background-color: var(--background-focus);
+}
+
+.Form .Form-datepicker .Form-datepicker-days span.empty {
+    cursor: default;
+    background-color: var(--background-color);
+}
+
+.Form .Form-datepicker .Form-datepicker-days span.selected {
+    color: var(--color-submit);
+    background-color: var(--background-submit);
+}
+
+.Form .Form-datepicker .Form-datepicker-days span.current {
+    color: var(--color-label);
+    font-weight: bold;
+}

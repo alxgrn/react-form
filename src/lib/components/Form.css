@@ -13,12 +13,14 @@
     --color-hint: slategrey;
     --color-top: slategrey;
     --color-bottom: slategrey;
+    --backgroud-color: white;
     --background-input: aliceblue;
     --background-submit: steelblue;
     --background-success: #efe;
     --background-error: #fee;
     --background-focus: moccasin;
     --background-disabled: whitesmoke;
+    --border-color: steelblue;
     --border-color-disabled: lightgrey;
     --width: 400px;
     --width-wide: 1024px;
@@ -92,7 +94,7 @@
     line-height: inherit;
     font-family: inherit;
     border-radius: var(--border-radius);
-    border: 1px solid var(--background-submit);
+    border: 1px solid var(--border-color);
     width: 100%;
     display: block;
     background-color: var(--background-input);

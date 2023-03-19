@@ -17,7 +17,7 @@ export interface RadioProps {
     onChange: (s: string) => void;
     disabled?: boolean | null;
     required?: boolean | null;
-    __TYPE?: string;
+    __TYPE?: 'Radio';
 }
 
 export const Radio: FC<RadioProps> = ({ id, value, onChange, required = false, disabled = false, options }) => {
@@ -35,7 +35,7 @@ export const Radio: FC<RadioProps> = ({ id, value, onChange, required = false, d
     return (
         <Fragment>
             {options.map((item, index) => (
-            <div className='Form-item' key={index}>
+            <div className='FormItem' key={index}>
                 <LabelRadio
                     label={item.label}
                     hint={item.hint}

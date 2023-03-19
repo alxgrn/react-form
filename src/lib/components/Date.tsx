@@ -13,19 +13,21 @@ export interface DateProps {
     bottom?: string | null;
     required?: boolean | null;
     disabled?: boolean | null;
-    __TYPE?: string;
+    __TYPE?: 'Date';
 }
 
 const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bottom,
                                required = false, disabled = false }) => {
     
     const ref = useRef(null);
-    const [ focus, setFocus ] = useState(false);
-
+    const [ show, setShow ] = useState(false);
+    // Используем useEffect а не onBlur т.к. если вешать setShow на него,
+    // то при клике в DatePicker он будет скрываться раньше чем отработает
+    // реакция на клик.
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if(ref.current && !(ref.current as any).contains(event.target)) {
-                setFocus(false);
+                setShow(false);
             }
         };
         document.addEventListener('click', handleClickOutside, true);
@@ -35,7 +37,7 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
     }, []);
 
     const isError = () => {
-        if(required && !value.trim().length) return true; else return false;
+        if(required && !isValidDate(value)) return true; else return false;
     };
 
     const getStyle = () => {
@@ -45,12 +47,15 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
         };
     };
 
+    // Тут надо как-то скрыть DatePicker, но пока не понятно как
+    // поэтому пока полагаемся на скрытие при клике вне компонента
     const onDatePickerClick = (value: string) => {
         onChange(value);
+        //setShow(false);
     };
 
     return (
-        <div ref={ref} className='Form-item Form-date'>
+        <div ref={ref} className='FormItem FormDate'>
         <LabelInput
             top={top}
             bottom={bottom}
@@ -68,11 +73,10 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
                 placeholder={placeholder ?? undefined}
                 style={getStyle()}
                 disabled={disabled ? true : false}
-                onFocus={e => setFocus(true)}
-                
+                onFocus={() => setShow(true)} 
             />
 
-            <DatePicker value={value} onChange={onDatePickerClick} show={focus}/>
+            <DatePicker value={value} onChange={onDatePickerClick} show={show}/>
         </LabelInput>
         </div>
     );
@@ -82,5 +86,25 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
 Date.defaultProps = {
     __TYPE: 'Date',
 }
+
+// Вспомогательная функция проверки того, что строка является
+// корректной датой в формате ДД.ММ.ГГГ
+export const isValidDate = (dateString: string): boolean => {
+    // Проверим шаблон
+    if(!dateString.match(/^\d{2}\.\d{2}\.\d{4}$/)) return false;
+    // Парсим строку в элементы даты
+    var parts = dateString.split('.');
+    var day = parseInt(parts[0], 10);
+    var month = parseInt(parts[1], 10);
+    var year = parseInt(parts[2], 10);
+    // Проверим диапазоны года и месяца
+    if(year < 1000 || year > 3000 || month === 0 || month > 12) return false;
+    // Число дней в месяцах обычных лет
+    var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+    // Корректировка февраля для високосных годов
+    if(year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) monthLength[1] = 29;
+    // Теперь можно проверить диапазон дня и вернуть окончательный результат
+    return day > 0 && day <= monthLength[month - 1];
+};
 
 export default Date;

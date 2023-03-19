@@ -1,18 +1,27 @@
-.Form .Form-datepicker {
+.Form .FormDatepicker {
     position: absolute;
+    margin-top: 0.2rem;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     background-color: var(--backgroud-color);
-    top: calc(100% + .2rem);
-    left: 0;
     z-index: 100;
     overflow: hidden;
     font-size: 1rem;
     line-height: 2rem;
     width: 15rem;
+    animation: datepicker-appear 0.3s ease;
 }
 
-.Form .Form-datepicker .Form-datepicker-menu {
+@keyframes datepicker-appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.Form .FormDatepicker .FormDatepickerMenu {
     display: flex;
     text-transform: capitalize;
     text-align: center;
@@ -20,12 +29,12 @@
     background-color: var(--background-input);
 }
 
-.Form .Form-datepicker .Form-datepicker-menu .Form-datepicker-text {
+.Form .FormDatepicker .FormDatepickerMenu .FormDatepickerText {
     flex: 1 1 auto;
 }
 
-.Form .Form-datepicker .Form-datepicker-menu .Form-datepicker-prev,
-.Form .Form-datepicker .Form-datepicker-menu .Form-datepicker-next {
+.Form .FormDatepicker .FormDatepickerMenu .FormDatepickerPrev,
+.Form .FormDatepicker .FormDatepickerMenu .FormDatepickerNext {
     flex: 0 0 auto;
     text-align: center;
     color: var(--color-label);
@@ -34,14 +43,14 @@
     cursor: pointer;
 }
 
-.Form .Form-datepicker .Form-datepicker-days {
+.Form .FormDatepicker .FormDatepickerDays {
     display: flex;
     flex-wrap: wrap;
     color: var(--color-text);
     border: 1px solid var(--backgroud-color);
 }
 
-.Form .Form-datepicker .Form-datepicker-days span {
+.Form .FormDatepicker .FormDatepickerDays span {
     flex: 0 0 14.2857143%;
     padding-right: .4rem;
     display: inline-block;
@@ -54,21 +63,21 @@
     border-radius: var(--border-radius);
 }
 
-.Form .Form-datepicker .Form-datepicker-days span:hover {
+.Form .FormDatepicker .FormDatepickerDays span:hover {
     background-color: var(--background-focus);
 }
 
-.Form .Form-datepicker .Form-datepicker-days span.empty {
+.Form .FormDatepicker .FormDatepickerDays span.Empty {
     cursor: default;
     background-color: var(--background-color);
 }
 
-.Form .Form-datepicker .Form-datepicker-days span.selected {
+.Form .FormDatepicker .FormDatepickerDays span.Selected {
     color: var(--color-submit);
     background-color: var(--background-submit);
 }
 
-.Form .Form-datepicker .Form-datepicker-days span.current {
+.Form .FormDatepicker .FormDatepickerDays span.Current {
     color: var(--color-label);
     font-weight: bold;
 }

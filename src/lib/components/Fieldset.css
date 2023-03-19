@@ -8,10 +8,10 @@
     padding: 0.5rem;
     position: relative;
 }
-.Form fieldset .Form-item {
+.Form fieldset .FormItem {
     margin: 0 0 .5rem 0;
 }
-.Form fieldset .Form-item:last-child {
+.Form fieldset .FormItem:last-child {
     margin: 0;
 }
 /**

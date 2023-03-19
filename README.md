@@ -21,3 +21,8 @@ npm install @alxgrn/react-form
 * [Hidden](./docs/Hidden.md)
 * [Fieldset](./docs/Fieldset.md)
 * [Checkbox](./docs/Checkbox.md)
+* [Date](./docs/Date.md)
+* [FormRow, FormCol](./docs/FormRowCol.md)
+
+## Как публиковать свой NPM-пакет
+[Заметка о том, как публиковать свой пакет](./docs/NPM-Publish.md). Просто чтобы не забыть :)

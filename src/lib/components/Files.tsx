@@ -13,7 +13,7 @@ export interface FilesProps {
     multiple?: boolean | null;
     required?: boolean | null;
     disabled?: boolean | null;
-    __TYPE?: string;
+    __TYPE?: 'Files';
 }
 
 export const bytes2string = (bytes: number): string => {
@@ -48,7 +48,7 @@ export const Files: FC<FilesProps> = ({ id, files, onChange, label, top, bottom,
     };
 
     return (
-        <div className='Form-item Form-files'>
+        <div className='FormItem FormFiles'>
             {top && <div className='top'>{top}</div>}
 
             {files.length > 0 &&
@@ -60,7 +60,7 @@ export const Files: FC<FilesProps> = ({ id, files, onChange, label, top, bottom,
                 </li>)}
             </ul>}
 
-            <div className='Form-files-label'>
+            <div className='FormFilesLabel'>
                 <label className={disabled ? 'disabled' : undefined}>
                     {label}
                     <input

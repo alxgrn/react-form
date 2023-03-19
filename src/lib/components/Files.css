@@ -6,20 +6,20 @@
     display: none;
 }
 /* Список файлов */
-.Form .Form-files ul {
+.Form .FormFiles ul {
     margin: 0 0 .5rem 0;
     padding: 0 0 0 1rem;
     list-style: none;
 }
-.Form .Form-files ul li {
+.Form .FormFiles ul li {
     cursor: pointer;
     width: fit-content;
 }
-.Form .Form-files ul.disabled li {
+.Form .FormFiles ul.disabled li {
     cursor: default;
     color: var(--color-disabled);
 }
-.Form .Form-files ul li::before {
+.Form .FormFiles ul li::before {
     content: "▪︎";
     color: var(--background-submit);
     display: inline-block;
@@ -27,10 +27,10 @@
     margin-left: -1.2em;
     text-align: center;
 }
-.Form .Form-files ul.disabled li::before {
+.Form .FormFiles ul.disabled li::before {
     color: var(--color-disabled);
 }
-.Form .Form-files ul li:hover:before {
+.Form .FormFiles ul li:hover:before {
     content: "✖︎";
     color: var(--color-error);
     display: inline-block;
@@ -38,37 +38,37 @@
     margin-left: -1.2em;
     text-align: center;
 }
-.Form .Form-files ul.disabled li:hover:before {
+.Form .FormFiles ul.disabled li:hover:before {
     content: "▪︎";
     color: var(--color-disabled);
 }
-.Form .Form-files ul li span:last-child {
+.Form .FormFiles ul li span:last-child {
     font-size: .8rem;
     line-height: 120%;
     color: var(--color-hint);
     white-space: nowrap;
 }
-.Form .Form-files ul li span:last-child::before {
+.Form .FormFiles ul li span:last-child::before {
     content: ' ';
 }
 /* Лейбл состоит из "кнопки" и подписи рядом с ней */
-.Form .Form-files-label {
+.Form .FormFilesLabel {
     display: flex;
     align-items: center;
 }
-.Form .Form-files-label label {
+.Form .FormFilesLabel label {
     flex: 0 0 auto;
     padding: .5rem 1rem;
     border-radius: var(--border-radius);
     margin: 0;
     font-weight: normal;
 }
-.Form .Form-files-label span {
+.Form .FormFilesLabel span {
     flex: 1 1 auto;
     margin-left: 1rem;
 }
 /* Оформление кнопки...*/
-.Form .Form-files label {
+.Form .FormFiles label {
 	cursor: pointer;
     color: var(--color-submit);
     background-color: var(--background-submit);
@@ -78,24 +78,24 @@
     padding: .5rem 1rem;
 }
 /* ...и её запрещенного варианта */
-.Form .Form-files label.disabled {
+.Form .FormFiles label.disabled {
     cursor: default;
     opacity: .5;
 }
 /* Top и bottom */
-.Form .Form-files .top,
-.Form .Form-files .bottom {
+.Form .FormFiles .top,
+.Form .FormFiles .bottom {
     font-weight: normal;
     font-size: .8rem;
     line-height: 120%;
     cursor: default;
 }
-.Form .Form-files .top {
+.Form .FormFiles .top {
     color: var(--color-top);
     margin-bottom: .2rem;
 }
 
-.Form .Form-files .bottom {
+.Form .FormFiles .bottom {
     color: var(--color-bottom);
     margin-top: .2rem;
 }

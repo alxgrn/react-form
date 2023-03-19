@@ -30,9 +30,9 @@ test('has correct label, value, hint, error, disabled, required', () => {
     expect(label).toHaveLength(options.length);
     expect(label[0]).toHaveTextContent(options[0].hint as string);
     expect(label[1]).toHaveTextContent(options[1].label);
-    expect(label[1].querySelector('.Form-required-mark')).toBeFalsy();
+    expect(label[1].querySelector('.FormRequiredMark')).toBeFalsy();
     expect(label[2]).toHaveTextContent(options[2].error as string);
-    expect(label[2].querySelector('.Form-required-mark')).toBeTruthy();
+    expect(label[2].querySelector('.FormRequiredMark')).toBeTruthy();
 });
 
 test('has correct handling of onChange callback', async () => {

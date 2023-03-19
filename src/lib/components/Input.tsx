@@ -14,7 +14,7 @@ export interface InputProps {
     disabled?: boolean | null;
     limit?: number | null;
     rows?: number | null;
-    __TYPE?: string;
+    __TYPE?: 'Input';
 }
 
 const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label, 
@@ -38,7 +38,7 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
     };
 
     return (
-        <div className='Form-item'>
+        <div className='FormItem'>
         <LabelInput
             top={top}
             bottom={bottom}

@@ -35,7 +35,7 @@ const onSubmit = (data: FormData) => {
 ### Данные формы
 ```ts
 interface FormData {
-    [i: string]: string | boolean | File[];
+    [i: string]: string | boolean | number | File[];
 };
 ```
 В качестве имен полей будут использованы идентификаторы элементов ввода `id`, которые должны быть уникальны в рамках одной формы. 

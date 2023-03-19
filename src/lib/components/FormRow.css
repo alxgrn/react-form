@@ -1,0 +1,17 @@
+/**
+ * Если в форме используется колоночная структура, то все строки
+ * должны оборачиваться в FromRow даже если в них один элемент.
+ */
+ .Form .FormRow {
+    display: flex;
+    margin: 1rem 0;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+@media (max-width: 512px) {
+    .Form .FormRow {
+        display: block;
+    }
+}

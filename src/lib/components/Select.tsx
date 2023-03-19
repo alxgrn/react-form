@@ -20,11 +20,12 @@ export interface SelectProps {
     required?: boolean | null;
     disabled?: boolean | null;
     checked?: boolean | null;
-    __TYPE?: string;
+    __TYPE?: 'Select';
 }
 
 export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholder,
-                                          top, required = false, disabled = false, bottom, options }) => {
+                                          top, required = false, disabled = false,
+                                          bottom, options }) => {
 
     const isError = () => {
         if(required) {
@@ -49,7 +50,7 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
     };
 
     return (
-        <div className='Form-item'>
+        <div className='FormItem'>
             <LabelInput
                 top={top}
                 bottom={bottom}

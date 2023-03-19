@@ -1,0 +1,42 @@
+/* Внутри ячейки отступы элемента не нужны */
+.Form > .FormRow > .FormCol > fieldset {
+    margin: 1.4rem 0 0 0;
+}
+.Form > .FormRow > .FormCol > .FormItem {
+    margin: 0;
+}
+/* Если будет только один элемент в строке, то он занимает всю ширину */
+.Form .FormRow .FormCol:first-child {
+    flex: 1 1 auto;
+}
+/* Второй элемент занимает половину ширины и уменьшает первый элемент */
+.Form .FormRow .FormCol:nth-child(2) {
+    flex: 0 0 auto;
+    width: 50%;
+    width: calc(50% - 0.5rem);
+    margin-left: 1rem;
+}
+/* Чтобы многострочные лейблы не ломали вертикальное выравнивание */
+.Form .FormRow .FormCol .top,
+.Form .FormRow .FormCol label.input .label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 512px) {
+    .Form .FormRow .FormCol:nth-child(2) {
+        width: 100%;
+        margin-top: 1rem;
+        margin-left: 0;
+    }
+    .Form > .FormRow > .FormCol > fieldset {
+        margin: 2.4rem 0 0 0;
+    }
+    .Form .FormRow .FormCol .top,
+    .Form .FormRow .FormCol label.input .label {
+        white-space: initial;
+        overflow: initial;
+        text-overflow: inherit;
+    }
+}

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Form, Files, Input, Radio, Select, Checkbox, Fieldset, Date } from './lib';
 import { FormData } from './lib/components/Form';
 import './App.css';
+import FormRow from './lib/components/FormRow';
+import FormCol from './lib/components/FormCol';
 
 const options = [
     { value: 'one', option: 'one' },
@@ -18,7 +20,7 @@ const radios = [
 const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8' });
 
 function App() {
-    const [ date, setDate ] = useState('01.01.2023');
+    const [ date, setDate ] = useState('');
     const [ text, setText ] = useState('Hello');
     const [ radio, setRadio ] = useState('');
     const [ select, setSelect ] = useState('');
@@ -59,102 +61,132 @@ function App() {
                 error='Error text'
                 submit='Submit button'
                 onSubmit={onSubmit}
+                wide={true}
             >
-                <Date
-                    id='date'
-                    value={date}
-                    onChange={setDate}
-                    label='Date label'
-                />
-                <Input
-                    id='text'
-                    required={true}
-                    value={text}
-                    onChange={setText}
-                    label='Text label'
-                    disabled={true}
-                    top='Top text'
-                    bottom='Bottom text'
-                />
-                <Input
-                    id='password'
-                    type='password'
-                    required={true}
-                    value={password}
-                    onChange={setPassword}
-                    label='Password label'
-                    placeholder='Password placeholder'
-                    top='Password top'
-                    bottom='Password bottom'
-                />
-                <Input
-                    id='textarea'
-                    type='textarea'
-                    value={textarea}
-                    onChange={setTextarea}
-                    label='Textarea label'
-                    placeholder='Textarea placeholder'
-                    bottom='Textarea bottom'
-                />
-                <Fieldset
-                    legend='Radio legend'
-                    required={true}
-                >
-                    <Radio
-                        id='radio'
-                        value={radio}
-                        options={radios}
-                        onChange={setRadio}
-                        required={true}
-                    />
-                </Fieldset>
-                <Select
-                    id='select'
-                    label='Select label'
-                    value={select}
-                    options={options}
-                    onChange={setSelect}
-                    required={true}
-                    placeholder='Select something'
-                    disabled={false}
-                    top='Top select'
-                    bottom='Bottom select'
-                />
-                <Fieldset
-                    legend='Checkbox Legend'
-                >
-                    <Checkbox
-                        id='checkbox1'
-                        checked={checkbox1}
-                        onChange={(b) => onCheckboxChange(b, 1)}
-                        label='Checkbox1 label'
-                        required={true}
-                        error={checkbox1 ? undefined : 'Checkbox is required'}
-                    />
-                    <Checkbox
-                        id='checkbox2'
-                        checked={checkbox2}
-                        onChange={(b) => onCheckboxChange(b, 2)}
-                        label='Checkbox2 label'
-                        hint='Checkbox2 hint'
-                        disabled={true}
-                    />
-                </Fieldset>
-                <Fieldset
-                    legend='File legend'
-                >
-                    <Files
-                        id='file'
-                        label='File choice'
-                        files={files}
-                        onChange={onFilesChange}
-                        top='File top'
-                        bottom='File bottom'
-                        multiple={true}
-                        accept='image/*'
-                        disabled={false}
-                    />
-                </Fieldset>
+                <FormRow>
+                    <FormCol>
+                        <Input
+                            id='text'
+                            required={true}
+                            value={text}
+                            onChange={setText}
+                            label='Text label'
+                            disabled={true}
+                            top='Top text'
+                            bottom='Bottom text'
+                        />
+                    </FormCol>
+                    <FormCol>
+                        <Input
+                            id='password'
+                            type='password'
+                            required={true}
+                            value={password}
+                            onChange={setPassword}
+                            label='Password label'
+                            placeholder='Password placeholder'
+                            top='Password top'
+                            bottom='Password bottom'
+                        />
+                    </FormCol>
+                </FormRow>
+                <FormRow>
+                    <FormCol>
+                        <Date
+                            id='date'
+                            value={date}
+                            onChange={setDate}
+                            label='Date label'
+                            required={true}
+                            top='Date top'
+                            bottom='Date bottom'
+                        />
+                    </FormCol>
+                    <FormCol>
+                        <Select
+                            id='select'
+                            label='Select label'
+                            value={select}
+                            options={options}
+                            onChange={setSelect}
+                            required={true}
+                            placeholder='Select something'
+                            disabled={false}
+                            top='Top select'
+                            bottom='Bottom select'
+                        />
+                    </FormCol>
+                </FormRow>
+                <FormRow>
+                    <FormCol>
+                        <Input
+                            id='textarea'
+                            type='textarea'
+                            value={textarea}
+                            onChange={setTextarea}
+                            label='Textarea label'
+                            placeholder='Textarea placeholder'
+                            bottom='Textarea bottom'
+                        />
+                    </FormCol>
+                </FormRow>
+                <FormRow>
+                    <FormCol>
+                        <Fieldset
+                            legend='Radio legend'
+                            required={true}
+                        >
+                            <Radio
+                                id='radio'
+                                value={radio}
+                                options={radios}
+                                onChange={setRadio}
+                                required={true}
+                            />
+                        </Fieldset>
+                    </FormCol>
+                    <FormCol>
+                        <Fieldset
+                            legend='Checkbox Legend'
+                        >
+                            <Checkbox
+                                id='checkbox1'
+                                checked={checkbox1}
+                                onChange={(b) => onCheckboxChange(b, 1)}
+                                label='Checkbox1 label'
+                                required={true}
+                                error={checkbox1 ? undefined : 'Checkbox is required'}
+                            />
+                            <Checkbox
+                                id='checkbox2'
+                                checked={checkbox2}
+                                onChange={(b) => onCheckboxChange(b, 2)}
+                                label='Checkbox2 label'
+                                hint='Checkbox2 hint'
+                                disabled={true}
+                            />
+                        </Fieldset>
+                    </FormCol>
+                </FormRow>
+                <FormRow>
+                    <FormCol>
+                        <Fieldset
+                            legend='File legend'
+                        >
+                            <Files
+                                id='file'
+                                label='File choice'
+                                files={files}
+                                onChange={onFilesChange}
+                                top='File top'
+                                bottom='File bottom'
+                                multiple={true}
+                                accept='image/*'
+                                disabled={false}
+                            />
+                        </Fieldset>
+                    </FormCol>
+                </FormRow>
             </Form>
         </div>
     );

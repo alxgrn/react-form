@@ -38,7 +38,7 @@ test('has required mark and disabled option', () => {
             onChange={onChange}
         />
     );
-    expect(container.querySelector('.Form-required-mark')).toBeTruthy();
+    expect(container.querySelector('.FormRequiredMark')).toBeTruthy();
     expect(screen.getByRole('checkbox')).toBeDisabled();
 });
 

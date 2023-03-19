@@ -1,5 +1,6 @@
 import React, { useEffect, useState, ReactNode, ReactElement, FC, PropsWithChildren } from 'react';
 import { deepForEach } from 'react-children-utilities';
+import { isValidDate } from './Date';
 import { RadioOption } from './Radio';
 import { SelectOption } from './Select';
 import './Form.css';
@@ -55,6 +56,10 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
                         const files = props.files as File[];
                         if(files.length < 1) setDisabled(true);
                         break;
+                    case 'Date':
+                        // Дата должна быть валидна
+                        if(!isValidDate((props.value as string).trim())) setDisabled(true);
+                        break;
                     default:
                         break;
                 }
@@ -69,6 +74,7 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
             if(child && (child as ReactElement).props?.__TYPE) {
                 const props = (child as ReactElement).props;
                 switch(props.__TYPE) {
+                    case 'Date':
                     case 'Input':
                         data[props.id] = (props.value as string).trim();
                         break;
@@ -94,10 +100,10 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
     };
 
     return(
-        <div className={wide ? 'Form Form-wide' : 'Form'}>
-            {info && <div className='Form-info'>{info}</div>}
-            {success && <div className='Form-success'>{success}</div>}
-            {error && <div className='Form-error'>{error}</div>}
+        <div className={wide ? 'Form FormWide' : 'Form'}>
+            {success && <div className='FormSuccess'>{success}</div>}
+            {error && <div className='FormError'>{error}</div>}
+            {info && <div className='FormInfo'>{info}</div>}
             {children}
             {submit &&
             <input

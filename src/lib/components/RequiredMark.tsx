@@ -8,7 +8,7 @@ export interface RequiredMarkProps {
 const RequiredMark: FC<RequiredMarkProps> = ({ required = false }) => {
     return (
         <Fragment>
-            {required && <span className='Form-required-mark'><span/><span/><span/></span>}
+            {required && <span className='FormRequiredMark'><span/><span/><span/></span>}
         </Fragment>
     );
 }

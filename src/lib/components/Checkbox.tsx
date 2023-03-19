@@ -10,14 +10,14 @@ export interface CheckboxProps {
     required?: boolean | null;
     disabled?: boolean | null;
     checked?: boolean | null;
-    __TYPE?: string;
+    __TYPE?: 'Checkbox';
 }
 
 const Checkbox: FC<CheckboxProps> = ({ id, onChange, label, hint, error,
                                        required = false, disabled = false, checked = false }) => {
 
     return (
-        <div className='Form-item'>
+        <div className='FormItem'>
             <LabelRadio
                 label={label}
                 required={required}

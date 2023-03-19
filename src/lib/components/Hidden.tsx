@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 export interface HiddenProps {
     id: string;
     value: string | number;
-    __TYPE?: string;
+    __TYPE?: 'Hidden';
 }
 
 const Hidden: FC<HiddenProps> = ({ id, value }) => {

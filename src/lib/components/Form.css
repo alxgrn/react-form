@@ -22,8 +22,8 @@
     --background-disabled: whitesmoke;
     --border-color: steelblue;
     --border-color-disabled: lightgrey;
-    --width: 400px;
-    --width-wide: 1024px;
+    --width: 512px; /* Максимальная ширина обычной формы */
+    --width-wide: 1024px; /* Максимальная ширина широкого варианта */
 
     color: var(--color-text);
     display: block;
@@ -38,20 +38,20 @@
 /**
  * Широкий вариант основного блока формы
  */
-.Form.Form-wide {
+.Form.FormWide {
     max-width: var(--width-wide);
 }
 /**
  * Блок с информацией о форме
  */
-.Form .Form-info {
+.Form .FormInfo {
     margin: 1rem 0;
     color: var(--color-text);
 }
 /**
  * Блок уведомления об успехе
  */
-.Form .Form-success {
+.Form .FormSuccess {
     margin: 1rem 0;
     padding: .5rem;
     display: block;
@@ -63,7 +63,7 @@
 /**
  * Блок уведомления об ошибке
  */
-.Form .Form-error {
+.Form .FormError {
     margin: 1rem 0;
     padding: .5rem;
     display: block;
@@ -75,7 +75,7 @@
 /**
  * Блок элемента формы
  */
-.Form .Form-item {
+.Form .FormItem {
     display: block;
     margin: 1rem 0;
 }

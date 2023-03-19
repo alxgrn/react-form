@@ -1,11 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import './DatePicker.css';
 
-export interface DatePickerProps {
-    value?: string; // DD.MM.YYYY
-    show?: boolean;
-    onChange?: (value: string) => void;
-}
 // Если в качестве дня указать 0, Date вернет последний день предыдущего месяца.
 // Поэтому для получения числа дней в текущем месяце мы берем следующий месяц.
 // Автоисправление даты позаботится если на входе будет 11 месяц.
@@ -27,6 +22,11 @@ const getZeroPadNumber = (n: number) => {
     return ('0' + n).slice(-2);
 }
 
+export interface DatePickerProps {
+    value?: string; // DD.MM.YYYY
+    show?: boolean;
+    onChange?: (value: string) => void; // DD.MM.YYYY
+}
 
 const DatePicker: FC<DatePickerProps> = ({ value, show = false, onChange }) => {
     const monthName = getLocalMonthNames();
@@ -34,8 +34,8 @@ const DatePicker: FC<DatePickerProps> = ({ value, show = false, onChange }) => {
     const currentDay = currentDate.getDate();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
-    const [ year, setYear ] = useState(0);
-    const [ month, setMonth ] = useState(0);
+    const [ year, setYear ] = useState(currentYear);
+    const [ month, setMonth ] = useState(currentMonth);
     const [ days, setDays ] = useState<number[]>([]);
     const [ selectedDay, setSelectedDay ] = useState(0);
     const [ selectedMonth, setSelectedMonth ] = useState(0);
@@ -84,37 +84,37 @@ const DatePicker: FC<DatePickerProps> = ({ value, show = false, onChange }) => {
     };
 
     // При рендере ячейки с днем её надо красить в разные цвета
-    const getClassName = (day: number) => {
-        if(!day) return 'empty'; // Пустышка для сдвига начала месяца
-        if(day === selectedDay && month === selectedMonth && year === selectedYear) return 'selected'; // Выбранный день
-        if(day === currentDay && month === currentMonth && year === currentYear) return 'current'; // Текущий день
-        return ''; // Обычная клетка
+    const getClassName = (day: number): string | undefined => {
+        if(!day) return 'Empty'; // Пустышка для сдвига начала месяца
+        if(day === selectedDay && month === selectedMonth && year === selectedYear) return 'Selected'; // Выбранный день
+        if(day === currentDay && month === currentMonth && year === currentYear) return 'Current'; // Текущий день
+        return undefined; // Обычная клетка
     };
 
     if(!show) return null;
 
     return (
-        <div className='Form-datepicker'>
-            <div className='Form-datepicker-menu'>
-                <span className='Form-datepicker-prev' onClick={e => changeMonth(-1)}>&laquo;</span>
-                <span className='Form-datepicker-text'>{monthName[month]}</span>
-                <span className='Form-datepicker-next' onClick={e => changeMonth(1)}>&raquo;</span>
+        <div className='FormDatepicker'>
+            <div className='FormDatepickerMenu'>
+                <span className='FormDatepickerPrev' onClick={() => changeMonth(-1)}>&laquo;</span>
+                <span className='FormDatepickerText'>{monthName[month]}</span>
+                <span className='FormDatepickerNext' onClick={() => changeMonth(1)}>&raquo;</span>
             </div>
-            <div className='Form-datepicker-days'>
+            <div className='FormDatepickerDays'>
                 {days.map((day, index) => (
                     <span
                         key={index}
                         className={getClassName(day)}
-                        onClick={e => changeDay(day)}
+                        onClick={() => changeDay(day)}
                     >
                         {day ? day : ''}
                     </span>
                 ))}
             </div>
-            <div className='Form-datepicker-menu'>
-                <span className='Form-datepicker-prev' onClick={e => setYear(year - 1)}>&laquo;</span>
-                <span className='Form-datepicker-text'>{year}</span>
-                <span className='Form-datepicker-next' onClick={e => setYear(year + 1)}>&raquo;</span>
+            <div className='FormDatepickerMenu'>
+                <span className='FormDatepickerPrev' onClick={() => setYear(year - 1)}>&laquo;</span>
+                <span className='FormDatepickerText'>{year}</span>
+                <span className='FormDatepickerNext' onClick={() => setYear(year + 1)}>&raquo;</span>
             </div>
         </div>
     );

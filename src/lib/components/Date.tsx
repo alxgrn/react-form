@@ -9,8 +9,8 @@ export interface DateProps {
     onChange: (s: string) => void;
     label?: string | null;
     placeholder?: string | null;
-    top?: string | null;
-    bottom?: string | null;
+    top?: string | null | React.ReactNode;
+    bottom?: string | null | React.ReactNode;
     required?: boolean | null;
     disabled?: boolean | null;
     __TYPE?: 'Date';
@@ -19,11 +19,15 @@ export interface DateProps {
 const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bottom,
                                required = false, disabled = false }) => {
     
-    const ref = useRef(null);
+    const ref = useRef<HTMLDivElement>(null);
+    const refInput = useRef<HTMLInputElement>(null);
     const [ show, setShow ] = useState(false);
+
+    // Скрываем DatePicker при клике вне компонента.
     // Используем useEffect а не onBlur т.к. если вешать setShow на него,
     // то при клике в DatePicker он будет скрываться раньше чем отработает
     // реакция на клик.
+    // Используем нисходящее событие, а не восходящее!
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if(ref.current && !(ref.current as any).contains(event.target)) {
@@ -33,6 +37,29 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
         document.addEventListener('click', handleClickOutside, true);
         return () => {
             document.removeEventListener('click', handleClickOutside, true);
+        };
+    }, []);
+
+    // Показываем/скрываем DatePicker при кликах внутри компонента.
+    // Скрываем если кликнули на день в календаре, а показываем во
+    // всех остальных случаях.
+    const onClick = (event: React.MouseEvent) => {
+        if(disabled) return;
+        if((event.target as Element).classList.contains('FormDatePickerDay')) {
+            setShow(false);
+        } else {
+            setShow(true);
+        }
+    };
+
+    // Скрываем DatePicker по Esc и Enter
+    useEffect(() => {
+        const closeOnEscapeOrEnterKey = (e: KeyboardEvent) => {
+            if(e.key === 'Escape' || e.key === 'Enter') setShow(false);
+        };
+        document.body.addEventListener("keydown", closeOnEscapeOrEnterKey);
+        return () => {
+            document.body.removeEventListener("keydown", closeOnEscapeOrEnterKey);
         };
     }, []);
 
@@ -47,37 +74,45 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
         };
     };
 
-    // Тут надо как-то скрыть DatePicker, но пока не понятно как
-    // поэтому пока полагаемся на скрытие при клике вне компонента
-    const onDatePickerClick = (value: string) => {
-        onChange(value);
-        //setShow(false);
+    // DatePicker рендерим под строкой ввода, для этого
+    // надо вычислить его позицию т.к. просто статически сверстать
+    // расположение в CSS мы не можем из-за того, что под строкой
+    // ввода может быть еще элемент bottom.
+    const getTopPosition = () => {
+        if(refInput.current) {
+            return refInput.current.offsetTop + refInput.current.offsetHeight;
+        } else {
+            return undefined;
+        }
     };
 
     return (
-        <div ref={ref} className='FormItem FormDate'>
-        <LabelInput
-            top={top}
-            bottom={bottom}
-            label={label}
-            required={required}
-            disabled={disabled}
-            failed={isError()}
-        >
-            
-            <input
-                id={id}
-                type='text'
-                value={value}
-                onChange={e => onChange(e.target.value)}
-                placeholder={placeholder ?? undefined}
-                style={getStyle()}
-                disabled={disabled ? true : false}
-                onFocus={() => setShow(true)} 
-            />
-
-            <DatePicker value={value} onChange={onDatePickerClick} show={show}/>
-        </LabelInput>
+        <div ref={ref} className='FormItem FormDate' onClick={onClick}>
+            <LabelInput
+                top={top}
+                bottom={bottom}
+                label={label}
+                required={required}
+                disabled={disabled}
+                failed={isError()}
+            >
+                <input
+                    id={id}
+                    type='text'
+                    value={value}
+                    onChange={e => onChange(e.target.value)}
+                    placeholder={placeholder ?? undefined}
+                    style={getStyle()}
+                    disabled={disabled ? true : false}
+                    ref={refInput}
+                />
+            </LabelInput>
+            {/*
+                Располагаем DatePicker вне LabelInput т.к. иначе не удасться остановить
+                всплытие клика внутри календаря и будет невозможно его скрытие при клике
+                на дне месяца. Клик внутри label всегда ведет к клику в привязанном input.
+            */}
+            <DatePicker value={value} onChange={onChange} show={show} top={getTopPosition()}/>
         </div>
     );
 }

@@ -1,7 +1,8 @@
 /**
  * Лейбл поля ввода text/password/textarea/select
  */
-.Form label.input {
+
+.Form label.Input {
 	color: var(--color-label);
     width: auto;
 	display: block;
@@ -12,35 +13,35 @@
     padding: 0;
 }
 
-.Form label.input .label {
+.Form label.Input .Label {
     margin-bottom: .2rem;
 }
 
-.Form label.input .top,
-.Form label.input .bottom {
+.Form label.Input .Top,
+.Form label.Input .Bottom {
     font-weight: normal;
     font-size: .8rem;
     line-height: 120%;
 }
 
-.Form label.input .top {
+.Form label.Input .Top {
     color: var(--color-top);
     margin-bottom: .2rem;
 }
 
-.Form label.input .bottom {
+.Form label.Input .Bottom {
     color: var(--color-bottom);
     margin-top: .2rem;
 }
 
-.Form label.input.disabled,
-.Form label.input.disabled .top,
-.Form label.input.disabled .bottom {
+.Form label.Input.Disabled,
+.Form label.Input.Disabled .Top,
+.Form label.Input.Disabled .Bottom {
     color: var(--color-disabled);
 }
 
-.Form label.input.failed,
-.Form label.input.failed .top,
-.Form label.input.failed .bottom {
+.Form label.Input.Failed,
+.Form label.Input.Failed .Top,
+.Form label.Input.Failed .Bottom {
     color: var(--color-error);
 }

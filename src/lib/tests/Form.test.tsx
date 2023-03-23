@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Form, Input, Radio, Select, Checkbox, Files, Hidden } from '../index';
+import { Form, Input, Radio, Select, Checkbox, Files, Hidden, Date } from '../index';
 
 describe('Form', () => {
 
@@ -131,6 +131,47 @@ test('submit button disabled when required Files field is empty', () => {
     expect(button).toBeDisabled();
 });
 
+test('submit button disabled when required Date field is empty', () => {
+    const onChange = jest.fn();
+    const submit = 'Submit button';
+    render(
+        <Form
+            submit={submit}
+        >
+            <Date
+                id='id'
+                required={true}
+                onChange={onChange}
+                value=''
+            />
+        </Form>
+    );
+    const button = screen.getByRole('button', { name: submit });
+    expect(button).toBeInTheDocument();
+    expect(button).toBeDisabled();
+});
+
+test('submit button disabled when required Date field has incorrect value', () => {
+    const onChange = jest.fn();
+    const submit = 'Submit button';
+    const value = '02.29.2023'; // incorrect date
+    render(
+        <Form
+            submit={submit}
+        >
+            <Date
+                id='id'
+                required={true}
+                onChange={onChange}
+                value={value}
+            />
+        </Form>
+    );
+    const button = screen.getByRole('button', { name: submit });
+    expect(button).toBeInTheDocument();
+    expect(button).toBeDisabled();
+});
+
 test('onSubmit callback gets correct data', async () => {
     const submit = 'Submit button';
     const onSubmit = jest.fn();
@@ -166,6 +207,11 @@ test('onSubmit callback gets correct data', async () => {
                 files={[]}
                 label='add'
             />
+            <Date
+                id='date'
+                onChange={jest.fn}
+                value='01.01.2000'
+            />
             <Hidden
                 id='hidden'
                 value='hidden'
@@ -182,6 +228,7 @@ test('onSubmit callback gets correct data', async () => {
         input: 'test',
         radio: 'two',
         select: 'one',
+        date: '01.01.2000',
         hidden: 'hidden',
     });
 });

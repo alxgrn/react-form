@@ -24,8 +24,8 @@ return(
 |onChange|(date: string) => void||Обработчик ввода в формате ДД.ММ.ГГГГ|
 |label?|string||Название элемента ввода|
 |placeholder?|string||Подсказка внутри поля ввода|
-|top?|string||Текст перед элементом ввода|
-|bottom?|string||Текст под элементом ввода|
+|top?|string \| null \| React.ReactNode||Текст перед элементом ввода|
+|bottom?|string \| null \| React.ReactNode||Текст под элементом ввода|
 |required?|boolean|false|Флаг обязательности для заполнения|
 |disabled?|boolean|false|Флаг запрещения ввода данных|
 

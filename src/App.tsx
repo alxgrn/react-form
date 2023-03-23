@@ -20,14 +20,15 @@ const radios = [
 const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8' });
 
 function App() {
-    const [ date, setDate ] = useState('');
+    const [ date, setDate ] = useState('01.01.2023');
     const [ text, setText ] = useState('Hello');
     const [ radio, setRadio ] = useState('');
     const [ select, setSelect ] = useState('');
     const [ password, setPassword ] = useState('1234567');
     const [ textarea, setTextarea ] = useState('Lorem ipsum dolor sit amet...');
     const [ checkbox1, setCheckbox1 ] = useState(true);
-    const [ checkbox2, setCheckbox2 ] = useState(true);
+    const [ checkbox2, setCheckbox2 ] = useState(false);
+    const [ checkbox3, setCheckbox3 ] = useState(true);
     const [ files, setFiles ] = useState<File[]>([file]);
 
     const onSubmit = (data: FormData) => {
@@ -40,8 +41,11 @@ function App() {
             case 1:
                 setCheckbox1(b);
                 break;
-            default:
+            case 2:
                 setCheckbox2(b);
+                break;
+            default:
+                setCheckbox3(b);
                 break;
         }
     };
@@ -100,6 +104,7 @@ function App() {
                             required={true}
                             top='Date top'
                             bottom='Date bottom'
+                            disabled={true}
                         />
                     </FormCol>
                     <FormCol>
@@ -164,6 +169,13 @@ function App() {
                                 label='Checkbox2 label'
                                 hint='Checkbox2 hint'
                                 disabled={true}
+                            />
+                            <Checkbox
+                                id='checkbox3'
+                                checked={checkbox3}
+                                onChange={(b) => onCheckboxChange(b, 3)}
+                                label='Checkbox3 label'
+                                hint='Checkbox3 hint'
                             />
                         </Fieldset>
                     </FormCol>

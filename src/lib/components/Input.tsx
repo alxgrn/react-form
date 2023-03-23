@@ -8,8 +8,8 @@ export interface InputProps {
     onChange: (s: string) => void;
     label?: string | null;
     placeholder?: string | null;
-    top?: string | null;
-    bottom?: string | null;
+    top?: string | null | React.ReactNode;
+    bottom?: string | null | React.ReactNode;
     required?: boolean | null;
     disabled?: boolean | null;
     limit?: number | null;

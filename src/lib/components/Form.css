@@ -2,7 +2,6 @@
  * Основной блок формы
  */
  .Form {
-    --border-radius: .2rem;
     --color-text: #333;
     --color-submit: white;
     --color-success: forestgreen;
@@ -13,7 +12,7 @@
     --color-hint: slategrey;
     --color-top: slategrey;
     --color-bottom: slategrey;
-    --backgroud-color: white;
+    --background-color: white;
     --background-input: aliceblue;
     --background-submit: steelblue;
     --background-success: #efe;
@@ -22,6 +21,7 @@
     --background-disabled: whitesmoke;
     --border-color: steelblue;
     --border-color-disabled: lightgrey;
+    --border-radius: .2rem;
     --width: 512px; /* Максимальная ширина обычной формы */
     --width-wide: 1024px; /* Максимальная ширина широкого варианта */
 

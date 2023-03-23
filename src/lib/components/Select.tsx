@@ -43,9 +43,9 @@ export const Select: FC<SelectProps> = ({ id, value, onChange, label, placeholde
     };
 
     const getWrapStyle = () => {
-        let style = 'select-wrap';
-        if(disabled) style += ' disabled';
-        if(isError()) style += ' failed';
+        let style = 'SelectWrap';
+        if(disabled) style += ' Disabled';
+        if(isError()) style += ' Failed';
         return style;
     };
 

@@ -7,6 +7,8 @@ import Select from './components/Select';
 import Hidden from './components/Hidden';
 import Checkbox from './components/Checkbox';
 import Fieldset from './components/Fieldset';
+import FormRow from './components/FormRow';
+import FormCol from './components/FormCol';
 
 export {
     Form,
@@ -18,6 +20,8 @@ export {
     Hidden,
     Checkbox,
     Fieldset,
+    FormRow,
+    FormCol,
 };
 
 export type {

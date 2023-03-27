@@ -17,8 +17,8 @@
     margin-left: 1rem;
 }
 /* Чтобы многострочные лейблы не ломали вертикальное выравнивание */
-.Form .FormRow .FormCol .top,
-.Form .FormRow .FormCol label.input .label {
+.Form .FormRow .FormCol .Top,
+.Form .FormRow .FormCol label.Input .Label {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -33,8 +33,8 @@
     .Form > .FormRow > .FormCol > fieldset {
         margin: 2.4rem 0 0 0;
     }
-    .Form .FormRow .FormCol .top,
-    .Form .FormRow .FormCol label.input .label {
+    .Form .FormRow .FormCol .Top,
+    .Form .FormRow .FormCol label.Input .Label {
         white-space: initial;
         overflow: initial;
         text-overflow: inherit;

@@ -6,15 +6,17 @@
     margin: 0;
 }
 /* Если будет только один элемент в строке, то он занимает всю ширину */
-.Form .FormRow .FormCol:first-child {
+.Form .FormRow .FormCol {
     flex: 1 1 auto;
 }
-/* Второй элемент занимает половину ширины и уменьшает первый элемент */
-.Form .FormRow .FormCol:nth-child(2) {
-    flex: 0 0 auto;
+/*
+ * Если элемента два, то ставим им одинаковую ширину, подробнее о технике смотри:
+ * https://stackoverflow.com/questions/8720931/can-css-detect-the-number-of-children-an-element-has
+ */
+.Form .FormRow .FormCol:first-child:nth-last-child(2),
+.Form .FormRow .FormCol:first-child:nth-last-child(2) ~ .FormCol {
     width: 50%;
     width: calc(50% - 0.5rem);
-    margin-left: 1rem;
 }
 /* Чтобы многострочные лейблы не ломали вертикальное выравнивание */
 .Form .FormRow .FormCol .Top,
@@ -23,10 +25,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+/* В узком режиме все переводим в одноколоночный формат */
 @media (max-width: 512px) {
-    .Form .FormRow .FormCol:nth-child(2) {
-        width: 100%;
+    .Form .FormRow .FormCol {
+        width: 100%!important;
         margin-top: 1rem;
         margin-left: 0;
     }

@@ -104,7 +104,6 @@ function App() {
                             required={true}
                             top='Date top'
                             bottom='Date bottom'
-                            disabled={true}
                         />
                     </FormCol>
                     <FormCol>

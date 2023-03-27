@@ -1,4 +1,8 @@
 *.d.ts
+
+# production
+build
+
 # Logs
 logs
 *.log

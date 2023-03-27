@@ -101,7 +101,7 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
                     type='text'
                     value={value}
                     onChange={e => onChange(e.target.value)}
-                    placeholder={placeholder ?? undefined}
+                    placeholder={placeholder ?? /^ru\b/.test(navigator.language) ? 'ДД.ММ.ГГГГ' : 'DD.MM.YYYY'}
                     style={getStyle()}
                     disabled={disabled ? true : false}
                     ref={refInput}

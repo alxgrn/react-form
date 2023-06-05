@@ -3,6 +3,7 @@ import { deepForEach } from 'react-children-utilities';
 import { isValidDate } from './Date';
 import { RadioOption } from './Radio';
 import { SelectOption } from './Select';
+import { CheckboxListOption, CheckboxListValue } from './CheckboxList';
 import './Form.css';
 
 export type FormProps = {
@@ -15,7 +16,7 @@ export type FormProps = {
 }
 
 export type FormData = {
-    [i: string]: string | number | boolean | File[];
+    [i: string]: string | number | boolean | File[] | any[];
 };
 
 export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, submit,
@@ -60,6 +61,11 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
                         // Дата должна быть валидна
                         if(!isValidDate((props.value as string).trim())) setDisabled(true);
                         break;
+                    case 'CheckboxList': {
+                        // Должен быть выбран хотя бы один чекбокс
+                        const options = props.options as CheckboxListOption[];
+                        if(options.findIndex(a => a.checked === true) < 0) setDisabled(true); }
+                        break;
                     default:
                         break;
                 }
@@ -70,26 +76,47 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
     const onClick = () => {
         if(!onSubmit) return;
         const data: FormData = {};
+
+        // Мы добавляем даные по идентификатору.
+        // Если идентификатор повторяется, то мы создаем массив значений.
+        const addData = (id: string, value: string|number|boolean|File[]|CheckboxListValue[]) => {
+            if(!data[id]) {
+                data[id] = value;
+                return;
+            }
+            if(data[id] instanceof Array) {
+                (data[id] as any[]).push(value);
+            } else {
+                data[id] = [ data[id], value ];
+            }
+        };
+
         deepForEach(children, (child: ReactNode) => {
             if(child && (child as ReactElement).props?.__TYPE) {
                 const props = (child as ReactElement).props;
                 switch(props.__TYPE) {
                     case 'Date':
                     case 'Input':
-                        data[props.id] = (props.value as string).trim();
+                        addData(props.id, (props.value as string).trim());
                         break;
                     case 'Checkbox':
-                        data[props.id] = props.checked as boolean ? true : false;
+                        addData(props.id, props.checked as boolean ? true : false);
                         break;
                     case 'Select': 
                     case 'Radio':
-                        data[props.id] = props.value as string;
+                        addData(props.id, props.value as string);
                         break;
                     case 'Files':
-                        data[props.id] = props.files as File[];
+                        addData(props.id, props.files as File[]);
                         break;
                     case 'Hidden':
-                        data[props.id] = props.value as string | number;
+                        addData(props.id, props.value as string | number);
+                        break;
+                    case 'CheckboxList': {
+                        const value: CheckboxListValue[] = [];
+                        const options = props.options as CheckboxListOption[];
+                        options.forEach(o => { if(o.checked) value.push(o.value); });
+                        addData(props.id, value); }
                         break;
                     default:
                         break;

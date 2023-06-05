@@ -21,6 +21,7 @@ npm install @alxgrn/react-form
 * [Hidden](./docs/Hidden.md)
 * [Fieldset](./docs/Fieldset.md)
 * [Checkbox](./docs/Checkbox.md)
+* [CheckboxList](./docs/CheckboxList.md)
 * [Date](./docs/Date.md)
 * [FormRow, FormCol](./docs/FormRowCol.md)
 

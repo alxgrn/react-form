@@ -8,6 +8,9 @@
     padding: 0.5rem;
     position: relative;
 }
+.Form fieldset.failed {
+    border-color: var(--border-color-failed);
+}
 .Form fieldset .FormItem {
     margin: 0 0 .5rem 0;
 }

@@ -21,6 +21,7 @@
     --background-disabled: whitesmoke;
     --border-color: steelblue;
     --border-color-disabled: lightgrey;
+    --border-color-failed: firebrick;
     --border-radius: .2rem;
     --width: 512px; /* Максимальная ширина обычной формы */
     --width-wide: 1024px; /* Максимальная ширина широкого варианта */

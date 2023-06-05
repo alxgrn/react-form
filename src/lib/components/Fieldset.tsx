@@ -5,7 +5,7 @@ import './Fieldset.css';
 const Fieldset: FC<PropsWithChildren<LegendProps>> = (props) => {
     const { children, ...legend } = props;
     return (
-        <fieldset>
+        <fieldset className={legend.failed ? 'failed' : undefined}>
             <Legend {...legend}/>
             {children}
         </fieldset>

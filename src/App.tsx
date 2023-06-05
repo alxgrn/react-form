@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Form, Files, Input, Radio, Select, Checkbox, Fieldset, Date } from './lib';
+import { Form, Files, Input, Radio, Select, Checkbox, CheckboxList, Fieldset, Date } from './lib';
 import { FormData } from './lib/components/Form';
 import './App.css';
 import FormRow from './lib/components/FormRow';
 import FormCol from './lib/components/FormCol';
+import { CheckboxListOption } from './lib/components/CheckboxList';
 
 const options = [
     { value: 'one', option: 'one' },
@@ -16,6 +17,14 @@ const radios = [
     { value: 'two', label: 'Two', disabled: true },
     { value: 'three', label: 'Three', error: 'Radio error', required: true },
 ];
+
+const checkboxes: CheckboxListOption[] = [
+    { value: 'one', label: 'One', hint: 'Check hint' },
+    { value: 2, label: 'Two', disabled: true },
+    { value: 'three', label: 'Three', checked: true },
+    { value: 4, label: 'Four', checked: true },
+];
+
 
 const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8' });
 
@@ -30,6 +39,7 @@ function App() {
     const [ checkbox2, setCheckbox2 ] = useState(false);
     const [ checkbox3, setCheckbox3 ] = useState(true);
     const [ files, setFiles ] = useState<File[]>([file]);
+    const [ checkboxlist, setCheckboxList ] = useState(checkboxes);
 
     const onSubmit = (data: FormData) => {
         window.alert(data);
@@ -196,6 +206,16 @@ function App() {
                                 disabled={false}
                             />
                         </Fieldset>
+                    </FormCol>
+                    <FormCol>
+                        <CheckboxList
+                            id='checkboxlist'
+                            label='Checkbox List'
+                            required={true}
+                            disabled={false}
+                            options={checkboxlist}
+                            onChange={setCheckboxList}
+                        />
                     </FormCol>
                 </FormRow>
             </Form>

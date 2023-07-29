@@ -9,9 +9,11 @@
     --color-placeholder: lightslategrey;
     --color-disabled: slategrey;
     --color-label: steelblue;
+    --color-grey: lightslategrey;
     --color-hint: slategrey;
     --color-top: slategrey;
     --color-bottom: slategrey;
+    --background-grey: gainsboro;
     --background-color: white;
     --background-input: aliceblue;
     --background-submit: steelblue;
@@ -173,25 +175,27 @@
     opacity: .5;
 }
 /**
- * Кнопка ошибки
+ * Кнопка обычная (по-умолчанию)
  */
-.Form .Button.Error {
-    background-color: var(--color-error);
-    border-color: var(--color-error);
+.Form .Button.Default {
+    color: var(--color-grey);
+    border-color: var(--background-grey);
+    background-color: var(--background-grey);
 }
 /**
  * Кнопка успеха
  */
  .Form .Button.Success {
-    background-color: var(--color-success);
-    border-color: var(--color-success);
+    color: var(--color-success);
+    border-color: var(--background-success);
+    background-color: var(--background-success);
 }
 /**
  * Кнопка ошибки
  */
 .Form .Button.Cancel {
     color: var(--color-error);
-    border-color: var(--color-error);
+    border-color: var(--background-error);
     background-color: var(--background-error);
 } 
 /**

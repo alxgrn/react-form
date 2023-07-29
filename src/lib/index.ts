@@ -3,6 +3,7 @@ import Date from './components/Date';
 import Files from './components/Files';
 import Input from './components/Input';
 import Radio from './components/Radio';
+import Button from './components/Button';
 import Select from './components/Select';
 import Hidden from './components/Hidden';
 import Checkbox from './components/Checkbox';
@@ -18,6 +19,7 @@ export {
     Files,
     Input,
     Radio,
+    Button,
     Select,
     Hidden,
     Checkbox,

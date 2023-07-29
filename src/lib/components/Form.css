@@ -204,8 +204,9 @@
  * В принципе она такая же как кнопка по-умолчанию, но пусть будет
  */
 .Button.Submit {
-    background-color: var(--color-submit);
-    border-color: var(--color-submit);
+    color: var(--color-submit);
+    border-color: var(--background-color);
+    background-color: var(--background-color);
 }
 /**
  * Контейнер под кнопки под формой (submit, cancel)

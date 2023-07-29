@@ -1,7 +1,8 @@
 /**
  * Основной блок формы
  */
- .Form {
+ .Form,
+ .Button {
     --color-text: #333;
     --color-submit: white;
     --color-success: forestgreen;
@@ -85,7 +86,7 @@
 /**
  * Элементы ввода
  */
-.Form .Button,
+.Button,
 .Form input[type='text'],
 .Form input[type='password'],
 .Form input[type='submit'],
@@ -149,7 +150,7 @@
 /**
  * Корректируем оформление кнопок...
  */
-.Form .Button,
+.Button,
 .Form input[type="submit"] {
 	cursor: pointer;
     color: var(--color-submit);
@@ -169,7 +170,7 @@
 /**
  * ...и их запрещенного варианта
  */
-.Form .Button.disabled,
+.Button.disabled,
 .Form input[type="submit"]:disabled {
     cursor: default;
     opacity: .5;
@@ -177,7 +178,7 @@
 /**
  * Кнопка обычная (по-умолчанию)
  */
-.Form .Button.Default {
+.Button.Default {
     color: var(--color-grey);
     border-color: var(--background-grey);
     background-color: var(--background-grey);
@@ -185,7 +186,7 @@
 /**
  * Кнопка успеха
  */
- .Form .Button.Success {
+.Button.Success {
     color: var(--color-success);
     border-color: var(--background-success);
     background-color: var(--background-success);
@@ -193,7 +194,7 @@
 /**
  * Кнопка ошибки
  */
-.Form .Button.Cancel {
+.Button.Cancel {
     color: var(--color-error);
     border-color: var(--background-error);
     background-color: var(--background-error);
@@ -202,14 +203,14 @@
  * Обычная кнопка
  * В принципе она такая же как кнопка по-умолчанию, но пусть будет
  */
- .Form .Button.Submit {
+.Button.Submit {
     background-color: var(--color-submit);
     border-color: var(--color-submit);
 }
 /**
  * Контейнер под кнопки под формой (submit, cancel)
  */
-.Form .SubmitButtons {
+.SubmitButtons {
     margin-top: 1em;
     margin-bottom: 0;
     display: flex;

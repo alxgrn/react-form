@@ -205,8 +205,8 @@
  */
 .Button.Submit {
     color: var(--color-submit);
-    border-color: var(--background-color);
-    background-color: var(--background-color);
+    border-color: var(--background-submit);
+    background-color: var(--background-submit);
 }
 /**
  * Контейнер под кнопки под формой (submit, cancel)

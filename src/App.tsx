@@ -76,6 +76,8 @@ function App() {
                 submit='Submit button'
                 onSubmit={onSubmit}
                 wide={true}
+                cancel='Cancel'
+                onCancel={() => window.alert('Cancel')}
             >
                 <FormRow>
                     <FormCol>

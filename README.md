@@ -15,6 +15,7 @@ npm install @alxgrn/react-form
 ## Документация
 * [Form](./docs/Form.md)
 * [Input](./docs/Input.md)
+* [Button](./docs/Button.md)
 * [Files](./docs/Files.md)
 * [Radio](./docs/Radio.md)
 * [Select](./docs/Select.md)
@@ -24,6 +25,7 @@ npm install @alxgrn/react-form
 * [CheckboxList](./docs/CheckboxList.md)
 * [Date](./docs/Date.md)
 * [FormRow, FormCol](./docs/FormRowCol.md)
+* [LabelInput](./docs/LabelInput.md)
 
 ## Как публиковать свой NPM-пакет
 [Заметка о том, как публиковать свой пакет](./docs/NPM-Publish.md). Просто чтобы не забыть :)

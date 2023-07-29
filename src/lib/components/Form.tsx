@@ -5,22 +5,25 @@ import { RadioOption } from './Radio';
 import { SelectOption } from './Select';
 import { CheckboxListOption, CheckboxListValue } from './CheckboxList';
 import './Form.css';
+import Button from './Button';
 
 export type FormProps = {
     info?: string | null;
     error?: string | null;
     success?: string | null;
     submit?: string | null;
+    cancel?: string | null;
     wide?: boolean | null;
     onSubmit?: (d: FormData) => void;
+    onCancel?: () => void;
 }
 
 export type FormData = {
     [i: string]: string | number | boolean | File[] | any[];
 };
 
-export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, submit,
-                                                         wide, onSubmit, children }) => {
+export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, submit, cancel,
+                                                         wide, onSubmit, onCancel, children }) => {
     const [ disabled, setDisabled ] = useState(false);
     // Если выводим кнопку сабмита, то проверяем все ли данные введены для required полей.
     // Подробности про props.__TYPE описаны тут:
@@ -132,13 +135,22 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
             {error && <div className='FormError'>{error}</div>}
             {info && <div className='FormInfo'>{info}</div>}
             {children}
-            {submit &&
-            <input
-                type='submit'
-                value={submit}
-                disabled={disabled}
-                onClick={() => onClick()}
-            />}
+            {(submit || cancel) &&
+            <div className='SubmitButtons'>
+                {submit &&
+                <input
+                    type='submit'
+                    value={submit}
+                    disabled={disabled}
+                    onClick={() => onClick()}
+                />}
+                {cancel &&
+                <Button
+                    type='Cancel'
+                    label={cancel}
+                    onClick={onCancel}
+                />}
+            </div>}
         </div>
     );
 }

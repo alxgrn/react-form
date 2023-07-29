@@ -10,6 +10,7 @@ import CheckboxList from './components/CheckboxList';
 import Fieldset from './components/Fieldset';
 import FormRow from './components/FormRow';
 import FormCol from './components/FormCol';
+import LabelInput from './components/LabelInput';
 
 export {
     Form,
@@ -24,6 +25,7 @@ export {
     Fieldset,
     FormRow,
     FormCol,
+    LabelInput,
 };
 
 export type {

@@ -83,6 +83,7 @@
 /**
  * Элементы ввода
  */
+.Form .Button,
 .Form input[type='text'],
 .Form input[type='password'],
 .Form input[type='submit'],
@@ -146,6 +147,7 @@
 /**
  * Корректируем оформление кнопок...
  */
+.Form .Button,
 .Form input[type="submit"] {
 	cursor: pointer;
     color: var(--color-submit);
@@ -153,17 +155,61 @@
     border-color: var(--background-submit);
     display: inline-block;
     text-decoration: none;
-    margin-top: 1em;
-    margin-bottom: 0;
+    margin: 0;
     padding-left: 2rem;
     padding-right: 2rem;
     text-align: center;
     width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 /**
  * ...и их запрещенного варианта
  */
+.Form .Button.disabled,
 .Form input[type="submit"]:disabled {
     cursor: default;
     opacity: .5;
+}
+/**
+ * Кнопка ошибки
+ */
+.Form .Button.Error {
+    background-color: var(--color-error);
+    border-color: var(--color-error);
+}
+/**
+ * Кнопка успеха
+ */
+ .Form .Button.Success {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+/**
+ * Кнопка ошибки
+ */
+.Form .Button.Cancel {
+    color: var(--color-error);
+    border-color: var(--color-error);
+    background-color: var(--background-error);
+} 
+/**
+ * Обычная кнопка
+ * В принципе она такая же как кнопка по-умолчанию, но пусть будет
+ */
+ .Form .Button.Submit {
+    background-color: var(--color-submit);
+    border-color: var(--color-submit);
+}
+/**
+ * Контейнер под кнопки под формой (submit, cancel)
+ */
+.Form .SubmitButtons {
+    margin-top: 1em;
+    margin-bottom: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1rem;
 }

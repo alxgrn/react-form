@@ -1,5 +1,5 @@
 import React, { FC, useRef, useState, useEffect } from 'react';
-import LabelInput from './LabelInput';
+import Label from './label/Label';
 import './Date.css';
 import DatePicker from './DatePicker';
 
@@ -88,13 +88,13 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
 
     return (
         <div ref={ref} className='FormItem FormDate' onClick={onClick}>
-            <LabelInput
+            <Label
                 top={top}
                 bottom={bottom}
                 label={label}
                 required={required}
                 disabled={disabled}
-                failed={isError()}
+                error={isError()}
             >
                 <input
                     id={id}
@@ -106,7 +106,7 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
                     disabled={disabled ? true : false}
                     ref={refInput}
                 />
-            </LabelInput>
+            </Label>
             {/*
                 Располагаем DatePicker вне LabelInput т.к. иначе не удасться остановить
                 всплытие клика внутри календаря и будет невозможно его скрытие при клике

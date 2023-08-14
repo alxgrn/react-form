@@ -1,0 +1,74 @@
+/**
+ * Цвета
+ */
+ :root {
+    --alxgrn-fieldset-color: var(--alxgrn-color-accent);
+    --alxgrn-fieldset-color-error: var(--alxgrn-color-error);
+    --alxgrn-fieldset-color-top: var(--alxgrn-color-topbottom);
+    --alxgrn-fieldset-color-bottom: var(--alxgrn-color-topbottom);
+    --alxgrn-fieldset-color-disabled: var(--alxgrn-color-disabled);
+    --alxgrn-fieldset-border: var(--alxgrn-color-accent);
+    --alxgrn-fieldset-border-error: var(--alxgrn-color-error);
+    --alxgrn-fieldset-border-disabled: gainsboro;
+}
+/**
+ * Блок элементов
+ */
+.Form .Fieldset {
+    display: block;
+    margin: var(--alxgrn-unit) 0;
+}
+
+.Form .Fieldset .FormItem {
+    margin: 0 0 var(--alxgrn-unit-half) 0;
+}
+
+.Form .Fieldset .FormItem:last-child {
+    margin-bottom: 0;
+}
+
+.Form .Fieldset .Label {
+    color: var(--alxgrn-fieldset-color);
+    margin-bottom: var(--alxgrn-unit-small);
+}
+
+.Form .Fieldset .Inner {
+    border: 1px solid var(--alxgrn-fieldset-border);
+    padding: var(--alxgrn-unit-half);
+    border-radius: var(--alxgrn-unit-small);
+}
+
+.Form .Fieldset .Top,
+.Form .Fieldset .Bottom {
+    font-size: smaller;
+}
+
+.Form .Fieldset .Top {
+    color: var(--alxgrn-fieldset-color-top);
+    margin-bottom: var(--alxgrn-unit-small);
+}
+
+.Form .Fieldset .Bottom {
+    color: var(--alxgrn-fieldset-color-bottom);
+    margin-top: var(--alxgrn-unit-small);
+}
+
+.Form .Fieldset.Disabled .Label,
+.Form .Fieldset.Disabled .Top,
+.Form .Fieldset.Disabled .Bottom {
+    color: var(--alxgrn-fieldset-color-disabled);
+}
+
+.Form .Fieldset.Disabled .Inner {
+    border-color: var(--alxgrn-fieldset-border-disabled);
+}
+
+.Form .Fieldset.Error .Label,
+.Form .Fieldset.Error .Top,
+.Form .Fieldset.Error .Bottom {
+    color: var(--alxgrn-fieldset-color-error);
+}
+
+.Form .Fieldset.Error .Inner {
+    border-color: var(--alxgrn-fieldset-border-error);
+}

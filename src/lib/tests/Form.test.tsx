@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Form, Input, Radio, Select, Checkbox, Files, Hidden, Date } from '../index';
+import { Form, Input, RadioList, Select, Checkbox, Files, Hidden, Date } from '../index';
 
 describe('Form', () => {
 
@@ -25,7 +25,7 @@ test('has correct error text', () => {
 test('has submit button', () => {
     const submit = 'Submit button';
     render(<Form submit={submit}/>);
-    expect(screen.getByRole('button', { name: submit })).toBeInTheDocument();
+    expect(screen.getByText(submit)).toBeInTheDocument();
 });
 
 test('submit button disabled when required Input field is empty', () => {
@@ -43,9 +43,9 @@ test('submit button disabled when required Input field is empty', () => {
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    expect(button).toHaveClass('Disabled');
 });
 
 test('submit button disabled when required Checkbox field is unchecked', () => {
@@ -58,14 +58,15 @@ test('submit button disabled when required Checkbox field is unchecked', () => {
             <Checkbox
                 id='id'
                 label='label'
+                value='value'
                 required={true}
                 onChange={onChange}
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    expect(button).toHaveClass('Disabled');
 });
 
 test('submit button disabled when required Select field is unselected', () => {
@@ -84,9 +85,9 @@ test('submit button disabled when required Select field is unselected', () => {
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    expect(button).toHaveClass('Disabled');
 });
 
 test('submit button disabled when required Radio field is unselected', () => {
@@ -96,7 +97,7 @@ test('submit button disabled when required Radio field is unselected', () => {
         <Form
             submit={submit}
         >
-            <Radio
+            <RadioList
                 id='id'
                 required={true}
                 onChange={onChange}
@@ -105,9 +106,9 @@ test('submit button disabled when required Radio field is unselected', () => {
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    expect(button).toHaveClass('Disabled');
 });
 
 test('submit button disabled when required Files field is empty', () => {
@@ -126,9 +127,9 @@ test('submit button disabled when required Files field is empty', () => {
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    expect(button).toHaveClass('Disabled');
 });
 
 test('submit button disabled when required Date field is empty', () => {
@@ -146,9 +147,9 @@ test('submit button disabled when required Date field is empty', () => {
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    expect(button).toHaveClass('Disabled');
 });
 
 test('submit button disabled when required Date field has incorrect value', () => {
@@ -167,9 +168,9 @@ test('submit button disabled when required Date field has incorrect value', () =
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    expect(button).toHaveClass('Disabled');
 });
 
 test('onSubmit callback gets correct data', async () => {
@@ -185,6 +186,7 @@ test('onSubmit callback gets correct data', async () => {
             />
             <Checkbox
                 id='checkbox'
+                value='checkbox'
                 onChange={jest.fn}
                 label='label'
                 checked={true}
@@ -195,7 +197,7 @@ test('onSubmit callback gets correct data', async () => {
                 value='one'
                 options={[{ value: 'one', option: 'one'}]}
             />
-            <Radio
+            <RadioList
                 id='radio'
                 onChange={jest.fn}
                 value='two'
@@ -218,12 +220,12 @@ test('onSubmit callback gets correct data', async () => {
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
     await user.click(button);
     expect(onSubmit).toBeCalledTimes(1);
     expect(onSubmit).toBeCalledWith({
-        checkbox: true,
+        checkbox: 'checkbox',
         files: [],
         input: 'test',
         radio: 'two',

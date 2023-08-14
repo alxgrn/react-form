@@ -1,0 +1,105 @@
+:root {
+    --alxgrn-form-width: 512px;
+    --alxgrn-form-width-wide: 1024px;
+    --alxgrn-form-info-bg: transparent;
+    --alxgrn-form-info-color: #333;
+    --alxgrn-form-info-border: transparent;
+    --alxgrn-form-info-error-bg: #fee;
+    --alxgrn-form-info-error-color: firebrick;
+    --alxgrn-form-info-error-border: #fee;
+    --alxgrn-form-info-success-bg: #efe;
+    --alxgrn-form-info-success-color: forestgreen;
+    --alxgrn-form-info-success-border: #efe;
+}
+/**
+ * Основной блок формы
+ */
+ .Form {
+    --color-text: #333;
+    --color-submit: white;
+    --color-error: firebrick;
+    --color-disabled: slategrey;
+    --color-label: steelblue;
+    --color-hint: slategrey;
+    --color-top: slategrey;
+    --color-bottom: slategrey;
+    --background-color: white;
+    --background-input: aliceblue;
+    --background-submit: steelblue;
+    --background-error: #fee;
+    --background-focus: moccasin;
+    --background-disabled: whitesmoke;
+    --border-color: steelblue;
+    --border-color-disabled: lightgrey;
+    --border-color-failed: firebrick;
+    --border-radius: .2rem;
+
+    margin: var(--alxgrn-unit) 0;
+    max-width: var(--alxgrn-form-width);
+}
+/**
+ * Широкий вариант основного блока формы
+ */
+ .Form.FormWide {
+    max-width: var(--alxgrn-form-width-wide);
+}
+/**
+ * Элементы ввода
+ */
+ .Form * {
+	font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+/**
+ * Блок с информацией о форме
+ */
+.Form .FormInfo {
+    margin: var(--alxgrn-unit) 0;
+    color: var(--alxgrn-form-info-color);
+}
+/**
+ * Блок уведомления об успехе
+ */
+.Form .FormSuccess {
+    margin: var(--alxgrn-unit) 0;
+    padding: var(--alxgrn-unit-half);
+    display: block;
+    color: var(--alxgrn-form-info-success-color);
+    background-color: var(--alxgrn-form-info-success-bg);
+    border: 1px solid var(--alxgrn-form-info-success-border);
+    border-radius: var(--alxgrn-form-radius);
+}
+/**
+ * Блок уведомления об ошибке
+ */
+.Form .FormError {
+    margin: var(--alxgrn-unit) 0;
+    padding: var(--alxgrn-unit-half);
+    display: block;
+    color: var(--alxgrn-form-info-error-color);
+    background-color: var(--alxgrn-form-info-error-bg);
+    border: 1px solid var(--alxgrn-form-info-error-border);
+    border-radius: var(--alxgrn-form-radius);
+}
+/**
+ * Блок элемента формы
+ */
+.Form .FormItem {
+    display: block;
+    margin: var(--alxgrn-unit) 0;
+}
+/**
+ * Контейнер под кнопки под формой (submit, cancel)
+ */
+.FormSubmitButtons {
+    margin-top: var(--alxgrn-unit);
+    margin-bottom: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: var(--alxgrn-unit);
+}

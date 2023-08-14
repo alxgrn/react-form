@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { Form, Files, Input, Radio, Select, Checkbox, CheckboxList, Fieldset, Date } from './lib';
-import { FormData } from './lib/components/Form';
+import { Form, Files, Input, RadioList, Select, Checkbox, CheckboxList, Fieldset, Date, FormData, FormRow, FormCol } from './lib';
 import './App.css';
-import FormRow from './lib/components/FormRow';
-import FormCol from './lib/components/FormCol';
-import { CheckboxListOption } from './lib/components/CheckboxList';
+import { CheckboxListOption } from './lib/components/checkbox/CheckboxList';
+import { RadioListOption, RadioListValue } from './lib/components/radio/RadioList';
 
 const options = [
     { value: 'one', option: 'one' },
@@ -12,15 +10,15 @@ const options = [
     { value: 'three', option: 'three', disabled: true },
 ];
 
-const radios = [
-    { value: 'one', label: 'One', hint: 'Radio hint' },
+const radios: RadioListOption[] = [
+    { value: 'one', label: 'One', bottom: 'Radio hint' },
     { value: 'two', label: 'Two', disabled: true },
-    { value: 'three', label: 'Three', error: 'Radio error', required: true },
+    { value: 'three', label: 'Three', required: false },
 ];
 
 const checkboxes: CheckboxListOption[] = [
-    { value: 'one', label: 'One', hint: 'Check hint' },
-    { value: 2, label: 'Two', disabled: true },
+    { value: 'one', label: 'One', bottom: 'Check hint' },
+    { value: 2, label: 'Two', disabled: true, checked: false },
     { value: 'three', label: 'Three', checked: true },
     { value: 4, label: 'Four', checked: true },
 ];
@@ -31,7 +29,7 @@ const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8
 function App() {
     const [ date, setDate ] = useState('01.01.2023');
     const [ text, setText ] = useState('Hello');
-    const [ radio, setRadio ] = useState('');
+    const [ radio, setRadio ] = useState<RadioListValue>('');
     const [ select, setSelect ] = useState('');
     const [ password, setPassword ] = useState('1234567');
     const [ textarea, setTextarea ] = useState('Lorem ipsum dolor sit amet...');
@@ -148,45 +146,44 @@ function App() {
                 </FormRow>
                 <FormRow>
                     <FormCol>
-                        <Fieldset
-                            legend='Radio legend'
+                        <RadioList
+                            id='radio'
+                            label='Radio legend'
+                            value={radio}
+                            options={radios}
+                            onChange={setRadio}
                             required={true}
-                        >
-                            <Radio
-                                id='radio'
-                                value={radio}
-                                options={radios}
-                                onChange={setRadio}
-                                required={true}
-                            />
-                        </Fieldset>
+                        />
                     </FormCol>
                     <FormCol>
                         <Fieldset
-                            legend='Checkbox Legend'
+                            label='Checkbox Legend'
                         >
                             <Checkbox
                                 id='checkbox1'
+                                value='checkbox1'
                                 checked={checkbox1}
                                 onChange={(b) => onCheckboxChange(b, 1)}
                                 label='Checkbox1 label'
+                                bottom='Checkbox1 bottom'
                                 required={true}
-                                error={checkbox1 ? undefined : 'Checkbox is required'}
                             />
                             <Checkbox
                                 id='checkbox2'
+                                value='checkbox2'
                                 checked={checkbox2}
                                 onChange={(b) => onCheckboxChange(b, 2)}
                                 label='Checkbox2 label'
-                                hint='Checkbox2 hint'
+                                bottom='Checkbox2 hint'
                                 disabled={true}
                             />
                             <Checkbox
                                 id='checkbox3'
+                                value='checkbox3'
                                 checked={checkbox3}
                                 onChange={(b) => onCheckboxChange(b, 3)}
                                 label='Checkbox3 label'
-                                hint='Checkbox3 hint'
+                                bottom='Checkbox3 hint'
                             />
                         </Fieldset>
                     </FormCol>
@@ -194,7 +191,7 @@ function App() {
                 <FormRow>
                     <FormCol>
                         <Fieldset
-                            legend='File legend'
+                            label='File legend'
                         >
                             <Files
                                 id='file'

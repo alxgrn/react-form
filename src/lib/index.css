@@ -1,0 +1,24 @@
+:root {
+    /**
+      * Цвета
+      */
+    --alxgrn-bg-input: aliceblue;
+    --alxgrn-bg-focus: moccasin;
+    --alxgrn-bg-error: #fee;
+    --alxgrn-bg-success: #efe;
+    --alxgrn-bg-disabled: whitesmoke;
+    --alxgrn-color-text: #333;
+    --alxgrn-color-error: firebrick;
+    --alxgrn-color-accent: steelblue;
+    --alxgrn-color-success: forestgreen;
+    --alxgrn-color-disabled: slategrey;
+    --alxgrn-color-topbottom: slategrey;
+    /**
+      * Размеры
+      */
+    --alxgrn-unit: 1rem;
+    --alxgrn-unit-half: .5rem;
+    --alxgrn-unit-small: .25rem;
+    --alxgrn-unit-double: 2rem;
+    --alxgrn-unit-smallest: .125rem;
+}

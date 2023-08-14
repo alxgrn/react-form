@@ -1,0 +1,96 @@
+/**
+ * Цвета
+ * Переменные такие же как у Input
+ */
+ :root {
+    --alxgrn-input-bg: var(--alxgrn-bg-input);
+    --alxgrn-input-color: var(--alxgrn-color-text);
+    --alxgrn-input-border: var(--alxgrn-color-accent);
+
+    --alxgrn-input-bg-focus: var(--alxgrn-bg-focus);
+    --alxgrn-input-color-focus: var(--alxgrn-color-text);
+    --alxgrn-input-border-focus: var(--alxgrn-color-accent);
+
+    --alxgrn-input-bg-error: var(--alxgrn-bg-error);
+    --alxgrn-input-color-error: var(--alxgrn-color-error);
+    --alxgrn-input-border-error: var(--alxgrn-color-error);
+
+    --alxgrn-input-bg-success: var(--alxgrn-bg-success);
+    --alxgrn-input-color-success: var(--alxgrn-color-success);
+    --alxgrn-input-border-success: var(--alxgrn-color-success);
+
+    --alxgrn-input-bg-disabled: var(--alxgrn-bg-disabled);
+    --alxgrn-input-color-disabled: var(--alxgrn-color-disabled);
+    --alxgrn-input-border-disabled: lightgrey;
+}
+/**
+ * Элементы ввода
+ */
+.FormItem select {
+    color: var(--alxgrn-input-color);
+    padding: var(--alxgrn-unit-half);
+    margin: 0;
+	font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    border-radius: var(--alxgrn-unit-small);
+    border: 1px solid var(--alxgrn-input-border);
+    width: 100%;
+    display: block;
+    background-color: var(--alxgrn-input-bg);
+/*  Убираем браузерное оформление элементов ввода */
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+/*	Устанавливаем рассчет ширины с учетом полей */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+/**
+ * Отключаем браузерную подсветку фокуса и назначаем свое оформление
+ */
+.FormItem select:focus {
+	outline: none;
+    color: var(--alxgrn-input-color-focus);
+	background-color: var(--alxgrn-input-bg-focus);
+    border: 1px solid var(--alxgrn-input-border-focus);
+}
+/**
+ * Устанавливаем свое оформление у запрещенных элементов
+ */
+.FormItem select:disabled {
+    color: var(--alxgrn-input-color-disabled);
+    border-color: var(--alxgrn-input-border-disabled);
+    background-color: var(--alxgrn-input-bg-disabled);
+    cursor: default;
+}
+/**
+ * Треугольник у селекта
+ */
+.FormItem select {
+    padding-right: var(--alxgrn-unit-double);
+    cursor: pointer;
+}
+.FormItem .SelectWrap {
+    position: relative;
+}
+.FormItem .SelectWrap::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: var(--alxgrn-unit-small) solid transparent;
+    border-top-color: var(--alxgrn-input-border);
+    top: var(--alxgrn-unit);
+    right: calc(var(--alxgrn-unit) - var(--alxgrn-unit-small));
+    cursor: pointer;
+    pointer-events: none;
+}
+.FormItem .SelectWrap.Disabled::before {
+    border-top-color: var(--alxgrn-input-border-disabled);
+    cursor: default;
+}
+.FormItem .SelectWrap.Error::before {
+    border-top-color: var(--alxgrn-input-border-error);
+}

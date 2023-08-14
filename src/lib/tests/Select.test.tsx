@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Select, SelectOption } from '../components/Select';
+import { Select, SelectOption } from '../components/select/Select';
 
 const options: SelectOption[] = [
     { value: 'one', option: 'one' },
@@ -57,7 +57,7 @@ test('has required mark and disabled option', () => {
             onChange={onChange}
         />
     );
-    expect(container.querySelector('.FormRequiredMark')).toBeTruthy();
+    expect(container.querySelector('.RequiredMark')).toBeTruthy();
     expect(screen.getByRole('combobox')).toBeDisabled();
 });
 

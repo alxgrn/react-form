@@ -1,0 +1,26 @@
+/**
+ * Отметка обязательности поля у лейбла поля ввода.
+ * Используем три черточки с поворотом.
+ */
+.Form span.RequiredMark {
+    position: relative;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+}
+.Form span.RequiredMark span {
+    position: absolute;
+    background-color: var(--alxgrn-color-error);
+    display: inline-block;
+    border-radius: 2px;
+    width: 2px;
+    height: 0.8rem;
+    top: 0.2rem;
+    left: 0.3rem;
+}
+.Form span.RequiredMark span:nth-child(2) {
+    transform: rotate(60deg);
+}
+.Form span.RequiredMark span:nth-child(3) {
+    transform: rotate(120deg);
+}

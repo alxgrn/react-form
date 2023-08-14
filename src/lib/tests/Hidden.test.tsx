@@ -22,7 +22,7 @@ test('has correct value', async () => {
             />
         </Form>
     );
-    const button = screen.getByRole('button', { name: submit });
+    const button = screen.getByText(submit);
     expect(button).toBeInTheDocument();
     await user.click(button);
     expect(onSubmit).toBeCalledTimes(1);

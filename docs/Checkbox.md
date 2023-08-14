@@ -2,18 +2,19 @@
 Компонент для установки/сбрасывания флажка.
 
 ```jsx
-const [ checkbox, setCheckbox ] = useState(true);
+const [ checked, setChecked ] = useState(true);
 
-const onCheckboxChange = (b: boolean) => {
-    setCheckbox(b);
+const onCheckboxChange = (b: boolean, v: string|number) => {
+    setChecked(b);
 };
 
 return(
     <Form>
         <Checkbox
             id='checkbox'
-            checked={checkbox}
-            onChange={(b) => onCheckboxChange(b)}
+            value='value'
+            checked={checked}
+            onChange={onCheckboxChange}
             label='Checkbox label'
         />
     </Form>
@@ -24,10 +25,13 @@ return(
 |Prop name|Type|Default|Description|
 |---------|----|-------|-----------|
 |id|string||Идентификатор элемента ввода|
-|onChange|(value: boolean) => void||Обработчик ввода|
+|value|string \| number||Значение элемента|
+|onChange|(checked: boolean, value: string \| number) => void||Обработчик ввода|
 |label|string||Название элемента ввода|
-|hint?|string||Подсказка под элементом ввода|
-|error?|string||Текст ошибки под элементом ввода|
+|bottom?|string||Подсказка под элементом ввода|
 |required?|boolean|false|Флаг обязательности для заполнения|
 |disabled?|boolean|false|Флаг запрещения ввода данных|
 |checked?|boolean|false|Флаг установленности флажка|
+
+## Особенности
+При обработке клика кнопки отправки формы в данных формы элемент с идентификатором `id` будет иметь значение равное `value` если флажок взведен, и значение `undefined` в противном случае.

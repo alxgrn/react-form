@@ -32,7 +32,7 @@ test('has correct label, value, top, bottom, placeholder, disabled', () => {
     expect(screen.getByText(label)).toBeInTheDocument();
     expect(screen.getByText(top)).toBeInTheDocument();
     expect(screen.getByText(bottom)).toBeInTheDocument();
-    expect(container.querySelector('.FormRequiredMark')).toBeFalsy();
+    expect(container.querySelector('.RequiredMark')).toBeFalsy();
 });
 
 test('has required mark and disabled option', () => {
@@ -50,7 +50,7 @@ test('has required mark and disabled option', () => {
             onChange={onChange}
         />
     );
-    expect(container.querySelector('.FormRequiredMark')).toBeTruthy();
+    expect(container.querySelector('.RequiredMark')).toBeTruthy();
     expect(screen.getByRole('textbox')).toBeDisabled();
 });
 

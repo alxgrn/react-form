@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Files, bytes2string } from '../components/Files';
+import { Files, bytes2string } from '../components/files/Files';
 
 describe('Files', () => {
 
@@ -42,7 +42,7 @@ test('has required mark and disabled option', () => {
             onChange={onChange}
         />
     );
-    expect(container.querySelector('.FormRequiredMark')).toBeTruthy();
+    expect(container.querySelector('.RequiredMark')).toBeTruthy();
     expect(screen.getByLabelText(label)).toBeDisabled();
 });
 

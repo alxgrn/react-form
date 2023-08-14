@@ -3,7 +3,7 @@
 
 ```jsx
 const checkboxes: CheckboxListOption[] = [
-    { value: 'one', label: 'One', hint: 'Check hint' },
+    { value: 'one', label: 'One', bottom: 'Check hint' },
     { value: 2, label: 'Two', disabled: true },
     { value: 'three', label: 'Three', checked: true },
     { value: 4, label: 'Four', checked: true },
@@ -39,7 +39,7 @@ return(
 |----|----|-----------|
 |label|string|Название опции|
 |value|CheckboxListValue|Значение опции|
-|hint?|string|Подсказка для опции|
+|bottom?|string|Подсказка для опции|
 |disabled?|boolean|Флаг запрета выбора|
 |checked?|boolean|Флаг того, что опция выбрана|
 

@@ -6,7 +6,7 @@
 ```jsx
 return(
     <Form>
-        <Fieldset legend='Legend'>
+        <Fieldset label='Legend'>
         ...
         </Fieldset>
     </Form>
@@ -16,6 +16,9 @@ return(
 ## Свойства и методы
 |Prop name|Type|Default|Description|
 |---------|----|-------|-----------|
-|legend?|string||Название группы элементов|
+|label?|string||Название группы элементов|
+|top?|string \| null \| React.ReactNode||Текст над группой элементов|
+|bottom?|string \| null \| React.ReactNode||Текст под группой элементов|
 |required?|boolean|false|Флаг обязательности для заполнения|
 |disabled?|boolean|false|Флаг запрещения ввода данных|
+|error?|boolean|false|Флаг ошибки заполнения|

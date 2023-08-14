@@ -1,0 +1,50 @@
+/**
+ * Цвета
+ */
+ :root {
+    --alxgrn-label-color: var(--alxgrn-color-accent);
+    --alxgrn-label-color-error: var(--alxgrn-color-error);
+    --alxgrn-label-color-top: var(--alxgrn-color-topbottom);
+    --alxgrn-label-color-bottom: var(--alxgrn-color-topbottom);
+    --alxgrn-label-color-disabled: var(--alxgrn-color-disabled);
+}
+/**
+ * Лейбл поля ввода text/password/textarea/select
+ */
+.FormItem label {
+	color: var(--alxgrn-label-color);
+	display: block;
+    user-select: none;
+    padding: 0;
+}
+
+.FormItem label .Label {
+    margin-bottom: var(--alxgrn-unit-small);
+}
+
+.FormItem label .Top,
+.FormItem label .Bottom {
+    font-size: smaller;
+}
+
+.FormItem label .Top {
+    color: var(--alxgrn-label-color-top);
+    margin-bottom: var(--alxgrn-unit-small);
+}
+
+.FormItem label .Bottom {
+    color: var(--alxgrn-label-color-bottom);
+    margin-top: var(--alxgrn-unit-small);
+}
+
+.FormItem label.Disabled,
+.FormItem label.Disabled .Top,
+.FormItem label.Disabled .Bottom {
+    color: var(--alxgrn-label-color-disabled);
+}
+
+.FormItem label.Error,
+.FormItem label.Error .Top,
+.FormItem label.Error .Bottom {
+    color: var(--alxgrn-label-color-error);
+}

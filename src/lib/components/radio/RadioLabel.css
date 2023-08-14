@@ -1,0 +1,96 @@
+/**
+ * Лейбл поля ввода для radio/checkbox
+ */
+ .Form label.Radio {
+    width: auto;
+	display: block;
+    user-select: none;
+    padding: 0;
+    cursor: pointer;
+    margin-bottom: var(--alxgrn-unit-half);
+}
+
+.Form label.Radio:last-child {
+    margin-bottom: 0;
+}
+
+.Form label.Radio .Bottom {
+    font-size: smaller;
+    color: var(--alxgrn-color-topbottom);
+    cursor: default;
+}
+
+.Form label.Radio.Disabled,
+.Form label.Radio.Disabled .Bottom {
+    color: var(--alxgrn-color-disabled);
+    cursor: default;
+}
+
+.Form label.Radio.Error,
+.Form label.Radio.Error .Bottom {
+    color: var(--alxgrn-color-error);
+}
+
+/**
+ * Для стилизации checkbox/radio используем тег <s> внутри <label>.
+ */
+.Form label.Radio {
+    display: flex;
+    width: fit-content;
+    align-items: flex-start;
+}
+.Form label.Radio s,
+.Form label.Radio input {
+    flex: 0 0 auto;
+}
+.Form label.Radio div {
+    flex: 1 1 auto;
+}
+/**
+ * Стилизация checkbox и radio
+ * Будем скрывать браузерные элементы и использовать
+ * вместо них стилизованный тег <s> внутри <label>
+ */
+.Form label.Radio input {
+    display: none;
+}
+/* Размеры и общий вид для псевдо checkbox/radio */
+.Form label.Radio s {
+    width: var(--alxgrn-unit);
+    height: var(--alxgrn-unit);
+    border: 1px solid var(--alxgrn-color-accent);
+    padding: 2px;
+    background-clip: content-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+    margin: var(--alxgrn-unit-smallest) var(--alxgrn-unit-half) 0 0;
+    text-decoration: none;
+}
+/* Radio круглый */
+.Form label.Radio input[type='radio'] + s {
+    border-radius: 50%;
+}
+/* Checkbox квадратный */
+.Form label.Radio input[type='checkbox'] + s {
+    border-radius: var(--alxgrn-unit-small);
+}
+/* Disabled */
+.Form label.Radio.Disabled s {
+    opacity: .5;
+    border: 1px solid var(--alxgrn-color-disabled);
+}
+.Form label.Radio.Disabled.Checked s {
+    background-color: var(--alxgrn-color-disabled);
+}
+/* Checked */
+.Form label.Radio.Checked s {
+    background-color: var(--alxgrn-color-accent);
+}
+/* Failed */
+.Form label.Radio.Error s {
+    border: 1px solid var(--alxgrn-color-error);
+}
+.Form label.Radio.Error.Checked s {
+    background-color: var(--alxgrn-color-error);
+}

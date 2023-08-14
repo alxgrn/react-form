@@ -1,0 +1,89 @@
+/**
+ * Цвета
+ */
+:root {
+    --alxgrn-input-bg: var(--alxgrn-bg-input);
+    --alxgrn-input-color: var(--alxgrn-color-text);
+    --alxgrn-input-border: var(--alxgrn-color-accent);
+
+    --alxgrn-input-bg-focus: var(--alxgrn-bg-focus);
+    --alxgrn-input-color-focus: var(--alxgrn-color-text);
+    --alxgrn-input-border-focus: var(--alxgrn-color-accent);
+
+    --alxgrn-input-bg-error: var(--alxgrn-bg-error);
+    --alxgrn-input-color-error: var(--alxgrn-color-error);
+    --alxgrn-input-border-error: var(--alxgrn-color-error);
+
+    --alxgrn-input-bg-success: var(--alxgrn-bg-success);
+    --alxgrn-input-color-success: var(--alxgrn-color-success);
+    --alxgrn-input-border-success: var(--alxgrn-color-success);
+
+    --alxgrn-input-bg-disabled: var(--alxgrn-bg-disabled);
+    --alxgrn-input-color-disabled: var(--alxgrn-color-disabled);
+    --alxgrn-input-border-disabled: lightgrey;
+
+    --alxgrn-input-color-placeholder: lightslategrey;
+}
+/**
+ * Элементы ввода
+ */
+.FormItem input[type='text'],
+.FormItem input[type='password'],
+.FormItem textarea {
+    color: var(--alxgrn-input-color);
+    padding: var(--alxgrn-unit-half);
+    margin: 0;
+	font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    border-radius: var(--alxgrn-unit-small);
+    border: 1px solid var(--alxgrn-input-border);
+    width: 100%;
+    display: block;
+    background-color: var(--alxgrn-input-bg);
+/*  Убираем браузерное оформление элементов ввода */
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+/*	Устанавливаем рассчет ширины с учетом полей */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+/**
+ * У текстовой области разрешаем изменение размера только по вертикали
+ */
+.FormItem textarea {
+    resize: vertical;
+}
+/**
+ * Отключаем браузерную подсветку фокуса и назначаем свое оформление
+ */
+.FormItem input[type='text']:focus,
+.FormItem input[type='password']:focus,
+.FormItem textarea:focus {
+	outline: none;
+    color: var(--alxgrn-input-color-focus);
+	background-color: var(--alxgrn-input-bg-focus);
+    border: 1px solid var(--alxgrn-input-border-focus);
+}
+/**
+ * Устанавливаем свое оформление у плейсхолдера
+ */
+.FormItem input[type='text']::placeholder,
+.FormItem input[type='password']::placeholder,
+.FormItem textarea::placeholder {
+    color: var(--alxgrn-input-color-placeholder);
+    font-size: var(--alxgrn-unit);
+}
+/**
+ * Устанавливаем свое оформление у запрещенных элементов
+ */
+.FormItem input[type="text"]:disabled,
+.FormItem input[type="password"]:disabled,
+.FormItem textarea:disabled {
+    color: var(--alxgrn-input-color-disabled);
+    border-color: var(--alxgrn-input-border-disabled);
+    background-color: var(--alxgrn-input-bg-disabled);
+    cursor: default;
+}

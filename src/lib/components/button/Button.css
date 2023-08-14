@@ -1,0 +1,70 @@
+/**
+ * Цвета
+ */
+ :root {
+    --alxgrn-button-bg: gainsboro;
+    --alxgrn-button-color: lightslategrey;
+    --alxgrn-button-border: gainsboro;
+
+    --alxgrn-button-bg-error: var(--alxgrn-color-error);
+    --alxgrn-button-color-error: white;
+    --alxgrn-button-border-error: var(--alxgrn-color-error);
+
+    --alxgrn-button-bg-success: var(--alxgrn-color-success);
+    --alxgrn-button-color-success: white;
+    --alxgrn-button-border-success: var(--alxgrn-color-success);
+
+    --alxgrn-button-bg-accent: var(--alxgrn-color-accent);
+    --alxgrn-button-color-accent: white;
+    --alxgrn-button-border-accent: var(--alxgrn-color-accent);
+}
+/**
+ * Кнопка
+ */
+.Button,
+.Button.Default {
+	cursor: pointer;
+    color: var(--alxgrn-button-color);
+    background-color: var(--alxgrn-button-bg);
+    border-color: var(--alxgrn-button-border);
+    display: inline-block;
+    margin: 0;
+    padding: var(--alxgrn-unit-half) var(--alxgrn-unit-double);
+    text-align: center;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: var(--alxgrn-unit-small);
+}
+/**
+ * Запрещенный вариант
+ */
+.Button.Disabled {
+    cursor: default;
+    opacity: .5;
+}
+/**
+ * Кнопка успеха
+ */
+.Button.Success {
+    color: var(--alxgrn-button-color-success);
+    border-color: var(--alxgrn-button-border-success);
+    background-color: var(--alxgrn-button-bg-success);
+}
+/**
+ * Кнопка ошибки и отмены
+ */
+.Button.Error {
+    color: var(--alxgrn-button-color-error);
+    border-color: var(--alxgrn-button-border-error);
+    background-color: var(--alxgrn-button-bg-error);
+} 
+/**
+ * Акцентная кнопка
+ */
+.Button.Accent {
+    color: var(--alxgrn-button-color-accent);
+    border-color: var(--alxgrn-button-border-accent);
+    background-color: var(--alxgrn-button-bg-accent);
+}

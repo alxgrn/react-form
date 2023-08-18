@@ -22,6 +22,7 @@ return(
             <Files
                 id='file'
                 label='File choice'
+                text='Add file'
                 files={files}
                 onChange={onFilesChange}
             />
@@ -34,12 +35,14 @@ return(
 |Prop name|Type|Default|Description|
 |---------|----|-------|-----------|
 |id|string||Идентификатор элемента ввода|
+|files|File[]||Выбранные файлы|
 |onChange|(files: File[]) => void||Обработчик выбора|
-|label|string||Текст на кнопке выбора|
-|top?|string||Текст над элементом ввода|
-|bottom?|string||Текст под элементом ввода|
-|accept?|string||Фильтр разрешенных для выбора типов файлов|
-|multiple?|boolean|false|Флаг разрешения множественного выбора|
-|required?|boolean|false|Флаг обязательности для заполнения|
-|disabled?|boolean|false|Флаг запрета выбора|
+|label?|string \| null||Название блока ввода|
+|text|string \| null \| React.ReactNode||Текст на кнопке выбора|
+|top?|string \| null \| React.ReactNode||Текст над элементом ввода|
+|bottom?|string \| null \| React.ReactNode||Текст под элементом ввода|
+|accept?|string \| null||Фильтр разрешенных для выбора типов файлов|
+|multiple?|boolean \| null|false|Флаг разрешения множественного выбора|
+|required?|boolean \| null|false|Флаг обязательности для заполнения|
+|disabled?|boolean \| null|false|Флаг запрета выбора|
 

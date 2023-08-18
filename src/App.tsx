@@ -190,21 +190,19 @@ function App() {
                 </FormRow>
                 <FormRow>
                     <FormCol>
-                        <Fieldset
-                            label='File legend'
-                        >
-                            <Files
-                                id='file'
-                                label='File choice'
-                                files={files}
-                                onChange={onFilesChange}
-                                top='File top'
-                                bottom='File bottom'
-                                multiple={true}
-                                accept='image/*'
-                                disabled={false}
-                            />
-                        </Fieldset>
+                        <Files
+                            id='file'
+                            label='File choice'
+                            text='Add'
+                            files={files}
+                            onChange={onFilesChange}
+                            top='File top'
+                            bottom='File bottom'
+                            multiple={true}
+                            accept='image/*'
+                            disabled={false}
+                            required={true}
+                        />
                     </FormCol>
                     <FormCol>
                         <CheckboxList

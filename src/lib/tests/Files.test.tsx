@@ -6,8 +6,9 @@ describe('Files', () => {
 
 const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8' });
 
-test('has correct label, top, bottom, disabled', () => {
+test('has correct label, text, top, bottom, disabled', () => {
     const label = 'Label text';
+    const text = 'Text text';
     const top = 'Top text';
     const bottom = 'Bottom text';
     const onChange = jest.fn();
@@ -16,12 +17,13 @@ test('has correct label, top, bottom, disabled', () => {
             id='id'
             files={[]}
             label={label}
+            text={text}
             top={top}
             bottom={bottom}
             onChange={onChange}
         />
     );
-    const input = screen.getByLabelText(label);
+    const input = screen.getByLabelText(text);
     expect(input).toBeInTheDocument();
     expect(input).not.toBeDisabled();
     expect(screen.getByText(label)).toBeInTheDocument();
@@ -31,19 +33,21 @@ test('has correct label, top, bottom, disabled', () => {
 
 test('has required mark and disabled option', () => {
     const label = 'Label text';
+    const text = 'Text text';
     const onChange = jest.fn();
     const { container } = render(
         <Files
             id='id'
             files={[]}
             label={label}
+            text={text}
             required={true}
             disabled={true}
             onChange={onChange}
         />
     );
     expect(container.querySelector('.RequiredMark')).toBeTruthy();
-    expect(screen.getByLabelText(label)).toBeDisabled();
+    expect(screen.getByLabelText(text)).toBeDisabled();
 });
 
 test('has correct handling of removing file from list', async () => {
@@ -53,6 +57,7 @@ test('has correct handling of removing file from list', async () => {
         <Files
             id='id'
             label='label'
+            text='text'
             files={[file]}
             onChange={onChange}
         />
@@ -65,13 +70,13 @@ test('has correct handling of removing file from list', async () => {
 });
 
 test('has correct handling of disabled flag', async () => {
-    const buttonText = 'Add file';
+    const text = 'Add file';
     const onChange = jest.fn();
     const user = userEvent.setup();
     render(
         <Files
             id='id'
-            label={buttonText}
+            text={text}
             files={[file]}
             onChange={onChange}
             disabled={true}
@@ -81,7 +86,7 @@ test('has correct handling of disabled flag', async () => {
     expect(fileLabel).toBeInTheDocument();
     await user.click(fileLabel);
     expect(onChange).toBeCalledTimes(0);
-    const buttonLabel = screen.getByText(buttonText);
+    const buttonLabel = screen.getByText(text);
     expect(buttonLabel).toBeInTheDocument();
     await user.click(buttonLabel);
     expect(onChange).toBeCalledTimes(0);    
@@ -89,17 +94,19 @@ test('has correct handling of disabled flag', async () => {
 
 test('has correct handling of single file selection', async () => {
     const label = 'Add file';
+    const text = 'Text text';
     const onChange = jest.fn();
     const user = userEvent.setup();
     render(
         <Files
             id='id'
             label={label}
+            text={text}
             files={[]}
             onChange={onChange}
         />
     );
-    const input = screen.getByLabelText(label) as HTMLInputElement;
+    const input = screen.getByLabelText(text) as HTMLInputElement;
     expect(input).toBeInTheDocument();
     await user.upload(input, [ file, file ]);
     expect(onChange).toBeCalledWith([ file ]);
@@ -110,18 +117,20 @@ test('has correct handling of single file selection', async () => {
 
 test('has correct handling of multiple file selection', async () => {
     const label = 'Add file';
+    const text = 'Text text';
     const onChange = jest.fn();
     const user = userEvent.setup();
     render(
         <Files
             id='id'
             label={label}
+            text={text}
             files={[]}
             onChange={onChange}
             multiple={true}
         />
     );
-    const input = screen.getByLabelText(label) as HTMLInputElement;
+    const input = screen.getByLabelText(text) as HTMLInputElement;
     expect(input).toBeInTheDocument();
     await user.upload(input, [ file, file ]);
     expect(onChange).toBeCalledWith([ file, file ]);

@@ -1,0 +1,49 @@
+:root {
+    --alxgrn-popup-zindex: 200; /* выше модалки */
+    --alxgrn-popup-shadow: 0 0 var(--alxgrn-unit-half) rgba(0,0,0,.1);
+    --alxgrn-popup-bg-color: white;
+    --alxgrn-popup-animation-length: 100ms;
+}
+
+.Popup {
+    z-index: var(--alxgrn-popup-zindex);
+    position: absolute;
+}
+/*
+ * Внутренний блок нужен для анимации появления.
+ * Если его не использовать, не получится позиционирование
+ * относительно родителя т.к. из-за анимации изменения
+ * размера ширина и высота будут плавать.
+ */
+.Popup .PopupInner  {
+    position: absolute;
+    background-color: var(--alxgrn-popup-bg-color);
+    border-radius: var(--alxgrn-unit-half);
+    box-shadow: var(--alxgrn-popup-shadow);
+    overflow: hidden;
+}
+/*
+ * Анимации для CSSTransform
+ */
+ .Popup-enter {
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.8);
+}
+.Popup-enter-active {
+    pointer-events: none;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity var(--alxgrn-popup-animation-length) ease-in, transform var(--alxgrn-popup-animation-length) ease-in;
+}
+.Popup-exit {
+    pointer-events: none;
+    opacity: 1;
+    transform: scale(1);
+}
+.Popup-exit-active {
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity var(--alxgrn-popup-animation-length) ease-out, transform var(--alxgrn-popup-animation-length) ease-out;
+}

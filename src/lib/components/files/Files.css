@@ -1,101 +1,98 @@
+:root {
+    --alxgrn-files-bg: var(--alxgrn-color-accent);
+    --alxgrn-files-color: white;
+    --alxgrn-files-bg-error: var(--alxgrn-color-error);
+}
 /**
- * Выбор файлов
- * Дефолтный инпут скрываем
+ * Список файлов
  */
- .Form input[type='file'] {
-    display: none;
+.Form ul.FileList {
+    margin: 0 0 var(--alxgrn-unit-half) 0;
+    padding: 0 0 0 var(--alxgrn-unit);
 }
-/* Список файлов */
-.Form .FormFiles ul {
-    margin: 0 0 .5rem 0;
-    padding: 0 0 0 1rem;
-    list-style: none;
-}
-.Form .FormFiles ul li {
+.Form ul.FileList li {
     cursor: pointer;
-    width: fit-content;
 }
-.Form .FormFiles ul.disabled li {
-    cursor: default;
-    color: var(--color-disabled);
+.Form ul.FileList li div {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    gap: var(--alxgrn-unit);
+    justify-content: space-between;
+    padding-left: var(--alxgrn-unit-small);
+    margin-bottom: var(--alxgrn-unit-small);
 }
-.Form .FormFiles ul li::before {
-    content: "▪︎";
-    color: var(--background-submit);
-    display: inline-block;
-    width: 1.2em;
-    margin-left: -1.2em;
-    text-align: center;
-}
-.Form .FormFiles ul.disabled li::before {
-    color: var(--color-disabled);
-}
-.Form .FormFiles ul li:hover:before {
-    content: "✖︎";
-    color: var(--color-error);
-    display: inline-block;
-    width: 1.2em;
-    margin-left: -1.2em;
-    text-align: center;
-}
-.Form .FormFiles ul.disabled li:hover:before {
-    content: "▪︎";
-    color: var(--color-disabled);
-}
-.Form .FormFiles ul li span:last-child {
-    font-size: .8rem;
-    line-height: 120%;
-    color: var(--color-hint);
+.Form ul.FileList li div span:first-child {
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.Form .FormFiles ul li span:last-child::before {
-    content: ' ';
+.Form ul.FileList li div span:last-child {
+    white-space: nowrap;
+    font-size: smaller;
+    color: var(--alxgrn-color-topbottom);
 }
-/* Лейбл состоит из "кнопки" и подписи рядом с ней */
-.Form .FormFilesLabel {
+.Form ul.FileList.Disabled li {
+    cursor: default;
+}
+.Form ul.FileList.Disabled li div span {
+    cursor: default;
+    color: var(--alxgrn-color-disabled);
+}
+/**
+ * Маркер списка
+ */
+.Form ul.FileList li::marker {
+    content: "■";
+    color: var(--alxgrn-color-accent);
+}
+.Form ul.FileList li:hover::marker {
+    content: "✖︎";
+    color: var(--alxgrn-color-error);
+}
+.Form ul.FileList.Disabled li::marker {
+    content: "■";
+    color: var(--alxgrn-color-disabled);
+}
+/**
+ * Лейбл состоит из "кнопки" и подписи рядом с ней
+ */
+.Form .FileLabel {
     display: flex;
     align-items: center;
+    gap: var(--alxgrn-unit);
+    flex-wrap: nowrap;
 }
-.Form .FormFilesLabel label {
+/* Дефолтный инпут скрываем */
+ .Form .FileLabel input[type='file'] {
+    display: none;
+}
+.Form .FileLabel label {
     flex: 0 0 auto;
-    padding: .5rem 1rem;
-    border-radius: var(--border-radius);
+    padding: var(--alxgrn-unit-half) var(--alxgrn-unit);
+    border-radius: var(--alxgrn-unit-small);
     margin: 0;
-    font-weight: normal;
-}
-.Form .FormFilesLabel span {
-    flex: 1 1 auto;
-    margin-left: 1rem;
-}
-/* Оформление кнопки...*/
-.Form .FormFiles label {
 	cursor: pointer;
-    color: var(--color-submit);
-    background-color: var(--background-submit);
-    display: inline-block;
-    text-decoration: none;
-    margin: 0;
-    padding: .5rem 1rem;
+    color: var(--alxgrn-files-color);
+    background-color: var(--alxgrn-files-bg);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-/* ...и её запрещенного варианта */
-.Form .FormFiles label.disabled {
+.Form .FileLabel span {
+    flex: 1 1 auto;
+    color: var(--alxgrn-color-topbottom);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Form .FileLabel.Disabled label {
     cursor: default;
     opacity: .5;
 }
-/* Top и bottom */
-.Form .FormFiles .top,
-.Form .FormFiles .bottom {
-    font-weight: normal;
-    font-size: .8rem;
-    line-height: 120%;
-    cursor: default;
+.Form .FileLabel.Disabled span {
+    color: var(--alxgrn-color-disabled);
 }
-.Form .FormFiles .top {
-    color: var(--color-top);
-    margin-bottom: .2rem;
-}
-
-.Form .FormFiles .bottom {
-    color: var(--color-bottom);
-    margin-top: .2rem;
+.Form .FileLabel.Error label {
+    background-color: var(--alxgrn-files-bg-error);
 }

@@ -1,6 +1,6 @@
 import './index.css';
 import { Form, FormData } from './components/form/Form';
-import Date from './components/Date';
+import Date from './components/date/Date';
 import Files from './components/files/Files';
 import Input from './components/input/Input';
 import Label from './components/label/Label';
@@ -13,6 +13,7 @@ import CheckboxList from './components/checkbox/CheckboxList';
 import Fieldset from './components/fieldset/Fieldset';
 import FormRow from './components/form/FormRow';
 import FormCol from './components/form/FormCol';
+import DatePicker from './components/date/DatePicker';
 
 export {
     Form,
@@ -29,6 +30,7 @@ export {
     Fieldset,
     FormRow,
     FormCol,
+    DatePicker,
 };
 
 export type {

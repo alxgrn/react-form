@@ -15,25 +15,6 @@
  * Основной блок формы
  */
  .Form {
-    --color-text: #333;
-    --color-submit: white;
-    --color-error: firebrick;
-    --color-disabled: slategrey;
-    --color-label: steelblue;
-    --color-hint: slategrey;
-    --color-top: slategrey;
-    --color-bottom: slategrey;
-    --background-color: white;
-    --background-input: aliceblue;
-    --background-submit: steelblue;
-    --background-error: #fee;
-    --background-focus: moccasin;
-    --background-disabled: whitesmoke;
-    --border-color: steelblue;
-    --border-color-disabled: lightgrey;
-    --border-color-failed: firebrick;
-    --border-radius: .2rem;
-
     margin: var(--alxgrn-unit) 0;
     max-width: var(--alxgrn-form-width);
 }

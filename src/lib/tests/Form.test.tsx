@@ -124,6 +124,7 @@ test('submit button disabled when required Files field is empty', () => {
                 onChange={onChange}
                 files={[]}
                 label='add'
+                text='text'
             />
         </Form>
     );
@@ -208,6 +209,7 @@ test('onSubmit callback gets correct data', async () => {
                 onChange={jest.fn}
                 files={[]}
                 label='add'
+                text='text'
             />
             <Date
                 id='date'

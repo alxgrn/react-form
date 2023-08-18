@@ -25,6 +25,7 @@ npm install @alxgrn/react-form
 * [Checkbox](./docs/Checkbox.md)
 * [CheckboxList](./docs/CheckboxList.md)
 * [Date](./docs/Date.md)
+* [DatePicker](./docs/DatePicker.md)
 * [FormRow, FormCol](./docs/FormRowCol.md)
 
 ## Как публиковать свой NPM-пакет

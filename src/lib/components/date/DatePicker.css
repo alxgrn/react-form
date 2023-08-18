@@ -1,0 +1,95 @@
+/**
+ * Компонент будет отображаться через портал, поэтому его стили
+ * должны быть полностью отвязаны от главного стиля .Form
+ */
+:root {
+    --alxgrn-datepicker-bg: transparent;
+    --alxgrn-datepicker-bg-day: var(--alxgrn-bg-disabled);
+    --alxgrn-datepicker-bg-menu: var(--alxgrn-bg-input);
+    --alxgrn-datepicker-bg-hover: var(--alxgrn-bg-focus);
+    --alxgrn-datepicker-bg-select: var(--alxgrn-color-accent);
+    --alxgrn-datepicker-color: var(--alxgrn-color-text);
+    --alxgrn-datepicker-color-accent: var(--alxgrn-color-accent);
+    --alxgrn-datepicker-color-select: white;
+    --alxgrn-datepicker-border: transparent;
+}
+
+.FormDatePicker {
+    display: grid;
+    gap: var(--alxgrn-unit-smallest);
+    width: fit-content;
+    overflow: hidden;
+    border: 1px solid var(--alxgrn-datepicker-border);
+    border-radius: var(--alxgrn-unit-small);
+    padding: var(--alxgrn-unit-smallest);
+}
+
+.FormDatePicker * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+    text-align: center;
+    color: var(--alxgrn-datepicker-color);
+    background-color: var(--alxgrn-datepicker-bg);
+    line-height: var(--alxgrn-unit-double);
+    user-select: none;
+}
+
+.FormDatePicker .FormDatePickerMenu {
+    display: grid;
+    grid-template-columns: repeat(7, var(--alxgrn-unit-double));
+    text-transform: capitalize;
+    background-color: var(--alxgrn-datepicker-bg-menu);
+    gap: var(--alxgrn-unit-smallest);
+    border-radius: var(--alxgrn-unit-small);
+    overflow: hidden;
+}
+
+.FormDatePicker .FormDatePickerMenu .FormDatePickerText {
+    grid-column : span 5;
+}
+
+.FormDatePicker .FormDatePickerMenu .FormDatePickerPrev,
+.FormDatePicker .FormDatePickerMenu .FormDatePickerNext {
+    color: var(--alxgrn-datepicker-color-accent);
+    cursor: pointer;
+}
+
+.FormDatePicker .FormDatePickerMenu .FormDatePickerPrev:hover,
+.FormDatePicker .FormDatePickerMenu .FormDatePickerNext:hover {
+    background-color: var(--alxgrn-datepicker-bg-hover);
+}
+
+.FormDatePicker .FormDatePickerDays {
+    display: grid;
+    grid-template-columns: repeat(7, var(--alxgrn-unit-double));
+    gap: var(--alxgrn-unit-smallest);
+}
+
+.FormDatePicker .FormDatePickerDays span {
+    background-color: var(--alxgrn-datepicker-bg-day);
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: var(--alxgrn-unit-small);
+}
+
+.FormDatePicker .FormDatePickerDays span:hover {
+    background-color: var(--alxgrn-datepicker-bg-hover);
+}
+
+.FormDatePicker .FormDatePickerDays span.Empty {
+    cursor: default;
+    background-color: var(--alxgrn-datepicker-bg);
+}
+
+.FormDatePicker .FormDatePickerDays span.Selected {
+    color: var(--alxgrn-datepicker-color-select);
+    background-color: var(--alxgrn-datepicker-bg-select);
+}
+
+.FormDatePicker .FormDatePickerDays span.Current {
+    color: var(--alxgrn-datepicker-color-accent);
+    font-weight: bold;
+}

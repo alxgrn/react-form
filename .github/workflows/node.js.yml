@@ -33,7 +33,7 @@ jobs:
       run: npm install
       
     - name: Install peer dependencies
-      run: npm install react react-dom react-children-utilities
+      run: npm install react react-dom react-children-utilities react-transition-group
 
     - name: Run tests
       run: npm test

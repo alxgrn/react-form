@@ -87,3 +87,9 @@
     background-color: var(--alxgrn-input-bg-disabled);
     cursor: default;
 }
+/**
+ * Иногда input могут быть только для чтения
+ */
+.FormItem input:read-only {
+    cursor: pointer;
+}

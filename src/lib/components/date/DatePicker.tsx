@@ -80,14 +80,11 @@ const DatePicker: FC<DatePickerProps> = ({ year, month, day, onChange }) => {
         if(onChange) onChange({ day, month: displayedMonth + 1, year: displayedYear });
     };
 
-    // При рендере ячейки с днем её надо красить в разные цвета.
-    // Класс FormDatePickerDay нужен для отлавливания выбора дня
-    // в компоненте Date через клик по span, для рендера он не
-    // нужен и в css его нет.
+    // При рендере ячейки с днем её надо красить в разные цвета
     const getClassName = (day: number): string | undefined => {
-        if(!day) return 'FormDatePickerDay Empty'; // Пустышка для сдвига начала месяца
-        if(day === selectedDay && displayedMonth === selectedMonth && displayedYear === selectedYear) return 'FormDatePickerDay Selected'; // Выбранный день
-        if(day === currentDay && displayedMonth === currentMonth && displayedYear === currentYear) return 'FormDatePickerDay Current'; // Текущий день
+        if(!day) return 'Empty'; // Пустышка для сдвига начала месяца
+        if(day === selectedDay && displayedMonth === selectedMonth && displayedYear === selectedYear) return 'Selected'; // Выбранный день
+        if(day === currentDay && displayedMonth === currentMonth && displayedYear === currentYear) return 'Current'; // Текущий день
         return undefined; // Обычная клетка
     };
 

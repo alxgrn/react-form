@@ -9,6 +9,15 @@
     z-index: var(--alxgrn-popup-zindex);
     position: absolute;
 }
+
+.Popup * {
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 /*
  * Внутренний блок нужен для анимации появления.
  * Если его не использовать, не получится позиционирование
@@ -21,6 +30,10 @@
     border-radius: var(--alxgrn-unit-half);
     box-shadow: var(--alxgrn-popup-shadow);
     overflow: hidden;
+    /* Мы можем ограничивать высоту .PopupInner и для того чтобы у вложенного компонента
+       можно было делать скролл необходимо чтобы его высота была 100%. Мы предполагаем
+       что внутрь .PopupInner будет вложен div компонента с нужным padding */
+    display: flex;
 }
 /*
  * Анимации для CSSTransform

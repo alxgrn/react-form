@@ -9,16 +9,21 @@ import './Popup.css';
  */
 const TIMEOUT = 100; // Должен согласовываться с длительностью анимации появления в .css
 
-type PopupProps = {
+export interface PopupProps {
     parent: React.RefObject<HTMLElement>;
     isOpen: boolean;
     onClose: () => void;
     margin?: string; // отступ от родителя в css-юнитах
-    vertical?: 'top'|'bottom'|'inner-top'|'inner-bottom';
-    horizontal?: 'left'|'right'|'inner-left'|'inner-right'; 
+    vertical?: 'auto'|'top'|'bottom'|'inner-top'|'inner-bottom';
+    horizontal?: 'auto'|'left'|'right'|'inner-left'|'inner-right';
+    maxHeight?: 'auto'|'none';
+    width?: 'auto'|'parent';
 };
 
-const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClose, vertical, horizontal, margin = '0', children }) => {
+export const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClose,
+                                                        vertical = 'auto', horizontal = 'auto', margin = '0',
+                                                        maxHeight = 'none', width = 'auto',
+                                                        children }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [ innerStyle, setInnerStyle ] = useState({});
     const [ popupStyle, setPopupStyle ] = useState({});
@@ -33,8 +38,8 @@ const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClose, vert
             return;
         }
         // Размеры окна
-        const width = document.documentElement.clientWidth;
-        const height = document.documentElement.clientHeight;
+        const clientWidth = document.documentElement.clientWidth;
+        const clientHeight = document.documentElement.clientHeight;
         // Координаты родителя
         const prnt = parent.current.getBoundingClientRect();
         // Скопируем координаты и размеры родителя в стили контейнера
@@ -45,37 +50,50 @@ const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClose, vert
             height: prnt.height,
         });
         // Позиционирование содержимого относительно контейнера
-        const style: any = {};
+        const style: any = {
+            width: width === 'parent' ? prnt.width : 'auto',
+        };
+        let maxHeightValue: number = 0;
         // Позиционирование по вертикали
         switch(vertical) {
             case 'top':
                 // над родительским компонентом
                 style.bottom = '100%';
                 style.marginBottom = margin;
+                maxHeightValue = prnt.top;
                 break;
             case 'bottom':
                 // под родительским компонентом
                 style.top = '100%';
                 style.marginTop = margin;
+                maxHeightValue = clientHeight - prnt.bottom;
                 break;
             case 'inner-top':
                 // верхняя граница совпадает с верхней границей родителя
                 style.top = 0;
+                maxHeightValue = clientHeight - prnt.top;
                 break;
             case 'inner-bottom':
                 // нижняя граница совпадает с нижней границей родителя
                 style.bottom = 0;
+                maxHeightValue = prnt.bottom;
                 break;
             default:
-                // если сверху места больше, чем снизу, то покажем сверху, иначе - снизу
-                if(prnt.top < height - prnt.bottom) {
+                // если снизу места больше, чем сверху, то покажем снизу, иначе - сверху
+                if(prnt.top < clientHeight - prnt.bottom) {
                     style.top = '100%';
                     style.marginTop = margin;
+                    maxHeightValue = clientHeight - prnt.bottom;
                 } else {
                     style.bottom = '100%';
                     style.marginBottom = margin;
+                    maxHeightValue = prnt.top;
                 }
                 break;
+        }
+        // Ограничим размер по вертикали
+        if(maxHeight === 'auto') {
+            style.maxHeight = `calc(${maxHeightValue}px - 2 * ${margin})`;
         }
         // Позиционирование по горизонтали
         switch(horizontal) {
@@ -99,7 +117,7 @@ const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClose, vert
                 break;
             default:
                 // если слева места больше, чем справа, то покажем слева, иначе - справа
-                if(prnt.left < width - prnt.right) {
+                if(prnt.left < clientWidth - prnt.right) {
                     style.left = '100%';
                     style.marginLeft = margin;
                 } else {
@@ -110,7 +128,7 @@ const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClose, vert
         }
         // Устанавливаем
         setInnerStyle(style);
-    }, [ parent, isOpen, margin, vertical, horizontal ]);
+    }, [ parent, isOpen, margin, vertical, horizontal, maxHeight, width ]);
 
     // Скрываем при клике вне компонента
     // Используем нисходящее событие, а не восходящее!

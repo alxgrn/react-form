@@ -1,6 +1,7 @@
 import './index.css';
 import { Form, FormData } from './components/form/Form';
 import Date from './components/date/Date';
+import Time from './components/time/Time';
 import Files from './components/files/Files';
 import Input from './components/input/Input';
 import Label from './components/label/Label';
@@ -18,6 +19,7 @@ import DatePicker from './components/date/DatePicker';
 export {
     Form,
     Date,
+    Time,
     Files,
     Input,
     Label,

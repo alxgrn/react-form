@@ -1,0 +1,5 @@
+.FormItem .Time {
+    display: flex;
+    gap: var(--alxgrn-unit-half);
+    align-items: center;
+}

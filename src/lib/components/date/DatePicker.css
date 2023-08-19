@@ -21,15 +21,12 @@
     overflow: hidden;
     border: 1px solid var(--alxgrn-datepicker-border);
     border-radius: var(--alxgrn-unit-small);
-    padding: var(--alxgrn-unit-smallest);
+    padding: var(--alxgrn-unit-small);
 }
 
 .FormDatePicker * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
     text-align: center;
     color: var(--alxgrn-datepicker-color);
     background-color: var(--alxgrn-datepicker-bg);
@@ -49,6 +46,7 @@
 
 .FormDatePicker .FormDatePickerMenu .FormDatePickerText {
     grid-column : span 5;
+    font-size: smaller;
 }
 
 .FormDatePicker .FormDatePickerMenu .FormDatePickerPrev,
@@ -66,6 +64,7 @@
     display: grid;
     grid-template-columns: repeat(7, var(--alxgrn-unit-double));
     gap: var(--alxgrn-unit-smallest);
+    font-size: smaller;
 }
 
 .FormDatePicker .FormDatePickerDays span {

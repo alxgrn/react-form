@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Files, Input, RadioList, Select, Checkbox, CheckboxList, Fieldset, Date, FormData, FormRow, FormCol } from './lib';
+import { Form, Files, Input, RadioList, Select, Checkbox, CheckboxList, Fieldset, Date, FormData, FormRow, FormCol, Time } from './lib';
 import './App.css';
 import { CheckboxListOption } from './lib/components/checkbox/CheckboxList';
 import { RadioListOption, RadioListValue } from './lib/components/radio/RadioList';
@@ -141,6 +141,13 @@ function App() {
                             label='Textarea label'
                             placeholder='Textarea placeholder'
                             bottom='Textarea bottom'
+                        />
+                    </FormCol>
+                    <FormCol>
+                        <Time
+                            id='time'
+                            step={5}
+                            label='Time selector'
                         />
                     </FormCol>
                 </FormRow>

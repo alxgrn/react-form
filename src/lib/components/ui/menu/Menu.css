@@ -1,7 +1,7 @@
 :root {
     --alxgrn-menu-bg-hover: var(--alxgrn-bg-focus);
-    --alxgrn-menu-color-scroll: var(--alxgrn-color-topbottom);
-    --alxgrn-menu-color-separator: var(--alxgrn-color-topbottom);
+    --alxgrn-menu-color-scroll: var(--alxgrn-color-scroll);
+    --alxgrn-menu-color-separator: var(--alxgrn-color-scroll);
 }
 
 .Popup .Menu {
@@ -29,7 +29,7 @@
     gap: var(--alxgrn-unit-half);
 }
 
-.Popup .Menu ul li .Icon * {
+.Popup .Menu ul li .Icon {
     flex: 0 0 auto;
     font-size: larger;
 }
@@ -56,6 +56,8 @@
     margin: var(--alxgrn-unit-half) 0;
     border-top: 1px solid var(--alxgrn-menu-color-separator);
     border-radius: 0;
+    height: 0;
+    overflow: hidden;
 }
 
 .Popup .Menu ul li.Separator:hover {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Files, Input, RadioList, Select, Checkbox, CheckboxList, Fieldset, Date, FormData, FormRow, FormCol, Time } from './lib';
+import { Form, Files, Input, RadioList, Select, Checkbox, CheckboxList, Fieldset, Date, FormData, FormRow, FormCol, Time, Modal } from './lib';
 import './App.css';
 import { CheckboxListOption } from './lib/components/checkbox/CheckboxList';
 import { RadioListOption, RadioListValue } from './lib/components/radio/RadioList';
@@ -28,6 +28,7 @@ const file = new File(['CONTENT'], 'test.txt', { type: 'text/plain;charset=utf-8
 
 function App() {
     const [ date, setDate ] = useState('01.01.2023');
+    const [ time, setTime ] = useState('03:45');
     const [ text, setText ] = useState('Hello');
     const [ radio, setRadio ] = useState<RadioListValue>('');
     const [ select, setSelect ] = useState('');
@@ -38,6 +39,7 @@ function App() {
     const [ checkbox3, setCheckbox3 ] = useState(true);
     const [ files, setFiles ] = useState<File[]>([file]);
     const [ checkboxlist, setCheckboxList ] = useState(checkboxes);
+    const [ isModalOpen, setIsModalOpen ] = useState(false);
 
     const onSubmit = (data: FormData) => {
         window.alert(data);
@@ -75,7 +77,7 @@ function App() {
                 onSubmit={onSubmit}
                 wide={true}
                 cancel='Cancel'
-                onCancel={() => window.alert('Cancel')}
+                onCancel={() => setIsModalOpen(true)}
             >
                 <FormRow>
                     <FormCol>
@@ -148,6 +150,10 @@ function App() {
                             id='time'
                             step={5}
                             label='Time selector'
+                            value={time}
+                            onChange={setTime}
+                            disabled={false}
+                            required={true}
                         />
                     </FormCol>
                 </FormRow>
@@ -223,6 +229,9 @@ function App() {
                     </FormCol>
                 </FormRow>
             </Form>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                Следует отметить, что начало повседневной работы по формированию позиции требует определения и уточнения системы обучения кадров, соответствующей насущным потребностям. Задача организации, в особенности же социально-экономическое развитие способствует повышению качества существующих финансовых и административных условий. Приятно, граждане, наблюдать, как реплицированные с зарубежных источников, современные исследования освещают чрезвычайно интересные особенности картины в целом, однако конкретные выводы, разумеется, рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок. Прежде всего, современная методология разработки прекрасно подходит для реализации системы массового участия. Лишь некоторые особенности внутренней политики, инициированные исключительно синтетически, смешаны с не уникальными данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности. Банальные, но неопровержимые выводы, а также активно развивающиеся страны третьего мира преданы социально-демократической анафеме. Каждый из нас понимает очевидную вещь: семантический разбор внешних противодействий обеспечивает широкому кругу (специалистов) участие в формировании приоретизации разума над эмоциями. Ясность нашей позиции очевидна: убеждённость некоторых оппонентов обеспечивает актуальность вывода текущих активов. Но перспективное планирование влечет за собой процесс внедрения и модернизации поэтапного и последовательного развития общества. Как уже неоднократно упомянуто, тщательные исследования конкурентов призывают нас к новым свершениям, которые, в свою очередь, должны быть смешаны с не уникальными данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности.
+            </Modal>
         </div>
     );
 }

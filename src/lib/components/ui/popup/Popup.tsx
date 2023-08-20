@@ -32,6 +32,10 @@ export const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClos
     // vertical/horizontal, располагаем его в зависимости от того, в каком
     // квадранте экрана находится родитель.
     useEffect(() => {
+        // Если мы закрываемся, то ничего не пересчитываем. В противном случае
+        // при закрытии после скролла может быть перескок в новые координаты.
+        if(!isOpen) return;
+        // Если родителя нет, то позиционироваться не понятно от кого
         if(!parent.current) {
             setInnerStyle({});
             setPopupStyle({});

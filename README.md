@@ -24,6 +24,7 @@ npm install @alxgrn/react-form
 * [Fieldset](./docs/Fieldset.md)
 * [Checkbox](./docs/Checkbox.md)
 * [CheckboxList](./docs/CheckboxList.md)
+* [Time](./docs/Time.md)
 * [Date](./docs/Date.md)
 * [DatePicker](./docs/DatePicker.md)
 * [FormRow, FormCol](./docs/FormRowCol.md)

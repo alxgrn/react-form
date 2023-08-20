@@ -2,9 +2,9 @@
  * Цвета
  */
  :root {
-    --alxgrn-button-bg: gainsboro;
-    --alxgrn-button-color: lightslategrey;
-    --alxgrn-button-border: gainsboro;
+    --alxgrn-button-bg: var(--alxgrn-br-button);
+    --alxgrn-button-color: var(--alxgrn-color-button);
+    --alxgrn-button-border: var(--alxgrn-br-button);
 
     --alxgrn-button-bg-error: var(--alxgrn-color-error);
     --alxgrn-button-color-error: white;

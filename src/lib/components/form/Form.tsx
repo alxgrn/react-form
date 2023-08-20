@@ -99,6 +99,7 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
                 const props = (child as ReactElement).props;
                 switch(props.__TYPE) {
                     case 'Date':
+                    case 'Time':
                     case 'Input':
                         addData(props.id, (props.value as string).trim());
                         break;

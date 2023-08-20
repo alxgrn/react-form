@@ -1,0 +1,181 @@
+:root {
+    --alxgrn-modal-zindex: 100; /* выше прочих */
+    --alxgrn-modal-shadow: 0 0 var(--alxgrn-unit-half) rgba(0,0,0,.1);
+    --alxgrn-modal-bg-color: white;
+    --alxgrn-modal-animation-length: 100ms;
+    --alxgrn-modal-width: 512px;
+    --alxgrn-modal-color-close: var(--alxgrn-color-disabled);
+    --alxgrn-modal-color-accent: var(--alxgrn-color-accent);
+    --alxgrn-modal-color-scroll: var(--alxgrn-color-scroll);
+}
+
+.Modal {
+    z-index: var(--alxgrn-modal-zindex);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: var(--alxgrn-unit);
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Modal * {
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.Modal .ModalInner {
+    display: flex;
+    padding: var(--alxgrn-unit-double) var(--alxgrn-unit) var(--alxgrn-unit-double) var(--alxgrn-unit-double);
+    position: relative;
+    background-color: var(--alxgrn-modal-bg-color);
+    width: var(--alxgrn-modal-width);
+    max-height: 100%;
+    border-radius: var(--alxgrn-unit);
+    overflow: auto;
+}
+
+.Modal .ModalInner .ModalContent {
+    overflow: auto;
+    padding-right: var(--alxgrn-unit);
+}
+
+.Modal .ModalInner .ModalContent .Form {
+    max-width: 100%;
+    margin-bottom: 0;
+}
+
+.Modal .ModalInner .ModalClose {
+    position: absolute;
+    top: var(--alxgrn-unit);
+    right: var(--alxgrn-unit);
+    width: var(--alxgrn-unit);
+    height: var(--alxgrn-unit);
+    cursor: pointer;
+}
+
+.Modal .ModalInner .ModalClose span {
+    position: absolute;
+    background-color: var(--alxgrn-modal-color-close);
+    display: inline-block;
+    border-radius: 2px;
+    width: 2px;
+    height: var(--alxgrn-unit);
+    top: 0;
+    left: 0;
+    transform: translateX(var(--alxgrn-unit-half)) rotate(45deg);
+}
+.Modal .ModalInner .ModalClose span:nth-child(2) {
+    transform: translateX(var(--alxgrn-unit-half)) rotate(135deg);
+}
+
+.Modal .ModalInner .ModalClose:hover span {
+    background-color: var(--alxgrn-modal-color-accent);
+}
+
+
+@media (max-width: 512px) {
+    .Modal .ModalInner {
+        width: 100%;
+        border-radius: var(--alxgrn-unit-half);
+        padding: calc(var(--alxgrn-unit-half) * 3) var(--alxgrn-unit-half) var(--alxgrn-unit) var(--alxgrn-unit);
+    }
+    .Modal .ModalInner .ModalClose {
+        top: var(--alxgrn-unit-half);
+        right: var(--alxgrn-unit-half);
+    }
+    .Modal .ModalInner .ModalContent {
+        padding-right: var(--alxgrn-unit-half);
+    }
+}
+/*
+ * Анимации подложки для CSSTransform
+ */
+.Modal-enter {
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+.Modal-enter-active {
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color var(--alxgrn-modal-animation-length) ease-in;
+}
+.Modal-enter-done {
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.Modal-exit {
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.Modal-exit-active {
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color var(--alxgrn-modal-animation-length) ease-out;
+}
+.Modal-exit-done {
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0);
+}
+/*
+ * Анимации содержимого для CSSTransform
+ */
+.Modal-enter .ModalInner {
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.8);
+}
+.Modal-enter-active .ModalInner {
+    pointer-events: none;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity var(--alxgrn-modal-animation-length) ease-in, transform var(--alxgrn-modal-animation-length) ease-in;
+}
+.Modal-exit .ModalInner {
+    pointer-events: none;
+    opacity: 1;
+    transform: scale(1);
+}
+.Modal-exit-active .ModalInner {
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity var(--alxgrn-modal-animation-length) ease-out, transform var(--alxgrn-modal-animation-length) ease-out;
+}
+/*
+ * Scrollbar
+ * https://ishadeed.com/article/custom-scrollbars-css/
+ */
+ .Modal .ModalInner .ModalContent {
+    scrollbar-color: transparent var(--alxgrn-modal-color-scroll);
+    scrollbar-width: thin;
+    /* scrollbar-gutter: stable; */
+}
+
+.Modal .ModalInner .ModalContent::-webkit-scrollbar {
+    width: var(--alxgrn-unit-small);
+    height: var(--alxgrn-unit-small);
+}
+
+.Modal .ModalInner .ModalContent::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: var(--alxgrn-unit-small);
+}
+
+.Modal .ModalInner .ModalContent::-webkit-scrollbar-thumb {
+    background-color: var(--alxgrn-modal-color-scroll);
+    border-radius: var(--alxgrn-unit-small);
+}
+
+.Modal .ModalInner .ModalContent::-webkit-scrollbar-corner {
+    background-color: transparent;
+}

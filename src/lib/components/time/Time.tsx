@@ -1,11 +1,13 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import Label from '../label/Label';
-import Menu, { TMenuItem } from '../ui/menu/Menu';
+import Menu, { MenuItem } from '../ui/menu/Menu';
 import './Time.css';
-
+/**
+ * TODO: Добавить выбор секунд
+ */
 export interface TimeProps {
     id: string;
-    value?: string;
+    value: string; // в формате HH:MM
     step?: number;
     onChange?: (s: string) => void;
     label?: string | null;
@@ -16,7 +18,8 @@ export interface TimeProps {
     __TYPE?: 'Time';
 };
 
-const Time: FC<TimeProps> = ({ id, value, step = 1, onChange, label, top, bottom,
+const Time: FC<TimeProps> = ({ id, value, step = 1, onChange,
+                               label, top, bottom,
                                required = false, disabled = false }) => {
 
     const refHor = useRef<HTMLInputElement>(null);
@@ -28,6 +31,18 @@ const Time: FC<TimeProps> = ({ id, value, step = 1, onChange, label, top, bottom
     const [ isHorsOpen, setIsHorsOpen ] = useState(false);
     const [ isMinsOpen, setIsMinsOpen ] = useState(false);
 
+    // Начальное значение
+    useEffect(() => {
+        let [ hor, min ]: number[]|string[] = value.split(':');
+        hor = parseInt(hor);
+        min = parseInt(min);
+        if(isNaN(hor) || hor < 0 || hor > 23) hor = 0;
+        if(isNaN(min) || min < 0 || min > 59) min = 0;
+        setHor(`0${hor}`.slice(-2));
+        setMin(`0${min}`.slice(-2));
+    }, [ value ]);
+
+    // Подготавливаем массивы со списками альтернатив выбора часов и минут
     useEffect(() => {
         const hors: string[] = [];
         const mins: string[] = [];
@@ -55,14 +70,16 @@ const Time: FC<TimeProps> = ({ id, value, step = 1, onChange, label, top, bottom
         };
     };
 
-    const onHorsClick = (item: TMenuItem) => {
-        setHor(item.text ?? '');
+    const onHorsClick = (item: MenuItem) => {
+        //setHor(item.text ?? '');
         setIsHorsOpen(false);
+        if(onChange) onChange(`${item.text ?? ''}:${min}`);
     };
 
-    const onMinsClick = (item: TMenuItem) => {
-        setMin(item.text ?? '');
+    const onMinsClick = (item: MenuItem) => {
+        //setMin(item.text ?? '');
         setIsMinsOpen(false);
+        if(onChange) onChange(`${hor}:${item.text ?? ''}`);
     };
 
     return (

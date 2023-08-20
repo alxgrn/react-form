@@ -5,11 +5,14 @@
     --alxgrn-bg-input: aliceblue;
     --alxgrn-bg-focus: moccasin;
     --alxgrn-bg-error: #fee;
+    --alxgrn-bg-button: gainsboro;
     --alxgrn-bg-success: #efe;
     --alxgrn-bg-disabled: whitesmoke;
     --alxgrn-color-text: #333;
     --alxgrn-color-error: firebrick;
     --alxgrn-color-accent: steelblue;
+    --alxgrn-color-scroll: gainsboro;
+    --alxgrn-color-button: lightslategrey;
     --alxgrn-color-success: forestgreen;
     --alxgrn-color-disabled: slategrey;
     --alxgrn-color-topbottom: slategrey;

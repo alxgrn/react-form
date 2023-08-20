@@ -2,7 +2,7 @@ import React from 'react';
 import Popup, { PopupProps } from '../popup/Popup';
 import './Menu.css';
 
-export type TMenuSeparator = {
+export type MenuSeparator = {
     id: number | string;
     separator: true;
     text?: never;
@@ -10,7 +10,7 @@ export type TMenuSeparator = {
     disabled?: never;
 }
 
-export type TMenuAlternative = {
+export type MenuAlternative = {
     id: number | string;
     separator?: never;
     text?: string;
@@ -18,11 +18,11 @@ export type TMenuAlternative = {
     disabled?: boolean | null;
 };
 
-export type TMenuItem = TMenuAlternative|TMenuSeparator;
+export type MenuItem = MenuAlternative | MenuSeparator;
 
 interface MenuProps extends PopupProps {
-    items: TMenuItem[];
-    onClick: (item: TMenuItem) => void;
+    items: MenuItem[];
+    onClick: (item: MenuItem) => void;
 };
 
 export const Menu: React.FC<MenuProps> = (props) => {
@@ -36,10 +36,12 @@ export const Menu: React.FC<MenuProps> = (props) => {
                         <li
                             key={index}
                             className={`${item.separator ? 'Separator' : ''} ${item.disabled ? 'Disabled' : ''}`}
-                            onClick={() => { if(!item.disabled) onClick(item) }}
+                            onClick={() => { if(!item.disabled && !item.separator) onClick(item) }}
                         >
-                            {item.icon && <span className='Icon'>{item.icon}</span>}
-                            {item.text && <span className='Text'>{item.text}</span>}
+                            {!item.separator && <>
+                                {item.icon && <span className='Icon'>{item.icon}</span>}
+                                {item.text && <span className='Text'>{item.text}</span>}
+                            </>}
                         </li>
                     ))}
                 </ul>

@@ -29,19 +29,20 @@ return(
 |Prop name|Type|Default|Description|
 |---------|----|-------|-----------|
 |id|string||Идентификатор элемента ввода|
+|label?|string \| null||Название опции|
 |options|CheckboxListOption[]||Список опций|
 |onChange|(options: CheckboxListOption[]) => void||Обработчик выбора|
-|required?|boolean|false|Флаг обязательности для заполнения|
-|disabled?|boolean|false|Флаг запрещения ввода данных|
+|required?|boolean \| null|false|Флаг обязательности для заполнения|
+|disabled?|boolean \| null|false|Флаг запрещения ввода данных|
 
 ### CheckboxListOption
 |Name|Type|Description|
 |----|----|-----------|
 |label|string|Название опции|
 |value|CheckboxListValue|Значение опции|
-|bottom?|string|Подсказка для опции|
-|disabled?|boolean|Флаг запрета выбора|
-|checked?|boolean|Флаг того, что опция выбрана|
+|bottom?|string \| null|Подсказка для опции|
+|disabled?|boolean \| null|Флаг запрета выбора|
+|checked?|boolean \| null|Флаг того, что опция выбрана|
 
 ### CheckboxListValue
 ```jsx

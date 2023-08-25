@@ -45,6 +45,7 @@
 }
 
 .Modal .ModalInner .ModalContent {
+    width: 100%;
     overflow: auto;
     padding-right: var(--alxgrn-unit);
 }

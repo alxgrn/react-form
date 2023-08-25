@@ -3,11 +3,11 @@ import Popup, { PopupProps } from '../popup/Popup';
 import './Menu.css';
 
 export type MenuSeparator = {
-    id: never;
+    id?: never;
     separator: true;
-    text: never;
-    icon: never;
-    disabled: never;
+    text?: never;
+    icon?: never;
+    disabled?: never;
 }
 
 export type MenuAlternative = {

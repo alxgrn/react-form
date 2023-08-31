@@ -38,8 +38,13 @@ const Time: FC<TimeProps> = ({ id, value, step = 1, onChange,
         min = parseInt(min);
         if(isNaN(hor) || hor < 0 || hor > 23) hor = 0;
         if(isNaN(min) || min < 0 || min > 59) min = 0;
-        setHor(`0${hor}`.slice(-2));
-        setMin(`0${min}`.slice(-2));
+        hor = `0${hor}`.slice(-2);
+        min = `0${min}`.slice(-2);
+        setHor(hor);
+        setMin(min);
+        // Вызовем установку разобранного времени в колбеке чтобы не было
+        // несостыковки при передаче некорректного начального значения.
+        if(onChange) onChange(`${hor}:${min}`);
     }, [ value ]);
 
     // Подготавливаем массивы со списками альтернатив выбора часов и минут

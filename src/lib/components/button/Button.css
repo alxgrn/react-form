@@ -2,9 +2,9 @@
  * Цвета
  */
  :root {
-    --alxgrn-button-bg: var(--alxgrn-br-button);
+    --alxgrn-button-bg: var(--alxgrn-bg-button);
     --alxgrn-button-color: var(--alxgrn-color-button);
-    --alxgrn-button-border: var(--alxgrn-br-button);
+    --alxgrn-button-border: var(--alxgrn-bg-button);
 
     --alxgrn-button-bg-error: var(--alxgrn-color-error);
     --alxgrn-button-color-error: white;

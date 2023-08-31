@@ -26,7 +26,7 @@
 	cursor: pointer;
     color: var(--alxgrn-button-color);
     background-color: var(--alxgrn-button-bg);
-    border-color: var(--alxgrn-button-border);
+    border: 1px solid var(--alxgrn-button-border);
     display: inline-block;
     margin: 0;
     padding: var(--alxgrn-unit-half) var(--alxgrn-unit-double);

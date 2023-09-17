@@ -52,7 +52,7 @@
     color: var(--alxgrn-form-info-success-color);
     background-color: var(--alxgrn-form-info-success-bg);
     border: 1px solid var(--alxgrn-form-info-success-border);
-    border-radius: var(--alxgrn-form-radius);
+    border-radius: var(--alxgrn-unit-small);
 }
 /**
  * Блок уведомления об ошибке
@@ -64,7 +64,7 @@
     color: var(--alxgrn-form-info-error-color);
     background-color: var(--alxgrn-form-info-error-bg);
     border: 1px solid var(--alxgrn-form-info-error-border);
-    border-radius: var(--alxgrn-form-radius);
+    border-radius: var(--alxgrn-unit-small);
 }
 /**
  * Блок элемента формы
@@ -77,7 +77,7 @@
  * Контейнер под кнопки под формой (submit, cancel)
  */
 .FormSubmitButtons {
-    margin-top: var(--alxgrn-unit);
+    margin-top: var(--alxgrn-unit-double);
     margin-bottom: 0;
     display: flex;
     flex-wrap: nowrap;

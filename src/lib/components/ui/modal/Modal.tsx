@@ -8,9 +8,10 @@ const TIMEOUT = 100; // Должен согласовываться с длит�
 export type ModalProps = {
     isOpen: boolean;
     onClose: () => void;
+    close?: boolean;
 };
 
-const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, isOpen, onClose }) => {
+const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, isOpen, onClose, close = true }) => {
     const nodeRef = useRef(null);
     
     useEffect(() => {
@@ -43,10 +44,11 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, isOpen, onClose })
             >
                 <div className='Modal' ref={nodeRef} onClick={onClick}>
                     <div className='ModalInner' onClick={e => e.stopPropagation()}>
+                        {close &&
                         <div className='ModalClose' onClick={onClick}>
                             <span/>
                             <span/>
-                        </div>
+                        </div>}
                         <div className='ModalContent'>
                             {children}
                         </div>

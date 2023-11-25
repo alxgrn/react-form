@@ -1,0 +1,8 @@
+.alxgrn-info {
+    margin: var(--alxgrn-unit) 0;
+    padding: var(--alxgrn-unit);
+}
+
+.alxgrn-info-error {
+    background-color: var(--alxgrn-bg-error);
+}

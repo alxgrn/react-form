@@ -32,6 +32,7 @@
 .Popup .Menu ul li .Icon {
     flex: 0 0 auto;
     font-size: larger;
+    display: flex;
 }
 
 .Popup .Menu ul li .Text {

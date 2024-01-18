@@ -1,5 +1,5 @@
 :root {
-    --alxgrn-modal-zindex: 100; /* выше прочих */
+    --alxgrn-modal-zindex: 1000; /* выше прочих */
     --alxgrn-modal-shadow: 0 0 var(--alxgrn-unit-half) rgba(0,0,0,.1);
     --alxgrn-modal-bg-color: white;
     --alxgrn-modal-animation-length: 100ms;

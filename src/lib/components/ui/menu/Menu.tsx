@@ -36,7 +36,12 @@ export const Menu: React.FC<MenuProps> = (props) => {
                         <li
                             key={index}
                             className={`${item.separator ? 'Separator' : ''} ${item.disabled ? 'Disabled' : ''}`}
-                            onClick={() => { if(!item.disabled && !item.separator) onClick(item) }}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                if(!item.disabled && !item.separator) {
+                                    onClick(item);
+                                }
+                            }}
                         >
                             {!item.separator && <>
                                 {item.icon && <span className='Icon'>{item.icon}</span>}

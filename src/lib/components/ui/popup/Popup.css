@@ -1,5 +1,5 @@
 :root {
-    --alxgrn-popup-zindex: 200; /* выше модалки */
+    --alxgrn-popup-zindex: 2000; /* выше модалки */
     --alxgrn-popup-shadow: 0 0 var(--alxgrn-unit-half) rgba(0,0,0,.1);
     --alxgrn-popup-bg-color: white;
     --alxgrn-popup-animation-length: 100ms;

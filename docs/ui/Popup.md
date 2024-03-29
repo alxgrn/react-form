@@ -15,6 +15,7 @@ export interface PopupProps {
     horizontal?: 'auto'|'left'|'right'|'inner-left'|'inner-right';
     maxHeight?: 'auto'|'none';
     width?: 'auto'|'parent';
+    position?: 'absolute'|'fixed';
 };
 ```
 
@@ -29,6 +30,7 @@ vertical?|'auto'\|'top'\|'bottom'\|'inner-top'\|'inner-bottom'|'auto'|Позиц
 horizontal?|'auto'\|'left'\|'right'\|'inner-left'\|'inner-right'|'auto'|Позиционирование по горизонтали
 maxHeight?|'auto'\|'none'|'none'|Максимальная высота
 width?|'auto'\|'parent'|'auto'|Ширина
+position?|'absolute'\|'fixed'|'absolute'|Будет ли компонент скроллиться вместе с документом или нет
 
 При автоматическом позиционировании выбирается наибольшое расстояние от границы родителя до границы экрана и компонент помещается в соответствующий квадрант.
 

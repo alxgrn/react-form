@@ -18,11 +18,12 @@ export interface PopupProps {
     horizontal?: 'auto'|'left'|'right'|'inner-left'|'inner-right';
     maxHeight?: 'auto'|'none';
     width?: 'auto'|'parent';
+    position?: 'absolute'|'fixed'; // скроллим элемент вместе с окном или нет
 };
 
 export const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClose,
                                                         vertical = 'auto', horizontal = 'auto', margin = '0',
-                                                        maxHeight = 'none', width = 'auto',
+                                                        maxHeight = 'none', width = 'auto', position = 'absolute',
                                                         children }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [ innerStyle, setInnerStyle ] = useState({});
@@ -47,9 +48,11 @@ export const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClos
         // Координаты родителя
         const prnt = parent.current.getBoundingClientRect();
         // Скопируем координаты и размеры родителя в стили контейнера
+        // с учетом того, как позиционируем попап
         setPopupStyle({
-            top: prnt.top + window.scrollY,
-            left: prnt.left + window.scrollX,
+            position,
+            top: position === 'fixed' ? prnt.top : prnt.top + window.scrollY,
+            left: position === 'fixed' ? prnt.left : prnt.left + window.scrollX,
             width: prnt.width,
             height: prnt.height,
         });

@@ -135,7 +135,7 @@ export const Popup:FC<PropsWithChildren<PopupProps>> = ({ parent, isOpen, onClos
         }
         // Устанавливаем
         setInnerStyle(style);
-    }, [ parent, isOpen, margin, vertical, horizontal, maxHeight, width ]);
+    }, [ parent, isOpen, margin, vertical, horizontal, maxHeight, width, position ]);
 
     // Скрываем при клике вне компонента
     // Используем нисходящее событие, а не восходящее!

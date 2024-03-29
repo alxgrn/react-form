@@ -25,7 +25,7 @@
  * размера ширина и высота будут плавать.
  */
 .Popup .PopupInner  {
-    /* position: absolute; */
+    position: absolute;
     background-color: var(--alxgrn-popup-bg-color);
     border-radius: var(--alxgrn-unit-half);
     box-shadow: var(--alxgrn-popup-shadow);

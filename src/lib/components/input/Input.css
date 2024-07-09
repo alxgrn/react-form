@@ -36,6 +36,7 @@
 	font-size: inherit;
     line-height: inherit;
     font-family: inherit;
+    caret-color: var(--alxgrn-input-border);
     border-radius: var(--alxgrn-unit-small);
     border: 1px solid var(--alxgrn-input-border);
     width: 100%;
@@ -66,6 +67,7 @@
     color: var(--alxgrn-input-color-focus);
 	background-color: var(--alxgrn-input-bg-focus);
     border: 1px solid var(--alxgrn-input-border-focus);
+    caret-color: var(--alxgrn-input-border-focus);
 }
 /**
  * Устанавливаем свое оформление у плейсхолдера
@@ -86,6 +88,7 @@
     border-color: var(--alxgrn-input-border-disabled);
     background-color: var(--alxgrn-input-bg-disabled);
     cursor: default;
+    caret-color: var(--alxgrn-input-border-disabled);
 }
 /**
  * Иногда input могут быть только для чтения

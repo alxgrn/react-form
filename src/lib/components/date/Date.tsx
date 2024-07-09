@@ -28,6 +28,7 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
 
     const getStyle = () => {
         if(isError()) return {
+            caretColor:'var(--alxgrn-input-border-error)',
             borderColor:'var(--alxgrn-input-border-error)',
             backgroundColor:'var(--alxgrn-input-bg-error)',
         };

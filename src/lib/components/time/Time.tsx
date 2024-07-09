@@ -70,6 +70,7 @@ const Time: FC<TimeProps> = ({ id, value, step = 1, onChange,
 
     const getStyle = () => {
         if(isError()) return {
+            caretColor:'var(--alxgrn-input-border-error)',
             borderColor:'var(--alxgrn-input-border-error)',
             backgroundColor:'var(--alxgrn-input-bg-error)',
         };

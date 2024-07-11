@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/alxgrn/react-form/static/css/main.0540970e.css",
-    "main.js": "/alxgrn/react-form/static/js/main.a49dff8a.js",
+    "main.js": "/alxgrn/react-form/static/js/main.e23fc5b4.js",
     "static/js/787.b0571e8a.chunk.js": "/alxgrn/react-form/static/js/787.b0571e8a.chunk.js",
     "index.html": "/alxgrn/react-form/index.html",
     "main.0540970e.css.map": "/alxgrn/react-form/static/css/main.0540970e.css.map",
-    "main.a49dff8a.js.map": "/alxgrn/react-form/static/js/main.a49dff8a.js.map",
+    "main.e23fc5b4.js.map": "/alxgrn/react-form/static/js/main.e23fc5b4.js.map",
     "787.b0571e8a.chunk.js.map": "/alxgrn/react-form/static/js/787.b0571e8a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0540970e.css",
-    "static/js/main.a49dff8a.js"
+    "static/js/main.e23fc5b4.js"
   ]
 }

@@ -15,11 +15,12 @@ export type InputProps = {
     disabled?: boolean | null;
     limit?: number | null;
     rows?: number | null;
+    autoFocus?: boolean;
     __TYPE?: 'Input';
 };
 
 const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label, 
-                                placeholder, rows = 5, top, bottom,
+                                placeholder, rows = 5, top, bottom, autoFocus,
                                 required = false, disabled = false, limit }) => {
 
     const isError = () => {
@@ -60,6 +61,7 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 placeholder={placeholder ?? undefined}
                 style={getStyle()}
                 disabled={disabled ? true : false}
+                autoFocus
             />}
 
             {/* TEXTAREA */}
@@ -72,6 +74,7 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
                 placeholder={placeholder ?? undefined}
                 style={getStyle()}
                 disabled={disabled ? true : false}
+                autoFocus
             />}
 
         </Label>

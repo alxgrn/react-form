@@ -20,6 +20,6 @@ return(
 |Prop name|Type|Default|Description|
 |---------|----|-------|-----------|
 |label?|string||Текст кнопки|
-|type?|`Submit`\|`Error`\|`Success`\|`Cancel`||Тип кнопки|
+|type?|`Accent`\|`Error`\|`Success`\|`Default`|`Default`|Тип кнопки|
 |disabled?|boolean|false|Флаг отображения запрещенного варианта|
 |onClick?|() => void||Обработчик клика|

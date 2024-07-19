@@ -4,7 +4,7 @@ import { isValidDate } from '../date/Date';
 import { RadioListOption } from '../radio/RadioList';
 import { SelectOption } from '../select/Select';
 import { CheckboxListOption, CheckboxListValue } from '../checkbox/CheckboxList';
-import Button from '../button/Button';
+import Button, { ButtonType } from '../button/Button';
 import './Form.css';
 
 export type FormProps = {
@@ -13,6 +13,8 @@ export type FormProps = {
     success?: string | null;
     submit?: string | null;
     cancel?: string | null;
+    submitType?: ButtonType;
+    cancelType?: ButtonType;
     wide?: boolean | null;
     onSubmit?: (d: FormData) => void;
     onCancel?: () => void;
@@ -23,6 +25,7 @@ export type FormData = {
 };
 
 export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, submit, cancel,
+                                                         submitType = 'Accent', cancelType = 'Error',
                                                          wide, onSubmit, onCancel, children }) => {
     const [ disabled, setDisabled ] = useState(false);
     // Если выводим кнопку сабмита, то проверяем все ли данные введены для required полей.
@@ -140,14 +143,14 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
             <div className='FormSubmitButtons'>
                 {submit &&
                 <Button
-                    type='Accent'
+                    type={submitType}
                     label={submit}
                     disabled={disabled}
                     onClick={onClick}
                 />}
                 {cancel &&
                 <Button
-                    type='Error'
+                    type={cancelType}
                     label={cancel}
                     onClick={onCancel}
                 />}

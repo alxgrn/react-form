@@ -19,6 +19,10 @@ import { Menu, MenuItem } from './components/ui/menu/Menu';
 import Modal from './components/ui/modal/Modal';
 import Popup from './components/ui/popup/Popup';
 import Portal from './components/ui/portal/Portal';
+import Message from './components/ui/message/Message';
+import Alert from './components/ui/alert/Alert';
+import Confirm from './components/ui/confirm/Confirm';
+import Prompt from './components/ui/prompt/Prompt';
 
 export {
     Form,
@@ -41,6 +45,10 @@ export {
     Modal,
     Popup,
     Portal,
+    Message,
+    Alert,
+    Confirm,
+    Prompt,
 };
 
 export type {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, Files, Input, RadioList, Select, Checkbox, CheckboxList, Fieldset, Date, FormData, FormRow, FormCol, Time, Modal } from './lib';
+import { Form, Files, Input, RadioList, Select, Checkbox, CheckboxList, Fieldset, Date, FormData, FormRow, FormCol, Time, Modal, Button, Alert, Confirm, Prompt } from './lib';
 import './App.css';
 import { CheckboxListOption } from './lib/components/checkbox/CheckboxList';
 import { RadioListOption, RadioListValue } from './lib/components/radio/RadioList';
@@ -40,6 +40,9 @@ function App() {
     const [ files, setFiles ] = useState<File[]>([file]);
     const [ checkboxlist, setCheckboxList ] = useState(checkboxes);
     const [ isModalOpen, setIsModalOpen ] = useState(false);
+    const [ isAlertOpen, setIsAlertOpen ] = useState(false);
+    const [ isConfirmOpen, setIsConfirmOpen ] = useState(false);
+    const [ isPromptOpen, setIsPromptOpen ] = useState(false);
 
     const onSubmit = (data: FormData) => {
         window.alert(data);
@@ -69,6 +72,11 @@ function App() {
             <header>
                 React Form Test
             </header>
+            <p>
+                <Button type='Accent' onClick={() => setIsAlertOpen(true)} label='Alert'/>&nbsp;
+                <Button type='Success' onClick={() => setIsConfirmOpen(true)} label='Confirm'/>&nbsp;
+                <Button type='Error' onClick={() => setIsPromptOpen(true)} label='Prompt'/>
+            </p>
             <Form
                 info='Info text'
                 success='Success text'
@@ -232,6 +240,41 @@ function App() {
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} close={false}>
                 Следует отметить, что начало повседневной работы по формированию позиции требует определения и уточнения системы обучения кадров, соответствующей насущным потребностям. Задача организации, в особенности же социально-экономическое развитие способствует повышению качества существующих финансовых и административных условий. Приятно, граждане, наблюдать, как реплицированные с зарубежных источников, современные исследования освещают чрезвычайно интересные особенности картины в целом, однако конкретные выводы, разумеется, рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок. Прежде всего, современная методология разработки прекрасно подходит для реализации системы массового участия. Лишь некоторые особенности внутренней политики, инициированные исключительно синтетически, смешаны с не уникальными данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности. Банальные, но неопровержимые выводы, а также активно развивающиеся страны третьего мира преданы социально-демократической анафеме. Каждый из нас понимает очевидную вещь: семантический разбор внешних противодействий обеспечивает широкому кругу (специалистов) участие в формировании приоретизации разума над эмоциями. Ясность нашей позиции очевидна: убеждённость некоторых оппонентов обеспечивает актуальность вывода текущих активов. Но перспективное планирование влечет за собой процесс внедрения и модернизации поэтапного и последовательного развития общества. Как уже неоднократно упомянуто, тщательные исследования конкурентов призывают нас к новым свершениям, которые, в свою очередь, должны быть смешаны с не уникальными данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности.
             </Modal>
+            <Alert
+                icon='https://dailytelefrag.ru/warning.png'
+                type='round'
+                isOpen={isAlertOpen}
+                onClose={() => setIsAlertOpen(false)}
+                title='Заголовок'
+                message='Тестовое сообщение'
+                close='Понятно'
+                closeType='Success'
+            />
+            <Confirm
+                icon='https://dailytelefrag.ru/warning.png'
+                type='square'
+                isOpen={isConfirmOpen}
+                onCancel={() => { setIsConfirmOpen(false); alert('Cancel'); }}
+                onConfirm={() => { setIsConfirmOpen(false); alert('Confirm'); }}
+                title='Заголовок'
+                message='Тестовое сообщение'
+                cancel='Отменить'
+                confirm='Продолжить'
+                cancelType='Error'
+                confirmType='Success'
+            />
+            <Prompt
+                value='Hello!'
+                isOpen={isPromptOpen}
+                onCancel={() => setIsPromptOpen(false)}
+                onSubmit={(s) => { setIsPromptOpen(false); alert(s); }}
+                title='Заголовок'
+                top='Сверху'
+                bottom='Снизу'
+                submit='Ввести'
+                submitType='Error'
+                //limit={5}
+            />
         </div>
     );
 }

@@ -28,8 +28,12 @@ const onSubmit = (data: FormData) => {
 |info?|string||Описание формы|
 |error?|string||Сообщение об ошибке|
 |success?|string||Сообщение об успехе|
-|submit?|string||Надпись на кнопке отправки данных|
-|onSubmit?|(d: FormData) => void||Обработчик нажатия на кнопку отправки данных|
+|submit?|string||Надпись на кнопке отправки|
+|cancel?|string||Надпись на кнопке отмены|
+|submitType?|`Accent`\|`Error`\|`Success`\|`Default`|`Accent`|Тип кнопки отправки|
+|cancelType?|`Accent`\|`Error`\|`Success`\|`Default`|`Error`|Тип кнопки отмены|
+|onSubmit?|(d: FormData) => void||Обработчик нажатия на кнопку отправки|
+|onCancel?|() => void||Обработчик нажатия на кнопку отмены|
 |wide?|boolean||Флаг увеличенного размера формы|
 
 ### Данные формы

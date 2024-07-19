@@ -1,9 +1,10 @@
 import React from 'react';
 import './Button.css';
 
+export type ButtonType = 'Error'|'Success'|'Accent'|'Default';
 export interface ButtonProps {
     label?: string | null;
-    type?: 'Error'|'Success'|'Accent'|'Default';
+    type?: ButtonType;
     disabled?: boolean | null;
     onClick?: () => void;
 }

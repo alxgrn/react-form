@@ -1,0 +1,20 @@
+.Message {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--alxgrn-unit);
+}
+
+.Message .MessageIcon {
+    flex: 0 0 auto;
+    width: calc(4 * var(--alxgrn-unit));
+    height: calc(4 * var(--alxgrn-unit));
+    border-radius: var(--alxgrn-unit-small);
+}
+
+.Message .MessageIcon.round {
+    border-radius: 50%;
+}
+
+.Message .MessageText {
+    flex: 1 1 auto;
+}

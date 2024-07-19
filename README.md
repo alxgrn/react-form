@@ -29,7 +29,11 @@ npm install @alxgrn/react-form
 * [DatePicker](./docs/DatePicker.md)
 * [FormRow, FormCol](./docs/FormRowCol.md)
 * [Modal](./docs/ui/Modal.md)
-* [Popoup](./docs/ui/Popup.md)
+* [Popup](./docs/ui/Popup.md)
+* [Message](./docs/ui/Message.md)
+* [Alert](./docs/ui/Alert.md)
+* [Confirm](./docs/ui/Confirm.md)
+
 
 ## Как публиковать свой NPM-пакет
 [Заметка о том, как публиковать свой пакет](./docs/NPM-Publish.md). Просто чтобы не забыть :)

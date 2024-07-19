@@ -18,11 +18,13 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, isOpen, onClose, c
         const closeOnEscapeKey = (e: KeyboardEvent) => {
             if(e.key === 'Escape') onClose();
         };
-        document.body.addEventListener("keydown", closeOnEscapeKey);
+
+        if (isOpen) document.body.addEventListener("keydown", closeOnEscapeKey);
+        
         return () => {
-            document.body.removeEventListener("keydown", closeOnEscapeKey);
+            if (isOpen) document.body.removeEventListener("keydown", closeOnEscapeKey);
         };
-    }, [ onClose ]);
+    }, [ isOpen, onClose ]);
 
     const onClick = (e: React.MouseEvent) => {
         // Без этого возможно двойное срабатывание при одном клике

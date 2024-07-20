@@ -14,6 +14,21 @@ export type ModalProps = {
 const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, isOpen, onClose, close = true }) => {
     const nodeRef = useRef(null);
     
+    // При открытии окна будем запрещать прокрутку страницы
+    useEffect(() => {
+        if (isOpen) {
+            const scrollY = `-${window.scrollY}px`;
+            document.body.style.position = 'fixed';
+            document.body.style.top = scrollY;
+        } else {
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        }
+    }, [ isOpen ]);
+
+    // Отслеживаем нажатие ESC для закрытия окна
     useEffect(() => {
         const closeOnEscapeKey = (e: KeyboardEvent) => {
             if(e.key === 'Escape') onClose();

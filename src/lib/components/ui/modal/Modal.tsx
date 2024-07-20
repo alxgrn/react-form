@@ -1,9 +1,10 @@
-import React, { FC, PropsWithChildren, useEffect, useRef } from 'react';
+import React, { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Portal from '../portal/Portal';
 import './Modal.css';
 
 const TIMEOUT = 100; // Должен согласовываться с длительностью анимации появления в .css
+const MODAL_CLASS_NAME = 'alxgrn-modal-open';
 
 export type ModalProps = {
     isOpen: boolean;
@@ -13,20 +14,33 @@ export type ModalProps = {
 
 const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, isOpen, onClose, close = true }) => {
     const nodeRef = useRef(null);
+    const [ isFirstOpener, setIsFirstOpener ] = useState(false);
     
     // При открытии окна будем запрещать прокрутку страницы
     useEffect(() => {
         if (isOpen) {
+            // Если уже открыто какое-то модальное окно, ничего не делаем
+            if (document.body.classList.contains(MODAL_CLASS_NAME)) return;
             const scrollY = `-${window.scrollY}px`;
             document.body.style.position = 'fixed';
             document.body.style.top = scrollY;
+            document.body.style.left = '0px';
+            document.body.style.right = '0px';
+            document.body.classList.add(MODAL_CLASS_NAME);
+            setIsFirstOpener(true); // Отметим что мы первые, кто открыл модалку
         } else {
+            // Если не мы устанавливали значения, не нам их и убирать
+            if (!isFirstOpener) return;
             const scrollY = document.body.style.top;
             document.body.style.position = '';
             document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
             window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            document.body.classList.remove(MODAL_CLASS_NAME);
+            setIsFirstOpener(false);
         }
-    }, [ isOpen ]);
+    }, [ isOpen, isFirstOpener ]);
 
     // Отслеживаем нажатие ESC для закрытия окна
     useEffect(() => {

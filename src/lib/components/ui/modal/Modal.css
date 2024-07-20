@@ -99,7 +99,7 @@
     }
 }
 /*
- * Анимации подложки для CSSTransform
+ * Анимации подложки для CSSTransition
  */
 .Modal-enter {
     pointer-events: none;
@@ -128,7 +128,7 @@
     background-color: rgba(0, 0, 0, 0);
 }
 /*
- * Анимации содержимого для CSSTransform
+ * Анимации содержимого для CSSTransition
  */
 .Modal-enter .ModalInner {
     pointer-events: none;

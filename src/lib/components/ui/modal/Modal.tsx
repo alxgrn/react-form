@@ -18,6 +18,19 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, isOpen, onClose, c
     
     // При открытии окна будем запрещать прокрутку страницы
     useEffect(() => {
+        const clear = () => {
+            // Если не мы устанавливали значения, не нам их и убирать
+            if (!isFirstOpener) return;
+            const scrollY = document.body.style.top;
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            document.body.classList.remove(MODAL_CLASS_NAME);
+            setIsFirstOpener(false);
+        };
+
         if (isOpen) {
             // Если уже открыто какое-то модальное окно, ничего не делаем
             if (document.body.classList.contains(MODAL_CLASS_NAME)) return;
@@ -29,17 +42,11 @@ const Modal: FC<PropsWithChildren<ModalProps>> = ({ children, isOpen, onClose, c
             document.body.classList.add(MODAL_CLASS_NAME);
             setIsFirstOpener(true); // Отметим что мы первые, кто открыл модалку
         } else {
-            // Если не мы устанавливали значения, не нам их и убирать
-            if (!isFirstOpener) return;
-            const scrollY = document.body.style.top;
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.left = '';
-            document.body.style.right = '';
-            window.scrollTo(0, parseInt(scrollY || '0') * -1);
-            document.body.classList.remove(MODAL_CLASS_NAME);
-            setIsFirstOpener(false);
+            clear();
         }
+
+        // Очищаем все при размонтировании элемента т.к. это аналог его закрытия
+        return () => clear();
     }, [ isOpen, isFirstOpener ]);
 
     // Отслеживаем нажатие ESC для закрытия окна

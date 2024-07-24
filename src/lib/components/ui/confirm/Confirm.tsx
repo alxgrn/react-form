@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import Message, { MessageIconType } from '../message/Message';
 import Modal from '../modal/Modal';
 import Form from '../../form/Form';
@@ -22,7 +22,7 @@ const CANCEL = 'Cancel';
 const CONFIRM = 'Confirm';
 
 const Confirm:FC<ModalConfirmProps> = ({ icon, type, title, message, cancel, confirm,
-											  confirmType, cancelType, isOpen, onCancel, onConfirm }) => {
+										 confirmType, cancelType, isOpen, onCancel, onConfirm }) => {
 	return (
 		<Modal isOpen={isOpen} onClose={onCancel}>
 			<Message

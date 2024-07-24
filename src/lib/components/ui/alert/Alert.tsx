@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import Message, { MessageIconType } from '../message/Message';
 import Modal from '../modal/Modal';
 import Form from '../../form/Form';

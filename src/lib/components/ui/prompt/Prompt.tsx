@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Modal from '../modal/Modal';
 import Form from '../../form/Form';
 import Input from '../../input/Input';
@@ -17,7 +17,8 @@ export interface PromptProps {
     onSubmit: (value: string) => void;
 }
 
-const Prompt: FC<PromptProps> = ({ value, title, top, bottom, limit, submit, submitType, isOpen, onCancel, onSubmit }) => {
+const Prompt: FC<PromptProps> = ({ value, title, top, bottom, limit, submit,
+                                   submitType, isOpen, onCancel, onSubmit }) => {
     const [ innerValue, setInnerValue ] = useState('');
 
     useEffect(() => {

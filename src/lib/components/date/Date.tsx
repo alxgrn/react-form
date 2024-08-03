@@ -13,7 +13,7 @@ export interface DateProps {
     bottom?: string | null | React.ReactNode;
     required?: boolean | null;
     disabled?: boolean | null;
-    __TYPE?: 'Date';
+    //__TYPE?: 'Date';
 };
 
 const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bottom,
@@ -82,9 +82,9 @@ const Date: FC<DateProps> = ({ id, value, onChange, label, placeholder, top, bot
 }
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-Date.defaultProps = {
-    __TYPE: 'Date',
-}
+// Date.defaultProps = {
+//     __TYPE: 'Date',
+// }
 
 // Вспомогательная функция проверки того, что строка является
 // корректной датой в формате ДД.ММ.ГГГ

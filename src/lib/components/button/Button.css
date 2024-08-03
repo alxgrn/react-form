@@ -36,11 +36,16 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     border-radius: var(--alxgrn-unit-small);
+    opacity: .9;
+}
+.Button:hover {
+    opacity: 1;
 }
 /**
  * Запрещенный вариант
  */
-.Button.Disabled {
+.Button.Disabled,
+.Button.Disabled:hover {
     cursor: default;
     opacity: .5;
 }
@@ -67,4 +72,11 @@
     color: var(--alxgrn-button-color-accent);
     border-color: var(--alxgrn-button-border-accent);
     background-color: var(--alxgrn-button-bg-accent);
+}
+/**
+ * Разные размеры
+ */
+.Button.Small {
+    font-size: var(--alxgrn-font-small);
+    padding: var(--alxgrn-unit-small) var(--alxgrn-unit);
 }

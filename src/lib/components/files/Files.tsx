@@ -14,7 +14,7 @@ export interface FilesProps {
     multiple?: boolean | null;
     required?: boolean | null;
     disabled?: boolean | null;
-    __TYPE?: 'Files';
+    //__TYPE?: 'Files';
 }
 
 export const bytes2string = (bytes: number): string => {
@@ -95,8 +95,8 @@ export const Files: FC<FilesProps> = ({ id, files, onChange, label, text, top, b
 }
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-Files.defaultProps = {
-    __TYPE: 'Files',
-}
+// Files.defaultProps = {
+//     __TYPE: 'Files',
+// }
 
 export default Files;

@@ -3,7 +3,7 @@ import Radio, { RadioProps } from '../radio/Radio';
 
 export interface CheckboxProps extends Omit<RadioProps, '__TYPE' | 'type'> {
     id: string;
-    __TYPE?: 'Checkbox';
+    //__TYPE?: 'Checkbox';
 };
 
 const Checkbox: React.FC<CheckboxProps> = ({ id, value, onChange, label, bottom,
@@ -24,8 +24,8 @@ const Checkbox: React.FC<CheckboxProps> = ({ id, value, onChange, label, bottom,
 
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-Checkbox.defaultProps = {
-    __TYPE: 'Checkbox',
-};
+// Checkbox.defaultProps = {
+//     __TYPE: 'Checkbox',
+// };
 
 export default Checkbox;

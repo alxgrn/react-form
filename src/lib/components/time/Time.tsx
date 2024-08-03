@@ -15,7 +15,7 @@ export interface TimeProps {
     bottom?: string | null | React.ReactNode;
     required?: boolean | null;
     disabled?: boolean | null;
-    __TYPE?: 'Time';
+    //__TYPE?: 'Time';
 };
 
 const Time: FC<TimeProps> = ({ id, value, step = 1, onChange,
@@ -149,8 +149,8 @@ const Time: FC<TimeProps> = ({ id, value, step = 1, onChange,
 }
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-Time.defaultProps = {
-    __TYPE: 'Time',
-}
+// Time.defaultProps = {
+//     __TYPE: 'Time',
+// }
 
 export default Time;

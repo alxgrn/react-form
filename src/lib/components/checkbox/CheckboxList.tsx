@@ -20,7 +20,7 @@ export interface CheckboxListProps {
     onChange: (v: CheckboxListOption[]) => void;
     disabled?: boolean | null;
     required?: boolean | null;
-    __TYPE?: 'CheckboxList';
+    //__TYPE?: 'CheckboxList';
 }
 
 export const CheckboxList: FC<CheckboxListProps> = ({ id, label, onChange, required = false, disabled = false, options }) => {
@@ -69,8 +69,8 @@ export const CheckboxList: FC<CheckboxListProps> = ({ id, label, onChange, requi
 };
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-CheckboxList.defaultProps = {
-    __TYPE: 'CheckboxList',
-};
+// CheckboxList.defaultProps = {
+//     __TYPE: 'CheckboxList',
+// };
 
 export default CheckboxList;

@@ -23,7 +23,7 @@ export interface RadioListProps {
     onChange: (value: RadioListValue) => void;
     disabled?: boolean | null;
     required?: boolean | null;
-    __TYPE?: 'RadioList';
+    //__TYPE?: 'RadioList';
 }
 
 export const RadioList: FC<RadioListProps> = ({ id, label, value, onChange, required = false, disabled = false, options }) => {
@@ -62,8 +62,8 @@ export const RadioList: FC<RadioListProps> = ({ id, label, value, onChange, requ
 };
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-RadioList.defaultProps = {
-    __TYPE: 'RadioList',
-};
+// RadioList.defaultProps = {
+//     __TYPE: 'RadioList',
+// };
 
 export default RadioList;

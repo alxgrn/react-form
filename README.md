@@ -33,7 +33,20 @@ npm install @alxgrn/react-form
 * [Message](./docs/ui/Message.md)
 * [Alert](./docs/ui/Alert.md)
 * [Confirm](./docs/ui/Confirm.md)
+* [Editable](./docs/ui/Editable.md)
 
 
 ## Как публиковать свой NPM-пакет
 [Заметка о том, как публиковать свой пакет](./docs/NPM-Publish.md). Просто чтобы не забыть :)
+
+## Замена устаревшего способа фильтрации дочерних компонентов
+В будущих версиях React будет удалена поддержка для `defaultProps`:
+```
+Warning: Input: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.
+```
+Поэтому необходимо менять способ определения ввода данных в обязательных полях формы, который описан тут https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292, на что-то другое.
+
+Вот с чего стоит начать:
+* https://stackoverflow.com/questions/70967581/filter-react-children-by-type-with-typescript
+* https://stackforgeeks.com/blog/only-allow-children-of-a-specific-type-in-a-react-component
+* https://www.npmjs.com/package/react-nanny

@@ -23,6 +23,7 @@ import Message from './components/ui/message/Message';
 import Alert from './components/ui/alert/Alert';
 import Confirm from './components/ui/confirm/Confirm';
 import Prompt from './components/ui/prompt/Prompt';
+import Editable from './components/ui/editable/Editable';
 
 export {
     Form,
@@ -49,6 +50,7 @@ export {
     Alert,
     Confirm,
     Prompt,
+    Editable,
 };
 
 export type {

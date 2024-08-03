@@ -24,4 +24,9 @@
     --alxgrn-unit-small: .25rem;
     --alxgrn-unit-double: 2rem;
     --alxgrn-unit-smallest: .125rem;
+    /**
+      * Размеры шрифта
+      */
+    --alxgrn-font-size: 1rem;
+    --alxgrn-font-small: .8rem;
 }

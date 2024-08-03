@@ -18,7 +18,7 @@ export interface RadioProps {
     required?: boolean | null;
     disabled?: boolean | null;
     checked?: boolean | null;
-    __TYPE?: 'Radio';
+    //__TYPE?: 'Radio';
 };
 
 export const Radio: React.FC<RadioProps> = ({ type = 'radio', value, onChange, label, bottom, error = false,
@@ -45,8 +45,8 @@ export const Radio: React.FC<RadioProps> = ({ type = 'radio', value, onChange, l
 };
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-Radio.defaultProps = {
-    __TYPE: 'Radio',
-};
+// Radio.defaultProps = {
+//     __TYPE: 'Radio',
+// };
 
 export default Radio;

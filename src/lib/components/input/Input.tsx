@@ -16,7 +16,7 @@ export type InputProps = {
     limit?: number | null;
     rows?: number | null;
     autoFocus?: boolean;
-    __TYPE?: 'Input';
+    //__TYPE?: 'Input';
 };
 
 const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label, 
@@ -83,8 +83,8 @@ const Input: FC<InputProps> = ({ id, type = 'text', value, onChange, label,
 }
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-Input.defaultProps = {
-    __TYPE: 'Input',
-}
+// Input.defaultProps = {
+//     __TYPE: 'Input',
+// }
 
 export default Input;

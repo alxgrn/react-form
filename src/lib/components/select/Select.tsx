@@ -19,7 +19,7 @@ export interface SelectProps {
     placeholder?: string | null;
     required?: boolean | null;
     disabled?: boolean | null;
-    __TYPE?: 'Select';
+    //__TYPE?: 'Select';
 }
 
 export const Select: React.FC<SelectProps> = ({ id, value, onChange, label, placeholder,
@@ -84,8 +84,8 @@ export const Select: React.FC<SelectProps> = ({ id, value, onChange, label, plac
 };
 // Это специальный props для того, чтобы мы могли найти все FormInput внутри Form
 // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
-Select.defaultProps = {
-    __TYPE: 'Select',
-};
+// Select.defaultProps = {
+//     __TYPE: 'Select',
+// };
 
 export default Select;

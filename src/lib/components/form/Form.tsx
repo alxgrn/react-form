@@ -31,51 +31,59 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
     // Если выводим кнопку сабмита, то проверяем все ли данные введены для required полей.
     // Подробности про props.__TYPE описаны тут:
     // https://mparavano.medium.com/find-filter-react-children-by-type-d9799fb78292
+    // ВНИМАНИЕ: Этот метод устарел т.к. скоро defaultProps перестанут поддерживать!
+    //           Поэтому переписали перебор с фильтрацией не по __TYPE а по имени функции компонента
     useEffect(() => {
         if(!submit) return;
         setDisabled(false);
-        deepForEach(children, (child: ReactNode) => {
-            if(child && (child as ReactElement).props?.required && (child as ReactElement).props?.__TYPE) {
-                const props = (child as ReactElement).props;
-                switch(props.__TYPE) {
-                    case 'Input':
-                        // Значение должно быть непустой строкой
-                        if(!(props.value as string).trim()) setDisabled(true);
-                        break;
-                    case 'Checkbox':
-                        // Чекбокс должен быть отмечен
-                        if(!(props.checked as boolean)) setDisabled(true);
-                        break;
-                    case 'Select': {
-                        // Среди списка опций должна быть опция с указанным значением
-                        const value = props.value as string;
-                        const options = props.options as SelectOption[];
-                        if(options.findIndex(a => a.value === value) < 0) setDisabled(true); }
-                        break;
-                    case 'RadioList': {
-                        // Среди списка опций должна быть опция с указанным значением
-                        const value = props.value as string;
-                        const options = props.options as RadioListOption[];
-                        if(options.findIndex(a => a.value === value) < 0) setDisabled(true); }
-                        break;
-                    case 'Files':
-                        // Должен быть выбран хотя бы один файл
-                        const files = props.files as File[];
-                        if(files.length < 1) setDisabled(true);
-                        break;
-                    case 'Date':
-                        // Дата должна быть валидна
-                        if(!isValidDate((props.value as string).trim())) setDisabled(true);
-                        break;
-                    case 'CheckboxList': {
-                        // Должен быть выбран хотя бы один чекбокс
-                        const options = props.options as CheckboxListOption[];
-                        if(options.findIndex(a => a.checked === true) < 0) setDisabled(true); }
-                        break;
-                    default:
-                        break;
-                }
+        deepForEach(children, (child: ReactNode) => {            
+            if (!child) return;
+            const element = child as ReactElement;
+            if (typeof element.type !== 'function') return; // Игнорируем все, кроме функциональных компонентов
+            const name = (element.type as unknown as () => void).name; // Название функционального компонента
+            const props = element.props;
+            if (!props.required) return; // Проверяем только компоненты в которых ввод обязателен
+            // console.log(`Name: ${name} Required: ${props.required}`);
+            // Обрабатываем только известные нам компоненты
+            switch(name) {
+                case 'Input':
+                    // Значение должно быть непустой строкой
+                    if(!(props.value as string).trim()) setDisabled(true);
+                    break;
+                case 'Checkbox':
+                    // Чекбокс должен быть отмечен
+                    if(!(props.checked as boolean)) setDisabled(true);
+                    break;
+                case 'Select': {
+                    // Среди списка опций должна быть опция с указанным значением
+                    const value = props.value as string;
+                    const options = props.options as SelectOption[];
+                    if(options.findIndex(a => a.value === value) < 0) setDisabled(true); }
+                    break;
+                case 'RadioList': {
+                    // Среди списка опций должна быть опция с указанным значением
+                    const value = props.value as string;
+                    const options = props.options as RadioListOption[];
+                    if(options.findIndex(a => a.value === value) < 0) setDisabled(true); }
+                    break;
+                case 'Files':
+                    // Должен быть выбран хотя бы один файл
+                    const files = props.files as File[];
+                    if(files.length < 1) setDisabled(true);
+                    break;
+                case 'Date':
+                    // Дата должна быть валидна
+                    if(!isValidDate((props.value as string).trim())) setDisabled(true);
+                    break;
+                case 'CheckboxList': {
+                    // Должен быть выбран хотя бы один чекбокс
+                    const options = props.options as CheckboxListOption[];
+                    if(options.findIndex(a => a.checked === true) < 0) setDisabled(true); }
+                    break;
+                default:
+                    break;
             }
+        
         });
     }, [ children, submit ]);
 
@@ -98,37 +106,41 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ info, error, success, s
         };
 
         deepForEach(children, (child: ReactNode) => {
-            if(child && (child as ReactElement).props?.__TYPE) {
-                const props = (child as ReactElement).props;
-                switch(props.__TYPE) {
-                    case 'Date':
-                    case 'Time':
-                    case 'Input':
-                        addData(props.id, (props.value as string).trim());
-                        break;
-                    case 'Checkbox':
-                        addData(props.id, props.checked as boolean ? props.value : undefined);
-                        break;
-                    case 'Select': 
-                    case 'RadioList':
-                        addData(props.id, props.value as string);
-                        break;
-                    case 'Files':
-                        addData(props.id, props.files as File[]);
-                        break;
-                    case 'Hidden':
-                        addData(props.id, props.value as string | number);
-                        break;
-                    case 'CheckboxList': {
-                        const value: CheckboxListValue[] = [];
-                        const options = props.options as CheckboxListOption[];
-                        options.forEach(o => { if(o.checked) value.push(o.value); });
-                        addData(props.id, value); }
-                        break;
-                    default:
-                        break;
-                }
-            }
+            if (!child) return;
+            const element = child as ReactElement;
+            if (typeof element.type !== 'function') return; // Игнорируем все, кроме функциональных компонентов
+            const name = (element.type as unknown as () => void).name; // Название функционального компонента
+            const props = element.props;
+            // console.log(`Name: ${name} Value: ${props.value}`);
+            // Обрабатываем только известные нам компоненты
+            switch(name) {
+                case 'Date':
+                case 'Time':
+                case 'Input':
+                    addData(props.id, (props.value as string).trim());
+                    break;
+                case 'Checkbox':
+                    addData(props.id, props.checked as boolean ? props.value : undefined);
+                    break;
+                case 'Select': 
+                case 'RadioList':
+                    addData(props.id, props.value as string);
+                    break;
+                case 'Files':
+                    addData(props.id, props.files as File[]);
+                    break;
+                case 'Hidden':
+                    addData(props.id, props.value as string | number);
+                    break;
+                case 'CheckboxList': {
+                    const value: CheckboxListValue[] = [];
+                    const options = props.options as CheckboxListOption[];
+                    options.forEach(o => { if(o.checked) value.push(o.value); });
+                    addData(props.id, value); }
+                    break;
+                default:
+                    break;
+            }            
         });
         onSubmit(data);
     };

@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 import RequiredMark from '../required/RequiredMark';
 import './RadioLabel.css';
 
@@ -11,7 +11,7 @@ export interface RadioLabelProps {
     checked?: boolean | null;
 }
 
-const RadioLabel: FC<PropsWithChildren<RadioLabelProps>> = ({ label, bottom,
+const RadioLabel: React.FC<PropsWithChildren<RadioLabelProps>> = ({ label, bottom,
                     required = false, error = false, disabled = false, checked = false, children }) => {
 
     const className = () => {

@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DatePicker.css';
 /**
  * Компонент отображающий календарь
@@ -16,7 +16,7 @@ export type DatePickerProps = {
     onChange?: (result: DatePickerResult) => void;
 };
 
-const DatePicker: FC<DatePickerProps> = ({ year, month, day, onChange }) => {
+const DatePicker: React.FC<DatePickerProps> = ({ year, month, day, onChange }) => {
     const monthName = getLocalMonthNames();
     const currentDate = new Date(); // Текущая дата устройства пользователя
     const currentDay = currentDate.getDate();

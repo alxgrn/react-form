@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React from 'react';
 import Message, { MessageIconType } from '../message/Message';
 import Modal from '../modal/Modal';
 import Form from '../../form/Form';
@@ -8,7 +8,7 @@ export interface AlertProps {
 	icon?: string | null;
 	type?: MessageIconType;
 	title?: string | null;
-	message: string | ReactNode;
+	message: string | React.ReactNode;
 	close?: string;
 	closeType?: ButtonType;
     isOpen: boolean;
@@ -17,7 +17,7 @@ export interface AlertProps {
 
 const CLOSE = 'Ok';
 
-const Alert:FC<AlertProps> = ({ icon, type, title, message, close, closeType, isOpen, onClose }) => {
+const Alert: React.FC<AlertProps> = ({ icon, type, title, message, close, closeType, isOpen, onClose }) => {
 	return (
 		<Modal isOpen={isOpen} onClose={onClose}>
 			<Message

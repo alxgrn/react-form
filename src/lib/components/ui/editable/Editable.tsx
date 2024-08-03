@@ -29,7 +29,7 @@ const Editable: FC<Props> = ({ value, empty, newline, onblur = 'Enter', placehol
         return () => {
             if (isActive) document.body.removeEventListener('keydown', closeOnEscapeKey);
         };
-    }, [ isActive ]);
+    }, [ isActive, value ]);
 
     // Подгоняем размер поля ввода под содержание
     useEffect(() => {
@@ -48,7 +48,7 @@ const Editable: FC<Props> = ({ value, empty, newline, onblur = 'Enter', placehol
 
     // Завершаем редактирование при нажатии на Enter
     const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-        if(e.key == 'Enter' && e.shiftKey == false) {
+        if(e.key === 'Enter' && e.shiftKey === false) {
             e.preventDefault();
             finishInput();
         }

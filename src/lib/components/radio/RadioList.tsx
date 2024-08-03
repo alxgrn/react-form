@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Radio from './Radio';
 import Fieldset from '../fieldset/Fieldset';
 /**
@@ -26,7 +26,7 @@ export interface RadioListProps {
     //__TYPE?: 'RadioList';
 }
 
-export const RadioList: FC<RadioListProps> = ({ id, label, value, onChange, required = false, disabled = false, options }) => {
+export const RadioList: React.FC<RadioListProps> = ({ id, label, value, onChange, required = false, disabled = false, options }) => {
 
     const [ error, setError ] = useState(false);
     

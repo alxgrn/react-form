@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React from 'react';
 import Message, { MessageIconType } from '../message/Message';
 import Modal from '../modal/Modal';
 import Form from '../../form/Form';
@@ -8,7 +8,7 @@ export interface ModalConfirmProps {
 	icon?: string | null;
 	type?: MessageIconType;
 	title?: string | null;
-	message: string | ReactNode;
+	message: string | React.ReactNode;
 	cancel?: string;
 	confirm?: string;
 	cancelType?: ButtonType;
@@ -21,7 +21,7 @@ export interface ModalConfirmProps {
 const CANCEL = 'Cancel';
 const CONFIRM = 'Confirm';
 
-const Confirm:FC<ModalConfirmProps> = ({ icon, type, title, message, cancel, confirm,
+const Confirm: React.FC<ModalConfirmProps> = ({ icon, type, title, message, cancel, confirm,
 										 confirmType, cancelType, isOpen, onCancel, onConfirm }) => {
 	return (
 		<Modal isOpen={isOpen} onClose={onCancel}>

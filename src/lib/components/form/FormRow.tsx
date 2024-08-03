@@ -1,7 +1,7 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 import './FormRow.css';
 
-const FormRow: FC<PropsWithChildren> = ({ children }) => (
+const FormRow: React.FC<PropsWithChildren> = ({ children }) => (
     <div className='FormRow'>
         {children}
     </div>

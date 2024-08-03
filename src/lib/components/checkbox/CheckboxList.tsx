@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Fieldset from '../fieldset/Fieldset';
 import Radio from '../radio/Radio';
 
@@ -23,7 +23,8 @@ export interface CheckboxListProps {
     //__TYPE?: 'CheckboxList';
 }
 
-export const CheckboxList: FC<CheckboxListProps> = ({ id, label, onChange, required = false, disabled = false, options }) => {
+export const CheckboxList: React.FC<CheckboxListProps> = ({ id, label, onChange,
+                                                            required = false, disabled = false, options }) => {
 
     const [ error, setError ] = useState(false);
 

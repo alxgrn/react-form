@@ -23,8 +23,8 @@ export interface SelectProps {
 }
 
 export const Select: React.FC<SelectProps> = ({ id, value, onChange, label, placeholder,
-                                          top, required = false, disabled = false,
-                                          bottom, options }) => {
+                                                top, required = false, disabled = false,
+                                                bottom, options }) => {
 
     const isError = () => {
         if(required) {

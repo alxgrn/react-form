@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React from 'react';
 import './Message.css';
 
 export type MessageIconType = 'square' | 'round';
@@ -7,10 +7,10 @@ type Props = {
     icon?: string | null;
     type?: MessageIconType;
     title?: string | null;
-    message: string | ReactNode;
+    message: string | React.ReactNode;
 };
 
-const Message: FC<Props> = ({ icon, type = 'square', title, message }) => {
+const Message: React.FC<Props> = ({ icon, type = 'square', title, message }) => {
 
     return (
         <div className='Message'>

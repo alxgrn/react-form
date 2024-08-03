@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 
 export type PortalProps = {
@@ -6,7 +6,7 @@ export type PortalProps = {
     fixBody?: boolean; // Флаг того, что надо запрещать скроллить основное окно когда портал непустой. Нужно для Modal
 };
 
-const Portal: FC<PropsWithChildren<PortalProps>> = ({ id, fixBody, children }) => {
+const Portal: React.FC<React.PropsWithChildren<PortalProps>> = ({ id, fixBody, children }) => {
     let portalElement = document.getElementById(id);
     if(!portalElement) {
         portalElement = document.createElement('div');

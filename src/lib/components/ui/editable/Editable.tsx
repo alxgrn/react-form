@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, FC, useEffect, useRef, useState } from 'react';
 import './Editable.css';
 
 type Props = {
@@ -8,9 +8,10 @@ type Props = {
     newline?: boolean; // Разрешить перевод строки?
     placeholder?: string; // Текст заглушки
     onChange: (value: string) => void;
+    style?: CSSProperties; // Стили для активного редактора
 }
 
-const Editable: FC<Props> = ({ value, empty, newline, onblur = 'Enter', placeholder, onChange }) => {
+const Editable: FC<Props> = ({ value, empty, newline, onblur = 'Enter', placeholder, onChange, style }) => {
     const ref = useRef<HTMLTextAreaElement>(null);
     const [ isActive, setIsActive ] = useState(false);
     const [ innerValue, setInnerValue ] = useState(newline ? value : value.replace(/[\n\r]+/g, ' '));
@@ -96,6 +97,7 @@ const Editable: FC<Props> = ({ value, empty, newline, onblur = 'Enter', placehol
             onBlur={onBlur}
             onFocus={onFocus}
             placeholder={placeholder}
+            style={style}
             autoFocus
         />
     );

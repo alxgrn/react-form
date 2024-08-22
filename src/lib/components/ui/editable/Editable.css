@@ -12,8 +12,6 @@
 
 textarea.Editable,
 textarea.Editable::placeholder {
-    border-radius: var(--unit-small);
-    background-color: var(--alxgrn-input-bg-focus);
     resize: none;
     cursor: auto;
     border: none;

@@ -4,10 +4,13 @@
     font-family: inherit;
     font-weight: inherit;
     text-decoration: inherit;
+    background-color: inherit;
     line-height: inherit;
     color: inherit;
     cursor: pointer;
     display: block;
+    margin: 0;
+    padding: 0;
 }
 
 textarea.Editable,
@@ -17,8 +20,6 @@ textarea.Editable::placeholder {
     border: none;
     outline: none;
     overflow: auto;
-    margin: 0;
-    padding: 0;
     width: 100%;
 }
 

@@ -1,3 +1,4 @@
+Пакет не обновляется. Новая версия перенесена в [alxgrn/telefrag-ui](https://github.com/alxgrn/telefrag-ui)
 # react-form
 ![npm](https://img.shields.io/npm/v/@alxgrn/react-form)
 ![npm](https://img.shields.io/npm/l/@alxgrn/react-form)
